@@ -97,11 +97,11 @@ workspace "2" output DVI-I-1
 workspace "3" output DVI-I-1
 workspace "4" output DVI-I-1
 workspace "5" output DVI-I-1
-workspace "6" output DVI-D-0
-workspace "7" output DVI-D-0
-workspace "8" output DVI-D-0
-workspace "9" output DVI-D-0
-workspace "10" output DVI-D-0
+workspace "6" output DVI-I-1
+workspace "7" output DVI-I-1
+workspace "8" output DVI-I-1
+workspace "9" output DVI-I-1
+workspace "10" output DVI-I-1
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -169,39 +169,39 @@ bindsym Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
 #bar {
 #        tray_output primary
 #}
-bar {
-#    verbose yes
-    status_command i3blocks
-    i3bar_command i3bar
-    position top
-    font pango:Hack, FontAwesome 11
-    strip_workspace_numbers yes
-    separator_symbol "■"
-    bindsym button4 nop
-    bindsym button5 nop
-    tray_output primary
-    workspace_buttons no
-    tray_padding 0
-    colors {
-        #statusline         $white
-        #background         $transparent
-        #separator          $transparent
-
-#       #                   BORDER       BACKGROUND   TEXT
-        #focused_workspace  $transparent $transparent $darkwhite
-        #inactive_workspace $transparent $transparent $white
-        #active_workspace   $transparent $transparent $white
-        #urgent_workspace   $darkred     $darkred     $transparent
-        #binding_mode       $darkred     $darkred     $transparent
-        background #303030
-        statusline #ffffff
-
-        focused_workspace  #4c7899 #285577 #ffffff
-        active_workspace   #333333 #5f676a #ffffff
-        inactive_workspace #333333 #222222 #888888
-        urgent_workspace   #2f343a #900000 #ffffff
-    }
-}
+#bar {
+##    verbose yes
+#    status_command i3blocks
+#    i3bar_command i3bar
+#    position top
+#    font pango:Hack, FontAwesome 11
+#    strip_workspace_numbers yes
+#    separator_symbol "■"
+#    bindsym button4 nop
+#    bindsym button5 nop
+#    tray_output primary
+#    workspace_buttons no
+#    tray_padding 0
+#    colors {
+#        #statusline         $white
+#        #background         $transparent
+#        #separator          $transparent
+#
+##       #                   BORDER       BACKGROUND   TEXT
+#        #focused_workspace  $transparent $transparent $darkwhite
+#        #inactive_workspace $transparent $transparent $white
+#        #active_workspace   $transparent $transparent $white
+#        #urgent_workspace   $darkred     $darkred     $transparent
+#        #binding_mode       $darkred     $darkred     $transparent
+#        background #303030
+#        statusline #ffffff
+#
+#        focused_workspace  #4c7899 #285577 #ffffff
+#        active_workspace   #333333 #5f676a #ffffff
+#        inactive_workspace #333333 #222222 #888888
+#        urgent_workspace   #2f343a #900000 #ffffff
+#    }
+#}
 
 hide_edge_borders both
 new_window pixel 0
@@ -209,4 +209,4 @@ new_window pixel 0
 #gaps outer 3
 #
 #smart_gaps on
-exec compton --backend glx
+#exec compton --backend glx

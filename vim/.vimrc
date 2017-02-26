@@ -150,7 +150,7 @@ Plug 'scrooloose/syntastic'
 "Plug '29decibel/codeschool-vim-theme'
 "Plug 'croaker/mustang-vim'
 Plug 'scrooloose/nerdtree'
-"Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 "Plug 'Shougo/deoplete.nvim'
 "Plug 'sebastianmarkow/deoplete-rust'
 "Plug 'SirVer/ultisnips'
@@ -164,11 +164,11 @@ Plug 'rust-lang/rust.vim'
 Plug 'luochen1990/rainbow'
 "Plug 'SirVer/ultisnips'
 "Plug 'honza/vim-snippets'
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 " Optional dependency for symbol selection
-Plug 'junegunn/fzf'
+"Plug 'junegunn/fzf'
 " Optional dependency for completion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 "call vundle#end()            " required
@@ -669,14 +669,14 @@ set omnifunc=syntaxcomplete#Complete
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['cargo', 'run', '--release', '--manifest-path=/home/maik/src/rls/Cargo.toml'],
-    \ }
-
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-
-let g:deoplete#enable_at_startup = 1
-inoremap <expr> <Tab>  pumvisible() ? "" : deoplete#mappings#manual_complete()
+"let g:LanguageClient_serverCommands = {
+"    \ 'rust': ['cargo', 'run', '--release', '--manifest-path=/home/maik/src/rls/Cargo.toml'],
+"    \ }
+"
+"nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+"nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+"nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+"
+"let g:deoplete#enable_at_startup = 1
+"inoremap <expr> <Tab>  pumvisible() ? "" : deoplete#mappings#manual_complete()
 set timeoutlen=500

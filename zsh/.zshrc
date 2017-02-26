@@ -60,8 +60,8 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 #
 export RUST_SRC_PATH=$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/
 
-export LD_LIBRARY_PATH="$HOME/VulkanSDK/1.0.37.0/x86_64/lib:$HOME/Qt/5.8/gcc_64/lib"
-export VK_LAYER_PATH=$HOME/VulkanSDK/1.0.37.0/x86_64/etc/explicit_layer.d
+export LD_LIBRARY_PATH="$HOME/VulkanSDK/1.0.39.1/x86_64/lib:$HOME/Qt/5.8/gcc_64/lib"
+export VK_LAYER_PATH=$HOME/VulkanSDK/1.0.39.1/x86_64/etc/explicit_layer.d
 
 source $ZSH/oh-my-zsh.sh
 export CARGO_HOME=$HOME/.cargo
