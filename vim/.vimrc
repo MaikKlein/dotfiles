@@ -150,7 +150,7 @@ Plug 'scrooloose/syntastic'
 "Plug '29decibel/codeschool-vim-theme'
 "Plug 'croaker/mustang-vim'
 Plug 'scrooloose/nerdtree'
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 "Plug 'Shougo/deoplete.nvim'
 "Plug 'sebastianmarkow/deoplete-rust'
 "Plug 'SirVer/ultisnips'
@@ -169,6 +169,11 @@ Plug 'luochen1990/rainbow'
 "Plug 'junegunn/fzf'
 " Optional dependency for completion
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'roxma/nvim-completion-manager'
+Plug 'junegunn/fzf.vim'
+Plug 'Shougo/denite.nvim'
+Plug 'Shougo/echodoc.vim'
 
 call plug#end()
 "call vundle#end()            " required
@@ -680,3 +685,10 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 "let g:deoplete#enable_at_startup = 1
 "inoremap <expr> <Tab>  pumvisible() ? "" : deoplete#mappings#manual_complete()
 set timeoutlen=500
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['cargo', 'run', '--release', '--manifest-path=/home/maik/src/rls/Cargo.toml'],
+    \ }
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
