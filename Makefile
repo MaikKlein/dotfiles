@@ -16,3 +16,7 @@ update: pull install
 .PHONY: pull
 pull:
 	git pull
+
+.PHONY: push
+push:
+	git add . && git commit -m "update" && git push origin master

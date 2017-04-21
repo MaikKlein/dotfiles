@@ -19,7 +19,7 @@ URxvt.scrollBar: false
 
 !URxvt.font: xft:inconsolata:size=13
 URxvt.internalBorder: 0
-URxvt.font: xft:Inconsolata for Powerline:size=15
+URxvt.font: xft:Inconsolata for Powerline:size=13
 URxvt.perl-ext-common: selection-to-clipboard
 URxvt.urlLauncher: uzbl-browser
 URxvt.matcher.button: 2
