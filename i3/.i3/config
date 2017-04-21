@@ -221,3 +221,4 @@ new_window pixel 0
 #
 #smart_gaps on
 exec --no-startup-id compton --config ~/compton.conf
+exec --no-startup-id nitrogen --restore
