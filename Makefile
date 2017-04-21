@@ -8,7 +8,7 @@ install:
 
 .PHONY: uninstall
 uninstall:
-	stow -Dt ~ $(PACAKGES)
+	stow -Dt ~ $(PACKAGES)
 
 .PHONY: update
 update: pull install
