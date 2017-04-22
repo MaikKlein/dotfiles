@@ -44,7 +44,12 @@ values."
      ;; ----------------------------------------------------------------
      helm
      (auto-completion :variables
-                      auto-completion-complete-with-key-sequence-delay 0.0)
+                      auto-completion-complete-with-key-sequence "C-SPC" 
+                      auto-completion-complete-with-key-sequence-delay 0.0
+                      auto-completion-enable-sort-by-usage nil
+                      auto-completion-private-snippets-directory nil
+                      auto-completion-enable-help-tooltip nil
+                      )
      ;; better-defaults
      emacs-lisp
      git
@@ -156,7 +161,6 @@ values."
                                :weight semi-bold
                                :width normal
                                :powerline-scale 1.2)
-   ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
    ;; (default "SPC")
@@ -328,12 +332,17 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (setq-default
-   vi-tilde-fringe-mode nil
-   company-idle-delay 0
-   powerline-default-separator 'arrow
-  ))
 
+
+  ;(global-set-key (kbd "C-SPC") 'company-complete)
+  (setq-default
+   company-idle-delay nil
+   company-dabbrev-downcase 0
+   powerline-default-separator 'arrow
+  )
+  (define-key evil-insert-state-map (kbd "C-SPC") 'company-complete)
+  (define-key evil-normal-state-map (kbd "<dead-circumflex>") 'evil-first-non-blank)
+  )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
@@ -341,6 +350,7 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(company-auto-complete-chars nil)
  '(custom-safe-themes
    (quote
     ("1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "c9321e2db48a21fc656a907e97ee85d8cd86967855bf0bed3998bcf9195c758b" "9f3181dc1fabe5d58bbbda8c48ef7ece59b01bed606cfb868dd147e8b36af97c" "227e2c160b0df776257e1411de60a9a181f890cfdf9c1f45535fc83c9b34406b" "7f4b67cb8aff9eb76ef818b3e41ed5f03581799f8e31899c93ec85b0ef049ceb" "8453c6ba2504874309bdfcda0a69236814cefb860a528eb978b5489422cb1791" "a2e7b508533d46b701ad3b055e7c708323fb110b6676a8be458a758dd8f24e27" "b571f92c9bfaf4a28cb64ae4b4cdbda95241cd62cf07d942be44dc8f46c491f4" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "51e228ffd6c4fff9b5168b31d5927c27734e82ec61f414970fc6bcce23bc140d" "f04122bbc305a202967fa1838e20ff741455307c2ae80a26035fbf5d637e325f" "bcc6775934c9adf5f3bd1f428326ce0dcd34d743a92df48c128e6438b815b44f" "98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" "6c0a087a4f49c04d4002393ffd149672f70e4ab38d69bbe8b39059b61682b61c" "f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" "f5512c02e0a6887e987a816918b7a684d558716262ac7ee2dd0437ab913eaec6" "10e231624707d46f7b2059cc9280c332f7c7a530ebc17dba7e506df34c5332c4" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))

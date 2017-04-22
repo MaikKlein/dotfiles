@@ -66,6 +66,7 @@ export RLS_ROOT=$HOME/src/rls
 
 source $ZSH/oh-my-zsh.sh
 export CARGO_HOME=$HOME/.cargo
+export TERM=xterm-256color
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8

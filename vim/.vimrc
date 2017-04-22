@@ -114,7 +114,7 @@ noremap ,, ,
 " => Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! DoRemote(arg)
-  UpdateRemotePlugins
+UpdateRemotePllugins
 endfunction
 
 set nocompatible
@@ -128,6 +128,9 @@ Plug 'gmarik/vundle'
 
 " My Bundles here:
 "Plug 'phildawes/racer'
+Plug 'jreybert/vimagit'
+Plug 'pelodelfuego/vim-swoop'
+Plug 'altercation/vim-colors-solarized'
 Plug 'kien/ctrlp.vim'
 Plug 'thinca/vim-ref'
 "Plug 'jansenm/vim-cmake'
@@ -140,6 +143,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-abolish'
 Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 """" Haskell stuff
 Plug 'Shougo/vimproc.vim'
 Plug 'Raimondi/delimitMate'
@@ -263,8 +267,9 @@ map <silent> <leader>ff :set invfu<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'flazz/vim-colorschemes'
 Plug 'verbitan/Wombat'
-colorscheme gruvbox
-set background=dark
+colorscheme solarized
+let g:solarized_termcolors=16
+set background=light
 " Enable syntax highlighting
 syntax enable
 
@@ -288,7 +293,7 @@ if has("gui_running")
   set guioptions-=e
   set guitablabel=%M\ %t
 endif
-set t_Co=256
+"set t_Co=256
 
 " Set utf8 as standard encoding and en_US as the standard language
 "set encoding=utf8
@@ -385,7 +390,6 @@ set laststatus=2
 set statusline=%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
 "let g:Powerline_symbols = 'unicode'
-let g:airline_theme = 'gruvbox'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -685,6 +689,7 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 "let g:deoplete#enable_at_startup = 1
 "inoremap <expr> <Tab>  pumvisible() ? "" : deoplete#mappings#manual_complete()
 set timeoutlen=500
+let g:airline_theme = 'solarized'
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['cargo', 'run', '--release', '--manifest-path=/home/maik/src/rls/Cargo.toml'],
     \ }
@@ -692,3 +697,9 @@ let g:LanguageClient_serverCommands = {
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
+nnoremap <leader>fed :e ~/.vimrc<CR>
+nmap <Leader>ss :call Swoop()<CR>
+nmap <Leader>sb :call SwoopMulti()<CR>
+nmap <Leader>pf :CtrlP .<CR>
+nmap <Leader>bb :CtrlPBuffer <CR>
