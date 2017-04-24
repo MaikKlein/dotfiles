@@ -334,7 +334,6 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
 
-  ;(global-set-key (kbd "C-SPC") 'company-complete)
   (setq-default
    company-idle-delay nil
    company-dabbrev-downcase 0
