@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh installation.
 #
 #
-  export ZSH=/home/maik/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -55,18 +55,7 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HOME/ldc/bin:$HOME/src/DCD/bin:$HOME/src/dfmt/bin:$HOME/vulkan/VulkanSDK/1.0.33.0/x86_64/bin:$HOME/.cargo/bin:$HOME/Qt/5.8/gcc_64/lib"
-# export MANPATH="/usr/local/man:$MANPATH"
-#
-export RUST_SRC_PATH=$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/
-
-export LD_LIBRARY_PATH="$HOME/VulkanSDK/1.0.39.1/x86_64/lib:$HOME/Qt/5.8/gcc_64/lib:$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib"
-export VK_LAYER_PATH=$HOME/VulkanSDK/1.0.39.1/x86_64/etc/explicit_layer.d
-export RLS_ROOT=$HOME/src/rls
-
 source $ZSH/oh-my-zsh.sh
-export CARGO_HOME=$HOME/.cargo
-export TERM=xterm-256color
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
