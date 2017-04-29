@@ -220,6 +220,7 @@ new_window pixel 0
 #gaps outer 3
 #
 #smart_gaps on
-exec --no-startup-id compton --config ~/compton.conf
-exec --no-startup-id nitrogen --restore
+#exec --no-startup-id compton --config ~/compton.conf
+#exec --no-startup-id nitrogen --restore
+exec --no-startup-id feh --bg-scale dotfiles/wallpapers/firewatch-blue.jpg
 exec xinput --set-prop 10 'Device Accel Profile' -1
