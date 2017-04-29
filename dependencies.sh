@@ -11,6 +11,7 @@ apt install \
 	pavucontrol \
 	emacs \
 	rxvt-unicode-256color \
+    tmux \
 	compton \
 	nitrogen \
 	software-properties-common \
