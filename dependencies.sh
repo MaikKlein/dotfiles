@@ -1,3 +1,4 @@
+sudo add-apt-repository ppa:peek-developers/stable
 sudo add-apt-repository ppa:neovim-ppa/stable
 sudo add-apt-repository ppa:daveg/i3-gaps
 sudo apt update
@@ -21,6 +22,10 @@ sudo apt install \
     i3-wm \
     steam \
     feh \
+    scrot \
+    gimp \
+    peek \
+    xclip \
 
 git clone https://github.com/syl20bnr/spacemacs /tmp/.emacs.d
 cp -f -R /tmp/.emacs.d ~/.emacs.d
