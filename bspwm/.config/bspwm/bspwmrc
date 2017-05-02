@@ -22,5 +22,5 @@ bspc rule -a Terminator state=tiled
 
 compton --config ~/compton.conf &
 feh --bg-scale dotfiles/wallpapers/firewatch-blue.jpg &
-xinput --set-prop 10 'Device Accel Profile' -1 &
-polybar example
+polybar example &
+sh ~/.xinitrc

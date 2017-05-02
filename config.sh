@@ -8,10 +8,12 @@ ln -s -f "$(pwd)/vim/.vimrc" ~/.vimrc
 mkdir -p ~/.i3
 ln -s -f "$(pwd)/i3/.i3/config" ~/.i3/config
 ln -s -f "$(pwd)/X/.Xresources" ~/.Xresources
-ln -s -f "$(pwd)/X/.Xresources" ~/.Xresources
+ln -s -f "$(pwd)/X/.xinitrc" ~/.xinitrc
 
 mkdir -p ~/.config/bspwm
 ln -s -f "$(pwd)/bspwm/.config/bspwm/bspwmrc" ~/.config/bspwm/bspwmrc
 mkdir -p ~/.config/sxhkd
 ln -s -f "$(pwd)/bspwm/.config/sxhkd/sxhkdrc" ~/.config/sxhkd/sxhkdrc
 ln -s -f "$(pwd)/compton/compton.conf" ~/compton.conf
+mkdir -p ~/.config/polybar
+ln -s -f "$(pwd)/polybar/.config/polybar/config" ~/.config/polybar/config
