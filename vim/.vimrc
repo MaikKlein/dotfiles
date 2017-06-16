@@ -52,8 +52,8 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
 let $PATH = $PATH . ':' . expand("~/.cabal/bin")
 
 nnoremap <leader>gd :YcmCompleter GoTo<CR>
@@ -134,8 +134,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'kien/ctrlp.vim'
 Plug 'thinca/vim-ref'
 "Plug 'jansenm/vim-cmake'
-"Plug 'wting/rust.vim'
-Plug 'rdnetto/YCM-Generator'
+"Plug 'rust-lang/rust.vim'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 "Plug 'tikhomirov/vim-glsl'
@@ -163,21 +162,26 @@ Plug 'scrooloose/nerdtree'
 Plug 'morhetz/gruvbox'
 Plug 'MaikKlein/vim-dutyl'
 Plug 'edkolev/tmuxline.vim'
-Plug 'rust-lang/rust.vim'
+"Plug 'rust-lang/rust.vim'
+"Plug 'MaikKlein/ale'
+"Plug 'neomake/neomake'
+Plug 'mckinnsb/rust.vim'
 "Plug 'Yggdroot/indentLine'
 Plug 'luochen1990/rainbow'
 "Plug 'SirVer/ultisnips'
 "Plug 'honza/vim-snippets'
-"Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 " Optional dependency for symbol selection
 "Plug 'junegunn/fzf'
 " Optional dependency for completion
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+
 Plug 'roxma/nvim-completion-manager'
-Plug 'junegunn/fzf.vim'
-Plug 'Shougo/denite.nvim'
-Plug 'Shougo/echodoc.vim'
+"Plug 'junegunn/fzf.vim'
+"Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+"
+"Plug 'Shougo/echodoc.vim'
 
 call plug#end()
 "call vundle#end()            " required
@@ -268,8 +272,11 @@ map <silent> <leader>ff :set invfu<CR>
 Plug 'flazz/vim-colorschemes'
 Plug 'verbitan/Wombat'
 colorscheme solarized
-let g:solarized_termcolors=16
+"let g:solarized_termcolors=256
 set background=light
+let g:LanguageClient_signColumnAlwaysOn=0
+let g:LanguageClient_diagnosticsDisplay={}
+"set background=dark
 " Enable syntax highlighting
 syntax enable
 
@@ -691,7 +698,8 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 set timeoutlen=500
 let g:airline_theme = 'solarized'
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['cargo', 'run', '--release', '--manifest-path=/home/maik/src/rls/Cargo.toml'],
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'javascript': ['/opt/javascript-typescript-langserver/lib/language-server-stdio.js'],
     \ }
 
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
@@ -703,3 +711,17 @@ nmap <Leader>ss :call Swoop()<CR>
 nmap <Leader>sb :call SwoopMulti()<CR>
 nmap <Leader>pf :CtrlP .<CR>
 nmap <Leader>bb :CtrlPBuffer <CR>
+hi VertSplit ctermbg=NONE guibg=NONE
+hi SpellBad ctermfg=NONE ctermbg=NONE guifg=#ffffff guibg=#ffffff
+hi SpellCap ctermfg=NONE ctermbg=NONE guifg=#ffffff guibg=#ffffff
+hi NonText guifg=bg
+set nonumber
+let g:solarized_visibility = "high"
+let g:syntastic_enable_signs = 0
+let g:syntastic_cursor_column = 0
+let g:syntastic_echo_current_error = 0
+let g:syntastic_rust_checkers = ['cargo']
+let g:ale_linters = {'rust': ['cargoworkspace']}
+let g:ale_history_log_output = 1
+let g:ale_rust_cargo_use_check = 1
+let g:LanguageClient_autoStart = 1

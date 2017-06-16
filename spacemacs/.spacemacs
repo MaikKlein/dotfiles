@@ -8,6 +8,13 @@
   (set-buffer-modified-p t)
   (save-buffer))
 
+(defun save-switch-normal ()
+  "Save the buffer and switches to the normal state"
+  (interactive)
+  (set-buffer-modified-p t)
+  (save-buffer)
+  (evil-normal-state))
+
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
 You should not put any user code in this function besides modifying the variable
@@ -37,10 +44,16 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     (shell :variables shell-default-term-shell "/bin/zsh")
+     vimscript
+     (shell :variables
+            shell-default-term-shell "/bin/zsh"
+            shell-default-shell 'eshell
+            )
      rust
      yaml
      markdown
+     latex
+     spell-checking
      ;rust
      ;emacs-lsp
      ;; ----------------------------------------------------------------
@@ -50,15 +63,17 @@ values."
      ;; ----------------------------------------------------------------
      helm
      (auto-completion :variables
+                      auto-completion-enable-snippets-in-popup nil
                       auto-completion-complete-with-key-sequence "C-SPC" 
                       auto-completion-complete-with-key-sequence-delay 0.0
                       auto-completion-enable-sort-by-usage nil
-                      auto-completion-private-snippets-directory nil
+                      auto-completion-private-snippets-directory "~/src/yasnippet-snippets"
                       auto-completion-enable-help-tooltip nil
                       )
      ;; better-defaults
      emacs-lisp
      git
+     github
      ;; markdown
      ;; org
      ;; (shell :variables
@@ -66,8 +81,7 @@ values."
      ;;        shell-default-position 'bottom)
      ;; spell-checking
      themes-megapack
-     syntax-checking
-     nixos
+     (syntax-checking :variables syntax-checking-enable-tooltips nil)
      ;; version-control
      )
    ;; List of additional packages that will be installed without being
@@ -86,7 +100,7 @@ values."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(vi-tilde-fringe)
+   dotspacemacs-excluded-packages '(vi-tilde-fringe eldoc)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -289,7 +303,7 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers t
+   dotspacemacs-line-numbers nil
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -339,39 +353,37 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-
   (spacemacs/set-leader-keys
     "fs" 'save-buffer-always
   )
-
+  ;;(global-eldoc-mode -1)
+  ;; (with-eval-after-load 'rust
+  ;; (remove-hook 'rust-mode-hook '(racer-mode eldoc-mode))
+  ;; )
   (setq-default
+   browse-url-browser-function 'browse-url-generic
+   browse-url-generic-program "google-chrome"
    company-idle-delay nil
-   company-dabbrev-downcase 0
+   ;;flycheck-check-syntax-automatically nil
    powerline-default-separator 'arrow
   )
+
+  (mapc #'evil-declare-abort-repeat
+   '(
+     save-buffer-always
+     save-switch-buffer
+     helm-M-x
+   ))
+
+  ;; (define-key evil-insert-state-map (kbd "TAB") nil)
+  ;; (define-key evil-insert-state-map (kbd "C-SPC") 'company-capf)
+  ;;(define-key helm-command (kbd "TAB") nil)
+  ;; (global-set-key (kbd "<tab>") nil)
+  ;; (global-set-key (kbd "TAB") nil)
   (define-key evil-insert-state-map (kbd "C-SPC") 'company-complete)
+  (define-key evil-insert-state-map (kbd "C-s") #'save-switch-normal)
+  (define-key evil-normal-state-map (kbd "C-s") 'save-buffer-always)
+  (define-key evil-normal-state-map (kbd "TAB") 'next-buffer)
+  (define-key evil-normal-state-map (kbd "<C-tab>") 'previous-buffer)
   (define-key evil-normal-state-map (kbd "<dead-circumflex>") 'evil-first-non-blank)
   )
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(company-auto-complete-chars nil)
- '(custom-safe-themes
-   (quote
-    ("1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "c9321e2db48a21fc656a907e97ee85d8cd86967855bf0bed3998bcf9195c758b" "9f3181dc1fabe5d58bbbda8c48ef7ece59b01bed606cfb868dd147e8b36af97c" "227e2c160b0df776257e1411de60a9a181f890cfdf9c1f45535fc83c9b34406b" "7f4b67cb8aff9eb76ef818b3e41ed5f03581799f8e31899c93ec85b0ef049ceb" "8453c6ba2504874309bdfcda0a69236814cefb860a528eb978b5489422cb1791" "a2e7b508533d46b701ad3b055e7c708323fb110b6676a8be458a758dd8f24e27" "b571f92c9bfaf4a28cb64ae4b4cdbda95241cd62cf07d942be44dc8f46c491f4" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "51e228ffd6c4fff9b5168b31d5927c27734e82ec61f414970fc6bcce23bc140d" "f04122bbc305a202967fa1838e20ff741455307c2ae80a26035fbf5d637e325f" "bcc6775934c9adf5f3bd1f428326ce0dcd34d743a92df48c128e6438b815b44f" "98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" "6c0a087a4f49c04d4002393ffd149672f70e4ab38d69bbe8b39059b61682b61c" "f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" "f5512c02e0a6887e987a816918b7a684d558716262ac7ee2dd0437ab913eaec6" "10e231624707d46f7b2059cc9280c332f7c7a530ebc17dba7e506df34c5332c4" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
- '(evil-want-Y-yank-to-eol nil)
- '(global-vi-tilde-fringe-mode nil)
- '(package-selected-packages
-   (quote
-    (nix-mode helm-nixos-options company-nixos-options nixos-options zonokai-theme zenburn-theme zen-and-art-theme yaml-mode xterm-color underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme toml-mode tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smeargle shell-pop seti-theme reverse-theme railscasts-theme racer purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme pastels-on-dark-theme orgit organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme niflheim-theme naquadah-theme mustang-theme multi-term monokai-theme monochrome-theme molokai-theme moe-theme mmm-mode minimal-theme material-theme markdown-toc markdown-mode majapahit-theme magit-gitflow madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme helm-gitignore helm-company helm-c-yasnippet hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md gandalf-theme fuzzy flycheck-rust seq flycheck-pos-tip pos-tip flycheck flatui-theme flatland-theme firebelly-theme farmhouse-theme evil-magit magit magit-popup git-commit with-editor espresso-theme eshell-z eshell-prompt-extras esh-help dracula-theme doom-themes all-the-icons font-lock+ django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme company-statistics company color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme cargo rust-mode busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme auto-yasnippet yasnippet apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme ac-ispell auto-complete solarized-theme ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
- '(solarized-high-contrast-mode-line t))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

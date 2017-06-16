@@ -23,8 +23,8 @@ alt + alt + Escape
 	bspc quit
 
 # close and kill
-alt + {_,shift + }c
-	bspc node -{c,k}
+alt + shift + c
+	bspc node -c
 
 # alternate between the tiled and monocle layout
 alt + m
@@ -119,3 +119,8 @@ alt + alt + shift + {h,j,k,l}
 # move a floating window
 alt + alt + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+#alt + Print
+#  scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
+alt + Print
+  ~/src/imgur-screenshot/imgur-screenshot.sh
