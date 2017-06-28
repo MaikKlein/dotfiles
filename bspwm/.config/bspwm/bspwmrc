@@ -23,4 +23,6 @@ bspc rule -a Terminator state=tiled
 compton --config ~/compton.conf &
 feh --bg-scale dotfiles/wallpapers/firewatch-blue.jpg &
 polybar example &
-sh ~/.xinitrc
+sh ~/.xinitrc &
+gsettings set org.gnome.desktop.background show-desktop-icons false
+
