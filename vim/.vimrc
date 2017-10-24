@@ -146,7 +146,7 @@ Plug 'vim-airline/vim-airline-themes'
 """" Haskell stuff
 Plug 'Shougo/vimproc.vim'
 Plug 'Raimondi/delimitMate'
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
 "Plug 'mattn/gist-vim'
 "Plug 'gkz/vim-ls'
 "Plug 'tpope/vim-dispatch'
@@ -161,11 +161,12 @@ Plug 'scrooloose/nerdtree'
 "Plug 'rhysd/vim-clang-format'
 Plug 'morhetz/gruvbox'
 Plug 'MaikKlein/vim-dutyl'
-Plug 'edkolev/tmuxline.vim'
+"Plug 'edkolev/tmuxline.vim'
 "Plug 'rust-lang/rust.vim'
 "Plug 'MaikKlein/ale'
 "Plug 'neomake/neomake'
 Plug 'mckinnsb/rust.vim'
+Plug 'kbenzie/vim-spirv'
 "Plug 'Yggdroot/indentLine'
 Plug 'luochen1990/rainbow'
 "Plug 'SirVer/ultisnips'
@@ -274,8 +275,8 @@ Plug 'verbitan/Wombat'
 colorscheme solarized
 "let g:solarized_termcolors=256
 set background=light
-let g:LanguageClient_signColumnAlwaysOn=0
-let g:LanguageClient_diagnosticsDisplay={}
+"let g:LanguageClient_signColumnAlwaysOn=1
+"let g:LanguageClient_diagnosticsDisplay={}
 "set background=dark
 " Enable syntax highlighting
 syntax enable
@@ -725,3 +726,5 @@ let g:ale_linters = {'rust': ['cargoworkspace']}
 let g:ale_history_log_output = 1
 let g:ale_rust_cargo_use_check = 1
 let g:LanguageClient_autoStart = 1
+let g:spirv_current_id_highlight = ''
+set signcolumn=yes
