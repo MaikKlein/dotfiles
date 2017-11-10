@@ -1,0 +1,27 @@
+<keymap version="1" name="Default for XWin copy" parent="Default for XWin">
+  <action id="CommentByLineComment">
+    <keyboard-shortcut first-keystroke="ctrl slash" />
+    <keyboard-shortcut first-keystroke="ctrl divide" />
+    <keyboard-shortcut first-keystroke="f4" />
+  </action>
+  <action id="Console.TableResult.NavigateAction" />
+  <action id="DSM.OpenInEditor" />
+  <action id="Database.OpenDbStorageAction" />
+  <action id="Debugger.EditFrameSource" />
+  <action id="DomCollectionControl.Edit" />
+  <action id="DomElementsTreeView.GotoDomElementDeclarationAction" />
+  <action id="EditSource" />
+  <action id="ExternalSystem.OpenConfig" />
+  <action id="Graph.Faces.OpenSelectedPages" />
+  <action id="Jdbc.OpenEditor" />
+  <action id="OpenModuleSettings" />
+  <action id="ReformatCode" />
+  <action id="RemoteHostView.EditSource" />
+  <action id="RunDashboard.EditConfiguration" />
+  <action id="Rust.CargoFmtFile">
+    <keyboard-shortcut first-keystroke="ctrl alt l" />
+  </action>
+  <action id="Vcs.Log.OpenRepositoryVersion" />
+  <action id="Vcs.ReformatCommitMessage" />
+  <action id="XDebugger.JumpToSource" />
+</keymap>

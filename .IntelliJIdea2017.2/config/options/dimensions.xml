@@ -1,0 +1,52 @@
+<application>
+  <component name="DimensionService">
+    <location key="#Browse_Repositories.0.0.1920.1080" x="548" y="126" />
+    <location key="#Plugins.0.0.1920.1080" x="560" y="129" />
+    <location key="FileChooserDialogImpl.0.0.1920.1080" x="884" y="301" />
+    <location key="WELCOME_SCREEN.0.0.1920.1080" x="959" y="458" />
+    <location key="com.intellij.ide.util.TipDialog.0.0.1920.1080" x="220" y="390" />
+    <location key="SettingsEditor.0.0.1920.1080" x="920" y="220" />
+    <location key="#com.intellij.ide.actions.ChooseComponentsToExportDialog.0.0.1920.1080" x="655" y="421" />
+    <location key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate.0.0.1920.1080" x="235" y="454" />
+    <location key="SimpleOpenTaskDialog.0.0.1920.1080" x="709" y="422" />
+    <location key="com.intellij.openapi.editor.actions.MultiplePasteAction$1.0.0.1920.1080" x="590" y="180" />
+    <location key="IgnoreUnversionedDialog.0.0.1920.1080" x="609" y="497" />
+    <location key="find.popup.0.0.1920.1080" x="479" y="167" />
+    <location key="#com.intellij.execution.impl.EditConfigurationsDialog.0.0.1920.1080" x="423" y="222" />
+    <location key="StructurePopup.0.0.1920.1080" x="650" y="332" />
+    <location key="#com.intellij.ide.util.MemberChooser.0.0.1920.1080" x="772" y="283" />
+    <location key="vcs.readOnlyHandler.ReadOnlyStatusDialog.0.0.1920.1080" x="689" y="404" />
+    <location key="#com.intellij.fileTypes.FileTypeChooser.0.0.1920.1080" x="674" y="362" />
+    <location key="#Intentions.0.0.1920.1080" x="559" y="227" />
+    <location key="#Notifications.0.0.1920.1080" x="716" y="268" />
+    <location key="#Servers.0.0.1920.1080" x="680" y="332" />
+    <location key="#Browse_JetBrains_Plugins_.0.0.1920.1080" x="406" y="217" />
+    <location key="#Project_Structure.0.0.1920.1080" x="447" y="143" />
+    <location key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser.0.0.1920.1080" x="712" y="158" />
+    <location key="new project wizard.0.0.1920.1080" x="557" y="162" />
+    <location key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages.0.0.1920.1080" x="819" y="436" />
+    <location key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes.0.0.1920.1080" x="753" y="419" />
+    <location key="#Rust.0.0.1920.1080" x="759" y="338" />
+    <size key="FileChooserDialogImpl.0.0.1920.1080" width="476" height="441" />
+    <size key="find.popup.0.0.1920.1080" width="960" height="744" />
+    <size key="GridCell.Tab.0.left.0.0.1920.1080" width="1894" height="304" />
+    <size key="GridCell.Tab.0.center.0.0.1920.1080" width="1894" height="304" />
+    <size key="GridCell.Tab.0.right.0.0.1920.1080" width="1894" height="304" />
+    <size key="GridCell.Tab.0.bottom.0.0.1920.1080" width="1894" height="304" />
+    <size key="StructurePopup.0.0.1920.1080" width="570" height="433" />
+    <size key="javadoc.popup.0.0.1920.1080" width="662" height="440" />
+    <size key="#com.intellij.fileTypes.FileTypeChooser.0.0.1920.1080" width="643" height="385" />
+    <size key="SimpleOpenTaskDialog.0.0.1920.1080" width="498" height="274" />
+    <size key="SettingsEditor.0.0.1920.1080" width="1000" height="581" />
+    <size key="com.intellij.openapi.editor.actions.MultiplePasteAction$1.0.0.1920.1080" width="402" height="763" />
+    <size key="GotoFile_FileTypePopup.0.0.1920.1080" width="200" height="200" />
+    <size key="#com.intellij.ide.util.MemberChooser.0.0.1920.1080" width="374" height="541" />
+    <size key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser.0.0.1920.1080" width="483" height="763" />
+    <size key="new project wizard.0.0.1920.1080" width="858" height="785" />
+    <size key="GridCell.Tab.1.left.0.0.1920.1080" width="1894" height="304" />
+    <size key="GridCell.Tab.1.center.0.0.1920.1080" width="1894" height="304" />
+    <size key="GridCell.Tab.1.right.0.0.1920.1080" width="1894" height="304" />
+    <size key="GridCell.Tab.1.bottom.0.0.1920.1080" width="1894" height="304" />
+    <size key="#Rust.0.0.1920.1080" width="389" height="434" />
+  </component>
+</application>

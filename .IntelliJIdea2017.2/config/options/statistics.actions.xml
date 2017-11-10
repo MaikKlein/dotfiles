@@ -1,0 +1,42 @@
+<application>
+  <component name="ActionsCollector">
+    <counts>
+      <entry action="$SelectAll" count="2" />
+      <entry action="CheckForUpdate" count="6" />
+      <entry action="CodeCompletion" count="176" />
+      <entry action="CommentByLineComment" count="51" />
+      <entry action="CopyPaths" count="1" />
+      <entry action="EditSourceInNewWindow" count="1" />
+      <entry action="EditorBackSpace" count="519" />
+      <entry action="EditorChooseLookupItem" count="438" />
+      <entry action="EditorDeleteToWordStart" count="26" />
+      <entry action="EditorDown" count="285" />
+      <entry action="EditorDuplicate" count="1" />
+      <entry action="EditorEnter" count="5" />
+      <entry action="EditorLeft" count="2" />
+      <entry action="EditorRight" count="6" />
+      <entry action="EditorStartNewLine" count="2" />
+      <entry action="EditorTab" count="92" />
+      <entry action="EditorUp" count="973" />
+      <entry action="GotoAction" count="1" />
+      <entry action="GotoFile" count="15" />
+      <entry action="GotoImplementation" count="83" />
+      <entry action="GotoNextError" count="435" />
+      <entry action="GotoPreviousError" count="9" />
+      <entry action="GotoTypeDeclaration" count="3" />
+      <entry action="HideActiveWindow" count="35" />
+      <entry action="IntroduceVariable" count="1" />
+      <entry action="OpenFile" count="8" />
+      <entry action="PasteMultiple" count="10" />
+      <entry action="RenameElement" count="34" />
+      <entry action="Rust.CargoFmtFile" count="98" />
+      <entry action="SaveAll" count="45" />
+      <entry action="SearchEverywhere" count="56" />
+      <entry action="ShowPopupMenu" count="3" />
+      <entry action="ShowProjectStructureSettings" count="1" />
+      <entry action="ShowSettings" count="30" />
+      <entry action="org.intellij.plugins.markdown.ui.actions.editorLayout.EditorAndPreviewLayoutChangeAction" count="1" />
+      <entry action="org.intellij.plugins.markdown.ui.actions.editorLayout.EditorOnlyLayoutChangeAction" count="1" />
+    </counts>
+  </component>
+</application>

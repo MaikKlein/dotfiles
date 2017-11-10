@@ -1,0 +1,46 @@
+<application>
+  <component name="UsageTrigger">
+    <counts>
+      <entry feature="CreateFile.CreateFileAction" count="1" />
+      <entry feature="DSM.Analyze" count="1" />
+      <entry feature="OpenInBrowser.Chrome" count="1" />
+      <entry feature="StripeButton[Run].hidden" count="3" />
+      <entry feature="StripeButton[Version_Control].hidden" count="4" />
+      <entry feature="StripeButton[Version_Control].shown" count="1" />
+      <entry feature="execute.#org.jetbrains.idea.devkit.run.PluginConfigurationType.Run" count="3" />
+      <entry feature="execute.CargoCommandRunConfiguration.Run" count="59" />
+      <entry feature="ide.help.ideaInterface.editor" count="4" />
+      <entry feature="ide.help.ideaInterface.run" count="1" />
+      <entry feature="ide.help.select.path.dialog" count="2" />
+      <entry feature="ide.settings.Appearance" count="40" />
+      <entry feature="ide.settings.Breadcrumbs" count="9" />
+      <entry feature="ide.settings.Code_Folding" count="2" />
+      <entry feature="ide.settings.Color_Scheme" count="5" />
+      <entry feature="ide.settings.Color_Scheme_Font" count="41" />
+      <entry feature="ide.settings.Colors_&amp;_Fonts" count="2" />
+      <entry feature="ide.settings.Console_Font" count="3" />
+      <entry feature="ide.settings.Editor_Tabs" count="8" />
+      <entry feature="ide.settings.Font" count="16" />
+      <entry feature="ide.settings.General" count="6" />
+      <entry feature="ide.settings.Gutter_Icons" count="5" />
+      <entry feature="ide.settings.Ignored_Files" count="1" />
+      <entry feature="ide.settings.Inspections" count="2" />
+      <entry feature="ide.settings.Keymap" count="4" />
+      <entry feature="ide.settings.Language_Defaults" count="4" />
+      <entry feature="ide.settings.Live_Templates" count="1" />
+      <entry feature="ide.settings.Material_Theme" count="1" />
+      <entry feature="ide.settings.Notifications" count="1" />
+      <entry feature="ide.settings.Plugins" count="13" />
+      <entry feature="ide.settings.Rust" count="33" />
+      <entry feature="ide.settings.System_Settings" count="6" />
+      <entry feature="ide.settings.Version_Control" count="2" />
+      <entry feature="ide.settings.Vim_Emulation" count="8" />
+      <entry feature="idea.caches.invalidated" count="2" />
+      <entry feature="ideaapp.started" count="193" />
+      <entry feature="terminal.linux" count="4" />
+      <entry feature="welcome.screen.WelcomeScreen.Configure" count="1" />
+      <entry feature="welcome.screen.WelcomeScreen.OpenProject" count="4" />
+      <entry feature="welcome.screen.WelcomeScreen.Plugins" count="1" />
+    </counts>
+  </component>
+</application>

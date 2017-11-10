@@ -95,6 +95,8 @@ values."
                ;;                          :fetcher github
                ;;                          :repo "MaikKlein/rustrls"))
                rust
+               ranger
+               ivy
                ;;rustrls
                yaml
                markdown
@@ -464,7 +466,8 @@ you should place your code here."
           company-capf
           company-complete-number
           company-complete-selection
-          company-complete-common))
+          company-complete-common
+          ))
 
   (mapc #'evil-declare-ignore-repeat
         '(company-abort
@@ -476,8 +479,11 @@ you should place your code here."
           company-show-doc-buffer
           company-show-location
           company-search-candidates
-          company-filter-candidates))
+          company-filter-candidates
+          counsel-projectile-find-file
+          ))
   (spacemacs/set-leader-keys "pg" nil)
+  (setq-default c-basic-offset 4)
   (spacemacs/declare-prefix "pg" "git grep")
   (spacemacs/set-leader-keys "pgg" 'grep-whole-git
     "pgs" 'grep-whole-git-struct "pgf" 'grep-whole-git-fn)
@@ -499,10 +505,10 @@ you should place your code here."
   (setq-default x86-lookup-pdf "~/asm-ref.pdf"
                 tab-always-indent nil browse-url-browser-function
                 'browse-url-generic browse-url-generic-program
-                "google-chrome" company-idle-delay nil powerline-default-separator
+                "firefox" company-idle-delay nil powerline-default-separator
                 'arrow)
   (mapc #'evil-declare-abort-repeat
-        '(save-buffer-always save-switch-buffer helm-M-x
+        '(save-buffer-always save-switch-buffer helm-M-x counsel-M-x next-error flycheck-next-error swiper
                              rep))
   ;; (define-key evil-insert-state-map (kbd "TAB") nil)
   (define-key evil-insert-state-map (kbd "C-SPC") 'company-capf)
@@ -528,7 +534,11 @@ you should place your code here."
  '(org-agenda-files (quote ("~/projects/breeze/TODOs.org")))
  '(package-selected-packages
    (quote
-    (web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data lsp-rust phpunit phpcbf php-extras php-auto-yasnippets drupal-mode php-mode all-the-icons smartparens highlight evil flycheck yasnippet company helm helm-core avy markdown-mode org-plus-contrib magit magit-popup with-editor rust-mode lsp-mode x86-lookup nasm-mode stickyfunc-enhance srefactor disaster company-c-headers cmake-mode clang-format org-projectile org-present org-pomodoro alert log4e gntp org-download htmlize gnuplot glsl-mode company-glsl helm-git-grep wgrep smex ivy-hydra flyspell-correct-ivy counsel-projectile counsel swiper ivy zonokai-theme zenburn-theme zen-and-art-theme yaml-mode xterm-color ws-butler winum which-key volatile-highlights vimrc-mode uuidgen use-package underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme toml-mode toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spaceline spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smeargle shell-pop seti-theme reverse-theme restart-emacs rainbow-delimiters railscasts-theme racer purple-haze-theme professional-theme popwin planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el pastels-on-dark-theme paradox orgit organic-green-theme org-bullets open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme niflheim-theme neotree naquadah-theme mustang-theme multi-term move-text monokai-theme monochrome-theme molokai-theme moe-theme mmm-mode minimal-theme material-theme markdown-toc majapahit-theme magit-gitflow magit-gh-pulls madhat2r-theme macrostep lush-theme lorem-ipsum linum-relative link-hint light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt heroku-theme hemisu-theme help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gist gh-md gandalf-theme fuzzy flyspell-correct-helm flycheck-rust flycheck-pos-tip flx-ido flatui-theme flatland-theme firebelly-theme fill-column-indicator farmhouse-theme fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu espresso-theme eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump dracula-theme doom-themes django-theme define-word darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme dactyl-mode cyberpunk-theme company-statistics company-auctex column-enforce-mode color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme clean-aindent-mode cherry-blossom-theme cargo busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data lsp-rust phpunit phpcbf php-extras php-auto-yasnippets drupal-mode php-mode all-the-icons smartparens highlight evil flycheck yasnippet company helm helm-core avy markdown-mode org-plus-contrib magit magit-popup with-editor rust-mode lsp-mode x86-lookup nasm-mode stickyfunc-enhance srefactor disaster company-c-headers cmake-mode clang-format org-projectile org-present org-pomodoro alert log4e gntp org-download htmlize gnuplot glsl-mode company-glsl helm-git-grep wgrep smex ivy-hydra flyspell-correct-ivy counsel-projectile counsel swiper ivy zonokai-theme zenburn-theme zen-and-art-theme yaml-mode xterm-color ws-butler winum which-key volatile-highlights vimrc-mode uuidgen use-package underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme toml-mode toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spaceline spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smeargle shell-pop seti-theme reverse-theme restart-emacs rainbow-delimiters railscasts-theme racer purple-haze-theme professional-theme popwin planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el pastels-on-dark-theme paradox orgit organic-green-theme org-bullets open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme niflheim-theme neotree naquadah-theme mustang-theme multi-term move-text monokai-theme monochrome-theme molokai-theme moe-theme mmm-mode minimal-theme material-theme markdown-toc majapahit-theme magit-gitflow magit-gh-pulls madhat2r-theme macrostep lush-theme lorem-ipsum linum-relative link-hint light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt heroku-theme hemisu-theme help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gist gh-md gandalf-theme fuzzy flyspell-correct-helm flycheck-rust flycheck-pos-tip flx-ido flatui-theme flatland-theme firebelly-theme fill-column-indicator farmhouse-theme fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu espresso-theme eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump dracula-theme doom-themes django-theme define-word darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme dactyl-mode cyberpunk-theme company-statistics company-auctex column-enforce-mode color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme clean-aindent-mode cherry-blossom-theme cargo busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+ '(projectile-project-root-files-bottom-up
+   (quote
+    (".projectile" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" "Cargo.toml")))
+ '(projectile-project-root-files-top-down-recurring (quote (".svn" "CVS" "Makefile" ".git" "Cargo.toml"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

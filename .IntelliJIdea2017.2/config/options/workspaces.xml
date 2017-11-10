@@ -1,0 +1,13 @@
+<application>
+  <component name="WorkspacesConfiguration">
+    <option name="isDisplayMainMenuUI" value="true" />
+    <option name="isPinAnUnpinnedOpenWorkspaceSelectedFromMenu" value="true" />
+    <option name="isDisplayToolWindowUI" value="true" />
+    <option name="isDisplayButtonActionsInContextMenu" value="true" />
+    <option name="isAutoPin" value="true" />
+    <option name="isAutoPinUponExplicitOpenOnly" value="true" />
+    <option name="isAutoPinUponCreateWorkspace" value="true" />
+    <option name="isAutoUnpin" value="true" />
+    <option name="isAutoUnpinUponExplicitCloseOnly" value="true" />
+  </component>
+</application>

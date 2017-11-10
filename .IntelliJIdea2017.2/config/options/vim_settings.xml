@@ -1,0 +1,466 @@
+<application>
+  <component name="VimSettings">
+    <state version="4" enabled="true" />
+    <globalmarks />
+    <filemarks>
+      <file name="$USER_HOME$/projects/rlsl/Cargo.toml" timestamp="1510135767379">
+        <mark key="'" line="0" column="0" />
+        <mark key="[" line="15" column="0" />
+        <mark key="]" line="15" column="0" />
+        <mark key="." line="15" column="0" />
+        <mark key="^" line="24" column="0" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/libsyntax/parse/mod.rs" timestamp="1507416284575">
+        <mark key="'" line="55" column="35" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_const_math/int.rs" timestamp="1506377550140">
+        <mark key="'" line="25" column="10" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_trans/collector.rs" timestamp="1507217633707">
+        <mark key="'" line="295" column="56" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/ty/instance.rs" timestamp="1509207303446">
+        <mark key="'" line="20" column="11" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_metadata/locator.rs" timestamp="1507140154648">
+        <mark key="'" line="304" column="57" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/src/lib.rs" timestamp="1510138736664">
+        <mark key="[" line="490" column="0" />
+        <mark key="]" line="490" column="0" />
+        <mark key="^" line="488" column="4" />
+        <mark key="." line="490" column="0" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/src/context.rs" timestamp="1510141434290">
+        <mark key="'" line="296" column="13" />
+        <mark key="[" line="304" column="56" />
+        <mark key="]" line="304" column="56" />
+        <mark key="." line="304" column="56" />
+        <mark key="^" line="304" column="64" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/ty/sty.rs" timestamp="1509186521850">
+        <mark key="'" line="148" column="24" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/lib.rs" timestamp="1508579473178">
+        <mark key="'" line="54" column="19" />
+        <mark key="[" line="42" column="33" />
+        <mark key="]" line="43" column="24" />
+        <mark key="^" line="43" column="24" />
+        <mark key="." line="43" column="24" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_trans_utils/common.rs" timestamp="1508941611857">
+        <mark key="'" line="28" column="10" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_trans/base.rs" timestamp="1507282581861">
+        <mark key="'" line="42" column="12" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/middle/trans.rs" timestamp="1509006995622">
+        <mark key="'" line="175" column="8" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/traits/project.rs" timestamp="1506955096083">
+        <mark key="'" line="88" column="0" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/libstd/path.rs" timestamp="1507114254389">
+        <mark key="'" line="2109" column="34" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/src/trans/mod.rs" timestamp="1509188106580">
+        <mark key="'" line="0" column="12" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/infer/mod.rs" timestamp="1509206571740">
+        <mark key="'" line="421" column="10" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/middle/lang_items.rs" timestamp="1507493334477">
+        <mark key="'" line="208" column="17" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_metadata/cstore.rs" timestamp="1507300735142">
+        <mark key="'" line="62" column="35" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/ty/maps/plumbing.rs" timestamp="1507282706500">
+        <mark key="'" line="468" column="8" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/rlsl-example/src/main.rs" timestamp="1510136581721">
+        <mark key="[" line="4" column="10" />
+        <mark key="]" line="4" column="10" />
+        <mark key="." line="4" column="10" />
+        <mark key="^" line="4" column="17" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_trans/common.rs" timestamp="1509024040569">
+        <mark key="'" line="553" column="8" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_data_structures/control_flow_graph/iterate/mod.rs" timestamp="1507727183697">
+        <mark key="'" line="16" column="7" />
+        <mark key="[" line="16" column="8" />
+        <mark key="]" line="16" column="7" />
+        <mark key="^" line="16" column="7" />
+        <mark key="." line="16" column="7" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/ty/context.rs" timestamp="1509187927520">
+        <mark key="'" line="835" column="11" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/infer/error_reporting/mod.rs" timestamp="1507138960274">
+        <mark key="'" line="258" column="24" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/hir/map/definitions.rs" timestamp="1507889019848">
+        <mark key="'" line="252" column="14" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/libsyntax/ast.rs" timestamp="1507417481292">
+        <mark key="'" line="432" column="24" />
+      </file>
+      <file name="$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/getopts-0.2.15/src/lib.rs" timestamp="1507112938186">
+        <mark key="'" line="673" column="19" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/ty/maps/mod.rs" timestamp="1507282574828">
+        <mark key="'" line="76" column="0" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/libsyntax/attr.rs" timestamp="1507416590519">
+        <mark key="'" line="227" column="57" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_driver/lib.rs" timestamp="1509711367683">
+        <mark key="'" line="746" column="74" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/hir/mod.rs" timestamp="1507884983348">
+        <mark key="'" line="1304" column="11" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/session/mod.rs" timestamp="1507216410096">
+        <mark key="'" line="83" column="42" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/libstd/src/lib.rs" timestamp="1507373586670">
+        <mark key="'" line="89" column="0" />
+        <mark key="[" line="38" column="4" />
+        <mark key="]" line="38" column="4" />
+        <mark key="." line="38" column="4" />
+        <mark key="^" line="38" column="4" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_driver/pretty.rs" timestamp="1507220879615">
+        <mark key="'" line="813" column="13" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/mod.rs" timestamp="1509006844736">
+        <mark key="'" line="20" column="8" />
+        <mark key="[" line="20" column="8" />
+        <mark key="]" line="20" column="8" />
+        <mark key="." line="20" column="8" />
+        <mark key="^" line="10" column="0" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/mono_item.rs" timestamp="1509006576881">
+        <mark key="'" line="344" column="16" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" timestamp="1509005722104">
+        <mark key="'" line="1020" column="54" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_trans/lib.rs" timestamp="1507283204810">
+        <mark key="'" line="183" column="22" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_trans/back/archive.rs" timestamp="1507213839714">
+        <mark key="'" line="39" column="25" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/ty/item_path.rs" timestamp="1507888993349">
+        <mark key="'" line="172" column="26" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_metadata/creader.rs" timestamp="1507140278558">
+        <mark key="'" line="54" column="18" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_typeck/check/mod.rs" timestamp="1506946551322">
+        <mark key="'" line="318" column="8" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/src/trans/spirv/mod.rs" timestamp="1509194424639">
+        <mark key="'" line="1687" column="27" />
+        <mark key="[" line="1432" column="40" />
+        <mark key="]" line="1432" column="40" />
+        <mark key="." line="1432" column="40" />
+        <mark key="^" line="1433" column="101" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/src/ty.rs" timestamp="1510137538220">
+        <mark key="'" line="34" column="25" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_llvm/archive_ro.rs" timestamp="1507151783438">
+        <mark key="'" line="21" column="11" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/README.md" timestamp="1506770902774">
+        <mark key="'" line="98" column="0" />
+        <mark key="[" line="18" column="21" />
+        <mark key="]" line="18" column="21" />
+        <mark key="." line="18" column="21" />
+        <mark key="^" line="18" column="21" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/hir/map/mod.rs" timestamp="1507886407253">
+        <mark key="'" line="1114" column="31" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/src/bin/rlsl.rs" timestamp="1509710807961">
+        <mark key="'" line="60" column="20" />
+        <mark key="[" line="25" column="20" />
+        <mark key="]" line="25" column="20" />
+        <mark key="." line="25" column="20" />
+        <mark key="^" line="25" column="20" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_trans/trans_item.rs" timestamp="1509005382800">
+        <mark key="'" line="35" column="36" />
+        <mark key="[" line="40" column="47" />
+        <mark key="]" line="40" column="47" />
+        <mark key="." line="40" column="61" />
+        <mark key="^" line="38" column="73" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/bootstrap/compile.rs" timestamp="1509520975325">
+        <mark key="'" line="421" column="11" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/mir/mod.rs" timestamp="1509193234821">
+        <mark key="'" line="1277" column="21" />
+        <mark key="[" line="1241" column="0" />
+        <mark key="]" line="1241" column="0" />
+        <mark key="." line="1241" column="0" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_trans/back/write.rs" timestamp="1507212149526">
+        <mark key="'" line="2041" column="0" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/ty/mod.rs" timestamp="1507540877512">
+        <mark key="'" line="2190" column="11" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/item.rs" timestamp="1509006831218">
+        <mark key="'" line="16" column="4" />
+      </file>
+      <file name="$USER_HOME$/projects/rlsl/compiler/rust/src/liballoc/btree/mod.rs" timestamp="1508576797333">
+        <mark key="'" line="10" column="4" />
+      </file>
+    </filemarks>
+    <jumps>
+      <jump line="490" column="41" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="493" column="41" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="502" column="27" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="510" column="37" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="516" column="41" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="522" column="51" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="534" column="26" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="535" column="47" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="548" column="34" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="570" column="36" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="600" column="29" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="624" column="18" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="662" column="15" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="676" column="38" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="680" column="34" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="686" column="34" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="691" column="29" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="693" column="10" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="694" column="10" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="707" column="59" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="719" column="46" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="817" column="13" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="818" column="22" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="824" column="38" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="1020" column="54" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/collector.rs" />
+      <jump line="179" column="8" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/middle/trans.rs" />
+      <jump line="83" column="11" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/mono_item.rs" />
+      <jump line="462" column="0" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/mono_item.rs" />
+      <jump line="94" column="22" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/mono_item.rs" />
+      <jump line="84" column="7" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/mono_item.rs" />
+      <jump line="344" column="16" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/mono_item.rs" />
+      <jump line="16" column="4" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/item.rs" />
+      <jump line="20" column="8" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_mir/monomorphize/mod.rs" />
+      <jump line="175" column="8" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/middle/trans.rs" />
+      <jump line="48" column="11" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/ty/instance.rs" />
+      <jump line="71" column="16" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/ty/instance.rs" />
+      <jump line="553" column="8" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_trans/common.rs" />
+      <jump line="96" column="16" filename="$USER_HOME$/projects/rlsl/src/trans/spirv/mod.rs" />
+      <jump line="313" column="26" filename="$USER_HOME$/projects/rlsl/src/trans/spirv/mod.rs" />
+      <jump line="148" column="24" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/ty/sty.rs" />
+      <jump line="1519" column="17" filename="$USER_HOME$/projects/rlsl/src/trans/spirv/mod.rs" />
+      <jump line="1515" column="25" filename="$USER_HOME$/projects/rlsl/src/trans/spirv/mod.rs" />
+      <jump line="20" column="41" filename="$USER_HOME$/projects/rlsl/src/trans/spirv/mod.rs" />
+      <jump line="83" column="0" filename="$USER_HOME$/projects/rlsl/src/bin/rlsl.rs" />
+      <jump line="25" column="20" filename="$USER_HOME$/projects/rlsl/src/bin/rlsl.rs" />
+      <jump line="5" column="20" filename="$USER_HOME$/projects/rlsl/src/trans/spirv/mod.rs" />
+      <jump line="870" column="39" filename="$USER_HOME$/projects/rlsl/src/trans/spirv/mod.rs" />
+      <jump line="82" column="22" filename="$USER_HOME$/projects/rlsl/src/trans/spirv/mod.rs" />
+      <jump line="13" column="24" filename="$USER_HOME$/projects/rlsl/src/bin/rlsl.rs" />
+      <jump line="15" column="21" filename="$USER_HOME$/projects/rlsl/src/bin/rlsl.rs" />
+      <jump line="11" column="13" filename="$USER_HOME$/projects/rlsl/src/lib.rs" />
+      <jump line="835" column="11" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/ty/context.rs" />
+      <jump line="7" column="11" filename="$USER_HOME$/projects/rlsl/src/lib.rs" />
+      <jump line="25" column="14" filename="$USER_HOME$/projects/rlsl/src/lib.rs" />
+      <jump line="26" column="11" filename="$USER_HOME$/projects/rlsl/src/lib.rs" />
+      <jump line="0" column="12" filename="$USER_HOME$/projects/rlsl/src/trans/mod.rs" />
+      <jump line="24" column="13" filename="$USER_HOME$/projects/rlsl/src/lib.rs" />
+      <jump line="22" column="23" filename="$USER_HOME$/projects/rlsl/src/lib.rs" />
+      <jump line="21" column="21" filename="$USER_HOME$/projects/rlsl/src/lib.rs" />
+      <jump line="1481" column="18" filename="$USER_HOME$/projects/rlsl/src/trans/spirv/mod.rs" />
+      <jump line="1274" column="9" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/mir/mod.rs" />
+      <jump line="1277" column="21" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/mir/mod.rs" />
+      <jump line="1687" column="27" filename="$USER_HOME$/projects/rlsl/src/trans/spirv/mod.rs" />
+      <jump line="421" column="10" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/infer/mod.rs" />
+      <jump line="53" column="15" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/ty/instance.rs" />
+      <jump line="154" column="51" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/ty/instance.rs" />
+      <jump line="72" column="62" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/ty/instance.rs" />
+      <jump line="20" column="11" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc/ty/instance.rs" />
+      <jump line="459" column="27" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/bootstrap/compile.rs" />
+      <jump line="421" column="11" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/bootstrap/compile.rs" />
+      <jump line="0" column="0" filename="$USER_HOME$/projects/rlsl/src/bin/rlsl.rs" />
+      <jump line="60" column="20" filename="$USER_HOME$/projects/rlsl/src/bin/rlsl.rs" />
+      <jump line="699" column="30" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_driver/lib.rs" />
+      <jump line="1154" column="30" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_driver/lib.rs" />
+      <jump line="1157" column="30" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_driver/lib.rs" />
+      <jump line="751" column="52" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_driver/lib.rs" />
+      <jump line="733" column="75" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_driver/lib.rs" />
+      <jump line="750" column="53" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_driver/lib.rs" />
+      <jump line="787" column="64" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_driver/lib.rs" />
+      <jump line="800" column="33" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_driver/lib.rs" />
+      <jump line="802" column="33" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_driver/lib.rs" />
+      <jump line="725" column="64" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_driver/lib.rs" />
+      <jump line="726" column="58" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_driver/lib.rs" />
+      <jump line="731" column="52" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_driver/lib.rs" />
+      <jump line="746" column="74" filename="$USER_HOME$/projects/rlsl/compiler/rust/src/librustc_driver/lib.rs" />
+      <jump line="117" column="15" filename="$USER_HOME$/projects/rlsl/src/lib.rs" />
+      <jump line="116" column="43" filename="$USER_HOME$/projects/rlsl/src/lib.rs" />
+      <jump line="81" column="0" filename="$USER_HOME$/projects/rlsl/src/lib.rs" />
+      <jump line="33" column="34" filename="$USER_HOME$/projects/rlsl/src/lib.rs" />
+      <jump line="304" column="8" filename="$USER_HOME$/projects/rlsl/src/lib.rs" />
+      <jump line="26" column="0" filename="$USER_HOME$/projects/rlsl/rlsl-example/src/main.rs" />
+      <jump line="83" column="0" filename="$USER_HOME$/projects/rlsl/rlsl-example/src/main.rs" />
+      <jump line="64" column="0" filename="$USER_HOME$/projects/rlsl/rlsl-example/src/main.rs" />
+      <jump line="4" column="0" filename="$USER_HOME$/projects/rlsl/rlsl-example/src/main.rs" />
+      <jump line="88" column="4" filename="$USER_HOME$/projects/rlsl/src/ty.rs" />
+      <jump line="288" column="12" filename="$USER_HOME$/projects/rlsl/src/lib.rs" />
+      <jump line="1159" column="0" filename="$USER_HOME$/projects/rlsl/src/lib.rs" />
+      <jump line="34" column="25" filename="$USER_HOME$/projects/rlsl/src/ty.rs" />
+      <jump line="304" column="30" filename="$USER_HOME$/projects/rlsl/src/context.rs" />
+      <jump line="296" column="13" filename="$USER_HOME$/projects/rlsl/src/context.rs" />
+    </jumps>
+    <registers>
+      <register name="&quot;" type="4">
+        <text>.expect(&quot;&quot;)</text>
+      </register>
+      <register name="-" type="4">
+        <text>.expect(&quot;&quot;)</text>
+      </register>
+      <register name="/" type="4">
+        <text>trans</text>
+      </register>
+      <register name="0" type="2">
+        <text encoding="base64">ICAgICAgICAgICAgICAgICAgICAgICAgU3BpcnZWYWx1ZShzaGwpCg==</text>
+      </register>
+      <register name="1" type="2">
+        <text encoding="base64">ICAgICAgICAK</text>
+      </register>
+      <register name="2" type="2">
+        <text encoding="base64">ICAgICAgICAgICAgICAgICAgICBwcmludGxuISgib3BlciIpOwo=</text>
+      </register>
+      <register name="3" type="2">
+        <text encoding="base64">ICAgICAgICAgICAgICAgICAgICBwcmludGxuISgib3BlciIpOwo=</text>
+      </register>
+      <register name="4" type="2">
+        <text encoding="base64">ICAgICAgICAgICAgICAgIHByaW50bG4hKCJvcGVyIik7Cg==</text>
+      </register>
+      <register name="5" type="2">
+        <text encoding="base64">ICAgICAgICBwcmludGxuISgicnZhbHVlID0gezo/fSIsIHJ2YWx1ZSk7Cg==</text>
+      </register>
+      <register name="6" type="2">
+        <text encoding="base64">ZXh0ZXJuIGNyYXRlIGdlbmVyaWNfYXJyYXk7Cg==</text>
+      </register>
+      <register name="7" type="2">
+        <text encoding="base64">I1tzcGlydih0eShWZWMyKSldCnN0cnVjdCBUZXN0ewogICAgeDogZjMyLAogICAgeTogZjMyCn0KCnB1YiB0cmFpdCBGb297CiAgICBmbiBnZXQoc2VsZikgLT4gZjMyOwogICAgZm4gZ2V0MihzZWxmKSAtPiBmMzI7Cn0KaW1wbCBGb28gZm9yIFRlc3R7CiAgICBmbiBnZXQoc2VsZikgLT4gZjMyewogICAgICAgIHNlbGYueAogICAgfQogICAgZm4gZ2V0MihzZWxmKSAtPiBmMzJ7CiAgICAgICAgc2VsZi55CiAgICB9Cn0K</text>
+      </register>
+      <register name="8" type="2">
+        <text encoding="base64">ICAgIHVzZSBnZW5lcmljX2FycmF5OjpHZW5lcmljQXJyYXk7CiAgICB1c2UgZ2VuZXJpY19hcnJheTo6dHlwZW51bTo6e1UxLCBVMywgVTQsIFU5N307CiAgICB1c2UgZ2VuZXJpY19hcnJheTo6dHlwZW51bTo6VW5zaWduZWQ7Cg==</text>
+      </register>
+      <register name="9" type="2">
+        <text encoding="base64">ICAgIGxldCBpID0gVTE6OnRvX3U4KCk7CiAgICBwb3M7Cg==</text>
+      </register>
+      <register name=":" type="4">
+        <text>action SaveAll</text>
+      </register>
+    </registers>
+    <search>
+      <last-search>trans</last-search>
+      <last-offset />
+      <last-pattern>trans</last-pattern>
+      <last-replace>~</last-replace>
+      <last-substitute>trans</last-substitute>
+      <last-dir>1</last-dir>
+      <show-last>false</show-last>
+    </search>
+    <history>
+      <history-search>
+        <entry>variable</entry>
+        <entry>resolve</entry>
+        <entry>Instance</entry>
+        <entry encoding="base64">XDxkZWZpbmVfbWFwc1w+</entry>
+        <entry>Providers</entry>
+        <entry>macro_</entry>
+        <entry>macro_rul</entry>
+        <entry>Provi</entry>
+        <entry>Provider</entry>
+        <entry encoding="base64">XDxkZWZpbmVfcHJvdmlkZXJfc3RydWN0XD4=</entry>
+        <entry>println</entry>
+        <entry>&quot;spir</entry>
+        <entry encoding="base64">XDxtaXJfcGFzc2VzXD4=</entry>
+        <entry>phase3</entry>
+        <entry encoding="base64">XDxzdXBlcl9iYXNpY19ibG9ja19kYXRhXD4=</entry>
+        <entry encoding="base64">XDxzdXBlcl9taXJcPg==</entry>
+        <entry>for_each</entry>
+        <entry encoding="base64">XDxtb25vbW9ycGhpemVcPg==</entry>
+        <entry encoding="base64">XDxCYXNlVHJhbnNJdGVtRXh0XD4=</entry>
+        <entry>trans</entry>
+      </history-search>
+      <history-cmd>
+        <entry>637</entry>
+        <entry>673</entry>
+        <entry encoding="base64">JzwsJz5hY3Rpb24gRmlsZVN0cnVjdHVyZVBvcHVw</entry>
+        <entry>action ShowErrorDescription</entry>
+        <entry>620</entry>
+        <entry>action tasks.goto</entry>
+        <entry>action Forward</entry>
+        <entry>762</entry>
+        <entry>726</entry>
+        <entry>760</entry>
+        <entry>1520</entry>
+        <entry>1510</entry>
+        <entry>1790</entry>
+        <entry>1430</entry>
+        <entry>action GotoClass</entry>
+        <entry>action SelectIn</entry>
+        <entry>action GotoFile</entry>
+        <entry>action FileStructurePopup</entry>
+        <entry>action Back</entry>
+        <entry>action SaveAll</entry>
+      </history-cmd>
+      <history-expr />
+      <history-input />
+    </history>
+    <shortcut-conflicts>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed W</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed S</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed O</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed D</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed U</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed A</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed V</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed I</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed R</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed P</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed T</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed C</text>
+      </shortcut-conflict>
+    </shortcut-conflicts>
+  </component>
+</application>

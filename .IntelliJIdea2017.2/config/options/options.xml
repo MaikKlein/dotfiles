@@ -1,0 +1,24 @@
+<application>
+  <component name="PropertiesComponent">
+    <property name="com.chrisrm.idea.MaterialThemeUIFork.theme" value="mt.default" />
+    <property name="Darcula.savedEditorTheme" value="Material Theme - Default copy" />
+    <property name="Default.savedEditorTheme" value="_@user_Default" />
+    <property name="MTTabsHeight" value="42" />
+    <property name="idea.background.frame.default" value="https://raw.githubusercontent.com/mallowigi/material-theme-jetbrains-eap/master/src/main/resources/themes/wall.jpg,60" />
+    <property name="idea.background.frame.mt" value="https://raw.githubusercontent.com/mallowigi/material-theme-jetbrains-eap/master/src/main/resources/themes/wall.jpg,60" />
+    <property name="installed.kotlin.plugin.version" value="1.1.4-release-IJ2017.2-3" />
+    <property name="android-component-compatibility-check" value="1510135564452" />
+    <property name="DeploymentNotificationsComponent.WarnDisplayed.Java7&amp;Windows7FTPIssue" value="false" />
+    <property name="ts.lib.d.ts.version" value="2.4.1" />
+    <property name="file.gist.reindex.count" value="1025" />
+    <property name="ideavim.statistics.timestamp" value="1510135568131" />
+    <property name="org.rust.LAST_UPDATE" value="1510135568131" />
+    <property name="INSPECTION_FILTER_HISTORY" value="Rust&#10;unus" />
+    <property name="selected.color.option.type" value="TYPO" />
+    <property name="markdown.do.not.ask.to.change.preview.provider" value="true" />
+    <property name="file.chooser.recent.files" value="$USER_HOME$/Downloads/intellij-rust-0.1.0.2069.zip&#10;/home/maik/Downloads/intellij-rust-0.1.0.2070.zip&#10;/home/maik/Downloads/intellij-rust-0.1.0.2068.zip&#10;/home/maik/projects/rlsl&#10;/home/maik/Downloads/intellij-rust-0.1.0.2066.zip&#10;/home/maik/projects/rlsl/compiler/rust/src&#10;/home/maik/projects/rlsl/compiler/rust" />
+    <property name="PLUGIN_FILTER" value="rust" />
+    <property name="plugins.preselection.path" value="$USER_HOME$/Downloads" />
+    <property name="idea.background.frame" value="https://raw.githubusercontent.com/mallowigi/material-theme-jetbrains-eap/master/src/main/resources/themes/wall.jpg,60" />
+  </component>
+</application>

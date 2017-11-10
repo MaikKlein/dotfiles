@@ -1,0 +1,29 @@
+<application>
+  <component name="ToolbarClicksCollector">
+    <counts>
+      <entry action="FileChooser.GotoDesktop@FileChooserDialog" count="1" />
+      <entry action="FileChooser.ShowHiddens@FileChooserDialog" count="4" />
+      <entry action="com.intellij.application.options.schemes.AbstractSchemesPanel$ShowSchemesActionsListAction@NavBarToolbar" count="2" />
+      <entry action="com.intellij.codeInsight.hint.ImplementationViewComponent$EditSourceAction@ImplementationView" count="1" />
+      <entry action="com.intellij.codeInsight.hint.ImplementationViewComponent$ShowSourceAction@ImplementationView" count="2" />
+      <entry action="com.intellij.execution.impl.ConsoleViewImpl$7@RunnerToolbar" count="1" />
+      <entry action="com.intellij.find.actions.ShowUsagesAction$7@UsageViewToolbar" count="2" />
+      <entry action="com.intellij.find.impl.FindPopupPanel$MySelectScopeToggleAction@EditorToolbar" count="7" />
+      <entry action="com.intellij.find.impl.FindPopupPanel$MyShowFilterPopupAction@unknown" count="1" />
+      <entry action="com.intellij.ide.actions.ContextHelpAction@RunnerToolbar" count="1" />
+      <entry action="com.intellij.ide.browsers.actions.BaseWebBrowserAction@ContextToolbar" count="1" />
+      <entry action="com.intellij.ide.util.gotoByName.ChooseByNameBase$1@ChooseByNameBase" count="2" />
+      <entry action="com.intellij.ide.util.gotoByName.ChooseByNameFilter$FilterAction@gotfile.filter" count="4" />
+      <entry action="com.intellij.openapi.editor.actions.ScrollToTheEndToolbarAction@RunnerToolbar" count="2" />
+      <entry action="com.intellij.openapi.roots.ui.configuration.actions.ToggleExcludedStateAction@ProjectStructureContentEntries" count="3" />
+      <entry action="com.intellij.tasks.actions.GotoTaskAction$3@GoToTask" count="1" />
+      <entry action="com.intellij.ui.CommonActionsPanel$MyActionButton@ToolbarDecorator" count="8" />
+      <entry action="com.intellij.usages.impl.ImportUsageFilteringRuleProvider$ShowImportsAction@UsageViewToolbar" count="2" />
+      <entry action="com.intellij.usages.impl.UsageFilteringRuleProviderImpl$ShowReadAccessUsagesAction@UsageViewToolbar" count="3" />
+      <entry action="com.intellij.usages.impl.UsageFilteringRuleProviderImpl$ShowWriteAccessUsagesAction@UsageViewToolbar" count="4" />
+      <entry action="com.intellij.usages.impl.UsageGroupingRuleProviderImpl$GroupByFileStructureAction@UsageViewToolbar" count="4" />
+      <entry action="org.intellij.plugins.markdown.ui.actions.editorLayout.EditorAndPreviewLayoutChangeAction@EditorToolbar" count="2" />
+      <entry action="org.intellij.plugins.markdown.ui.actions.editorLayout.EditorOnlyLayoutChangeAction@EditorToolbar" count="2" />
+    </counts>
+  </component>
+</application>

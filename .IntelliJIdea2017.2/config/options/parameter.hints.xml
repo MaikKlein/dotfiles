@@ -1,0 +1,8 @@
+<application>
+  <component name="ParameterNameHintsSettings">
+    <option id="SHOW_PARAMETER_HINT" value="false" />
+    <option id="SHOW_LAMBDA_PARAMETER_HINT" value="false" />
+    <option id="SHOW_LET_BINDING_HINT" value="false" />
+    <option id="SHOW_FOR_PARAMETER_HINT" value="false" />
+  </component>
+</application>

@@ -1,0 +1,247 @@
+<application>
+  <component name="RecentProjectsManager">
+    <option name="recentPaths">
+      <list>
+        <option value="$USER_HOME$/projects/rlsl" />
+        <option value="$USER_HOME$/projects/rlsl/compiler/rust/src" />
+        <option value="$USER_HOME$/projects/rlsl/compiler/rust" />
+        <option value="$USER_HOME$/projects/vulkan-xml" />
+        <option value="$USER_HOME$/projects/steamaudio-sys" />
+        <option value="$USER_HOME$/projects/specs-test" />
+        <option value="$USER_HOME$/src/miri" />
+        <option value="$USER_HOME$/IdeaProjects/MyPlugin" />
+        <option value="$USER_HOME$/IdeaProjects/intellij-plugin" />
+        <option value="$USER_HOME$/IdeaProjects/test" />
+        <option value="$USER_HOME$/projects/rtest" />
+        <option value="$USER_HOME$/src/rust-clippy" />
+        <option value="$USER_HOME$/projects/rust/src" />
+        <option value="$USER_HOME$/src/rust" />
+        <option value="$USER_HOME$/src/rust/src" />
+        <option value="$USER_HOME$/projects/rust/src/librustc" />
+        <option value="$USER_HOME$/projects/breeze-lang" />
+        <option value="$USER_HOME$/src/gluon" />
+        <option value="$USER_HOME$/projects/breeze" />
+      </list>
+    </option>
+    <option name="openPaths">
+      <list>
+        <option value="$USER_HOME$/projects/rlsl" />
+      </list>
+    </option>
+    <option name="lastPath" value="$USER_HOME$/projects/rlsl" />
+    <option name="additionalInfo">
+      <map>
+        <entry key="$USER_HOME$/IdeaProjects/MyPlugin">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-172.3968.16" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1504191174924" />
+              <option name="buildTimestamp" value="1503351293753" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/IdeaProjects/intellij-plugin">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-172.3968.16" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1504189969889" />
+              <option name="buildTimestamp" value="1503351293753" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/IdeaProjects/test">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-172.3968.16" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1504189118094" />
+              <option name="buildTimestamp" value="1503351293753" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/breeze">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-172.3317.76" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1500794917794" />
+              <option name="buildTimestamp" value="1500115294882" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/breeze-lang">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-172.3757.52" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1503739344194" />
+              <option name="buildTimestamp" value="1502780360713" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/rlsl">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-172.4343.14" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1510135930514" />
+              <option name="buildTimestamp" value="1506404225184" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/rlsl/compiler/rust">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-172.4343.14" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1508576769445" />
+              <option name="buildTimestamp" value="1506404240261" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/rlsl/compiler/rust/src">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-172.4343.14" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1509186060578" />
+              <option name="buildTimestamp" value="1506404276679" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/rtest">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-172.3757.52" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1503837735299" />
+              <option name="buildTimestamp" value="1502780350275" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/rust/src">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-172.3757.52" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1503830731853" />
+              <option name="buildTimestamp" value="1502780352631" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/rust/src/librustc">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-172.3757.52" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1503741474421" />
+              <option name="buildTimestamp" value="1502780345087" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/specs-test">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-172.3968.16" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1505461407831" />
+              <option name="buildTimestamp" value="1503351252791" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/steamaudio-sys">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-172.4155.36" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1505584070251" />
+              <option name="buildTimestamp" value="1505156631061" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/vulkan-xml">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-172.4155.36" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1505853490337" />
+              <option name="buildTimestamp" value="1505156597058" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/src/gluon">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-172.3757.52" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1503680670583" />
+              <option name="buildTimestamp" value="1502780346013" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/src/miri">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-172.3968.16" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1504452224550" />
+              <option name="buildTimestamp" value="1503351291762" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/src/rust">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-172.3757.52" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1503821248033" />
+              <option name="buildTimestamp" value="1502780352631" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/src/rust-clippy">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-172.3757.52" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1503836612242" />
+              <option name="buildTimestamp" value="1502780352631" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/src/rust/src">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-172.3757.52" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1503821236018" />
+              <option name="buildTimestamp" value="1502780352631" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="lastProjectLocation" value="$USER_HOME$/IdeaProjects" />
+  </component>
+</application>

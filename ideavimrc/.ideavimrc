@@ -1,0 +1,25 @@
+let mapleader = " "
+map <leader>=G :action SaveAsNewFormat<CR>
+map <leader>ed :action ShowErrorDescription<CR>
+map <leader>ts :action ExpressionTypeInfo<CR>
+map <leader>td :action QuickImplementations<CR>
+map <leader>ff :action GotoFile<CR>
+map <leader>ft :action SelectIn<CR>
+map <leader>sc :action GotoClass<CR>
+map <leader>ss :action FileStructurePopup<CR>
+map <leader>o :action tasks.goto<CR>
+map <leader>c :action CommentByLineComment<CR>
+map <leader>i :action ShowIntentionActions<CR>
+map <leader>fer :source ~/.ideavimrc<CR>
+map <leader>fs :action SaveAll<CR>
+inoremap <C-s> <esc>:action SaveAll<cr>
+nnoremap <C-s> <esc>:action SaveAll<cr>
+map <C-o> :action Back<CR>
+map <TAB> :action Forward<CR>
+nmap <C-W><down> :action VimWindowDown<CR>
+nmap <C-W><up> :action VimWindowUp<CR>
+nmap <C-W><left> :action VimWindowLeft<CR>
+nmap <C-W><right> :action VimWindowRight<CR>
+remap <;> :action CommentByLineComment<CR>
+
+set surround
