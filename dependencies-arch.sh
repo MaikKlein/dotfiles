@@ -24,6 +24,9 @@ sudo pacman -S \
     xclip \
     bspwm \
     powerline-fonts \
+    freetype2 \
+    fontconfig \
+    pkg-config \
 
 git clone https://github.com/syl20bnr/spacemacs /tmp/.emacs.d
 cp -f -R /tmp/.emacs.d ~/.emacs.d
