@@ -19,3 +19,6 @@ ln -s -f "$(pwd)/bspwm/.config/sxhkd/sxhkdrc" ~/.config/sxhkd/sxhkdrc
 ln -s -f "$(pwd)/compton/compton.conf" ~/compton.conf
 mkdir -p ~/.config/polybar
 ln -s -f "$(pwd)/polybar/.config/polybar/config" ~/.config/polybar/config
+cp -rsf "$(pwd)/.IntelliJIdea2017.2" ~/.IntelliJIdea2017.2
+ln -s -f "$(pwd)/ideavimrc/.ideavimrc" ~/.ideavimrc
+

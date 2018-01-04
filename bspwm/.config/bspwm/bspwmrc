@@ -12,20 +12,26 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 bspc config normal_border_color '#fdf6e3'
 bspc config focused_border_color '#0d667d'
+bspc config gapless_monocle false
 
 
-bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
+bspc rule -a Gimp desktop='^8' state=floating follow=off
+bspc rule -a Chromium desktop='^4'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
-bspc rule -a Steam desktop='^9' state=floating follow=off
+bspc rule -a Steam desktop='^9' state=tiled follow=off
 bspc rule -a Emacs state=tiled
 bspc rule -a Terminator state=tiled
 
 compton --config ~/compton.conf &
 feh --bg-scale dotfiles/wallpapers/firewatch-blue.jpg &
 polybar example &
-sh ~/.xinitrc &
-gsettings set org.gnome.desktop.background show-desktop-icons false
+xinput --set-prop 10 'Device Accel Profile' -1 &
+xset s 0 s blank &
+xset -dpms &
+xrandr -r 120 &
+xsetroot -cursor_name left_ptr &
+gsettings set org.gnome.desktop.background show-desktop-icons false &
+emacs --daemon
 

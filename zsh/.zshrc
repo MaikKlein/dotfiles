@@ -56,6 +56,8 @@ plugins=(git)
 # User configuration
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/.nix-profile/etc/profile.d/nix.sh
+source $HOME/.zshenv
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -85,3 +87,7 @@ stty start undef
 stty stop undef
 setopt noflowcontrol
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source $HOME/src/nix-zsh-completions/nix.plugin.zsh
+fpath=($HOME/src/nix-zsh-completions $fpath)
+autoload -U compinit && compinit

@@ -31,6 +31,9 @@ alt + shift + c
 alt + m
 	bspc desktop -l next
 
+alt + {comma,period}
+    bspc node -f {next,prev}.local
+
 # if the current node is automatic, send it to the last manual, otherwise pull the last leaf
 alt + y
 	bspc query -N -n focused.automatic && bspc node -n last.!automatic || bspc node last.leaf -n focused
@@ -57,7 +60,7 @@ alt + ctrl + {x,y,z}
 
 # focus the node in the given direction
 alt + {_,shift + }{Left, Down, Up, Right}
-	bspc node -{f,s} {west,south,north,east}
+	bspc node -{f,s} {west,south,north,east}.local
 
 # focus the node for the given path jump
 alt + {p,b,comma,period}

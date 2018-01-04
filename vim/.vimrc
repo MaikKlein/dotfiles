@@ -177,7 +177,7 @@ Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 " Optional dependency for completion
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-
+Plug 'w0rp/ale'
 Plug 'roxma/nvim-completion-manager'
 "Plug 'junegunn/fzf.vim'
 "Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -728,3 +728,5 @@ let g:ale_rust_cargo_use_check = 1
 let g:LanguageClient_autoStart = 1
 let g:spirv_current_id_highlight = ''
 set signcolumn=yes
+
+let g:ale_linters = {'rust': ['cargo']}
