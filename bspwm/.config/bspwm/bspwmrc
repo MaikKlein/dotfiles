@@ -24,6 +24,8 @@ bspc rule -a Steam desktop='^9' state=tiled follow=off
 bspc rule -a Emacs state=tiled
 bspc rule -a Terminator state=tiled
 
+xrdb ~/.Xresources &
+xmodmap -e "pointer = 3 2 1" &
 compton --config ~/compton.conf &
 feh --bg-scale dotfiles/wallpapers/firewatch-blue.jpg &
 polybar example &

@@ -8,6 +8,7 @@
 ## https://github.com/Lokaltog/powerline-fonts
 ##
 
+set -g status off
 # Status update interval
 set -g status-interval 1
 

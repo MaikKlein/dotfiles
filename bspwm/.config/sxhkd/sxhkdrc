@@ -4,8 +4,10 @@
 
 #urxvt -e tmux
 # terminal emulator
+#alt + Return
+#  alacritty -e tmux
 alt + Return
-  alacritty -e tmux
+  urxvt -e tmux
 
 # program launcher
 alt + @space

@@ -4,22 +4,38 @@ set hidden
 let mapleader = " "
 let g:racer_cmd = "/home/maik/.cargo/bin/racer"
 let $RUST_SRC_PATH="/home/maik/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/"
-set completeopt-=preview
+"set completeopt-=preview
 
 
-" To open a new empty buffer
-" This replaces :tabnew which I used to bind to this mapping
-nnoremap <leader>T :enew<cr>
-
-" Move to the next buffer
-nmap <tab> :bnext<CR>
-
-" Move to the previous buffer
-nmap <s-tab> :bprevious<CR>
 
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
-nmap <leader>x :bp <BAR> bd #<CR>
+let g:lmap =  {}
+let g:lmap.o = { 'name' : 'Tabs' }
+let g:lmap.l = { 'name' : 'Navigation' }
+let g:lmap.s = { 'name' : 'Search' }
+let g:lmap.g = { 'name' : 'Git' }
+nmap <leader>o1 1gt
+nmap <leader>o2 2gt
+nmap <leader>o2 2gt
+nmap <leader>o3 3gt
+nmap <leader>o4 4gt
+nmap <leader>o5 5gt
+nmap <leader>o6 6gt
+nmap <leader>o7 7gt
+nmap <leader>o8 8gt
+nmap <leader>o9 9gt
+nmap <leader>oc :tabnew<CR>:tabmove<CR>
+map <leader>mf :%! rustup run nightly rustfmt<CR>
+let g:lmap.s.s = ['BLines', 'Lines']
+map <leader>; :Commentary<CR>
+nmap <leader>sc :noh<CR>
+nmap <leader>sd <Plug>(easymotion-overwin-f2)
+let g:lmap.l.s = ['FindSymbols', 'Find symbols']
+let g:lmap.l.f = ['FindFunctions', 'Find functions']
+let g:lmap.l.i = ['FindImpls', 'Find implementations']
+nmap <leader>od :tabclose<CR>
+let g:lmap.g.s = ['Gstatus', 'Git status']
 
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
@@ -29,39 +45,12 @@ nmap <leader>bl :ls<CR>
 " let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
 
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP .'
-
 set cmdheight=2
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-" this mapping Enter key to <C-y> to chose the current highlight item 
-" and close the selection list, same as other IDEs.
-" CONFLICT with some plugins like tpope/Endwise
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-"let g:syntastic_enable_signs = 0
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let $PATH = $PATH . ':' . expand("~/.cabal/bin")
-
-nnoremap <leader>gd :YcmCompleter GoTo<CR>
-let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_global_ycm_extra_conf ='/home/maik/.vim/plugged/YouCompleteMe/.ycm_extra_conf.py' 
-let g:ycm_use_ultisnips_completer = 1
-let g:UltiSnipsExpandTrigger="<tab>"
-map <C-n> :NERDTreeToggle<CR>
 
 " Sections:
 "    -> General
@@ -128,24 +117,22 @@ Plug 'gmarik/vundle'
 
 " My Bundles here:
 "Plug 'phildawes/racer'
-Plug 'jreybert/vimagit'
-Plug 'pelodelfuego/vim-swoop'
+Plug 'tpope/vim-commentary'
+Plug 'cespare/vim-toml'
 Plug 'altercation/vim-colors-solarized'
 Plug 'kien/ctrlp.vim'
-Plug 'thinca/vim-ref'
 "Plug 'jansenm/vim-cmake'
 "Plug 'rust-lang/rust.vim'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 "Plug 'tikhomirov/vim-glsl'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-abolish'
+"Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 """" Haskell stuff
-Plug 'Shougo/vimproc.vim'
 Plug 'Raimondi/delimitMate'
+Plug 'hecal3/vim-leader-guide'
 "Plug 'scrooloose/syntastic'
 "Plug 'mattn/gist-vim'
 "Plug 'gkz/vim-ls'
@@ -160,7 +147,6 @@ Plug 'scrooloose/nerdtree'
 "Plug 'honza/vim-snippets'
 "Plug 'rhysd/vim-clang-format'
 Plug 'morhetz/gruvbox'
-Plug 'MaikKlein/vim-dutyl'
 "Plug 'edkolev/tmuxline.vim'
 "Plug 'rust-lang/rust.vim'
 "Plug 'MaikKlein/ale'
@@ -171,34 +157,24 @@ Plug 'kbenzie/vim-spirv'
 Plug 'luochen1990/rainbow'
 "Plug 'SirVer/ultisnips'
 "Plug 'honza/vim-snippets'
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-" Optional dependency for symbol selection
-"Plug 'junegunn/fzf'
-" Optional dependency for completion
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'lifepillar/vim-solarized8'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 Plug 'w0rp/ale'
 Plug 'roxma/nvim-completion-manager'
-"Plug 'junegunn/fzf.vim'
-"Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-"
-"Plug 'Shougo/echodoc.vim'
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'boxofrox/neovim-scorched-earth'
+Plug 'MaikKlein/nvim-example-python-plugin'
+Plug 'thaerkh/vim-workspace'
+Plug '~/.fzf'
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 "call vundle#end()            " required
 
 filetype plugin indent on    " required
-let g:dutyl_stdImportPaths=['/usr/include/dlang/dmd/phobos']
-"let g:deoplete#enable_at_startup = 1
-"let g:deoplete#disable_auto_complete = 1
-"let g:deoplete#sources#rust#racer_binary= '/home/maik/.cargo/bin/racer'
-"let g:deoplete#sources#rust#rust_source_path='/home/maik/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
-"nmap <buffer> gd <plug>DeopleteRustGoToDefinitionDefault
-"nmap <buffer> K  <plug>DeopleteRustShowDocumentation
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM user interface
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
@@ -237,23 +213,23 @@ set whichwrap+=<,>,h,l
 set ignorecase
 
 set smartindent
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
 set hlsearch
 
 " Makes search act like search in modern browsers
-set incsearch 
+set incsearch
 
 " Don't redraw while executing macros (good performance config)
-set lazyredraw 
+set lazyredraw
 
 " For regular expressions turn magic on
 set magic
 
 " Show matching brackets when text indicator is over them
-set showmatch 
+set showmatch
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
@@ -272,11 +248,37 @@ map <silent> <leader>ff :set invfu<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'flazz/vim-colorschemes'
 Plug 'verbitan/Wombat'
-colorscheme solarized
-"let g:solarized_termcolors=256
 set background=light
+"colorscheme gruvbox
+let g:solarized_use16 = 1
+colorscheme solarized8
+"let g:solarized_termcolors=256
 "let g:LanguageClient_signColumnAlwaysOn=1
-"let g:LanguageClient_diagnosticsDisplay={}
+let g:LanguageClient_diagnosticsDisplay={
+            \1: {
+            \    "name": "Error",
+            \    "texthl": "ALEError",
+            \    "signText": "✖",
+            \},
+            \2: {
+            \    "name": "Warning",
+            \    "texthl": "ALEWarning",
+            \    "signText": "⚠",
+            \    "signTexthl": "ALEWarningSign",
+            \},
+            \3: {
+            \    "name": "Information",
+            \    "texthl": "ALEInfo",
+            \    "signText": "ℹ",
+            \    "signTexthl": "ALEInfoSign",
+            \},
+            \4: {
+            \    "name": "Hint",
+            \    "texthl": "ALEInfo",
+            \    "signText": "➤",
+            \    "signTexthl": "ALEInfoSign",
+            \},
+            \}
 "set background=dark
 " Enable syntax highlighting
 syntax enable
@@ -322,10 +324,10 @@ set nowb
 set noswapfile
 
 " Source the vimrc file after saving it
-augroup sourcing
-  autocmd!
-  autocmd bufwritepost .vimrc source $MYVIMRC
-augroup END
+"augroup sourcing
+"  autocmd!
+"  autocmd bufwritepost .vimrc source $MYVIMRC
+"augroup END
 
 " Open file prompt with current path
 nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
@@ -419,20 +421,13 @@ augroup END
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CmdLine(str)
   exe "menu Foo.Bar :" . a:str
   emenu Foo.Bar
   unmenu Foo
-endfunction 
+endfunction
 
 function! VisualSelection(direction, extra_filter) range
   let l:saved_reg = @"
@@ -544,7 +539,7 @@ endfunction
 
 command! -nargs=1 GGrep call NonintrusiveGitGrep(<q-args>)
 nmap <leader>gs :Gstatus<CR>
-nmap <leader>gg :copen<CR>:GGrep 
+nmap <leader>gg :copen<CR>:GGrep
 nmap <leader>gl :Extradite!<CR>
 nmap <leader>gb :Gblame<CR>
 nnoremap <silent> <C-\> :call NonintrusiveGitGrep(expand("<cword>"))<CR>
@@ -601,12 +596,12 @@ if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 
-hi SpellBad ctermfg=088 ctermbg=234 
-hi SpellCap ctermfg=088 ctermbg=234 
+hi SpellBad ctermfg=088 ctermbg=234
+hi SpellCap ctermfg=088 ctermbg=234
 
 if has('gui_running')
   set guioptions -=T  " no toolbar
-  set guioptions -=m 
+  set guioptions -=m
   set guioptions-=r  "remove right-hand scroll bar
   set guioptions-=L  "remove left-hand scroll bar
   set guioptions=aiAc
@@ -619,6 +614,10 @@ set ttimeoutlen=0
 inoremap <C-s> <esc>:w<cr>
 nnoremap <C-s> :w<cr>
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#exclude_preview = 0
+let g:airline#extensions#tabline#show_tab_type = 0
 
 " sign define transparent_sign
 " augroup SignColFixAu
@@ -641,22 +640,10 @@ let g:ConqueTerm_Color = 0
 
 let g:vim_markdown_folding_disabled = 1
 
-" <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
-
-" s{char}{char} to move to {char}{char}
-nmap <Leader>s <Plug>(easymotion-overwin-f2)
-
-" Move to line
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
 command! -nargs=+ Silent
 \   execute 'silent <args>'
 \ | redraw!
 " Move to word
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
 " fugitive git bindings
 nnoremap <Leader>ga :Silent Git add .<CR>
 nnoremap <Leader>gs :Gstatus<CR>
@@ -674,17 +661,15 @@ nnoremap <Leader>gps :Silent Git push<CR>
 nnoremap <Leader>gpl :Silent Git pull<CR>
 
 
-" let g:deoplete#enable_at_startup = 1
-let g:deoplete#disable_auto_complete = 1
+"let g:deoplete#enable_at_startup = 1
+"let g:deoplete#disable_auto_complete = 1
 let g:indentLine_char = '│'
 let g:indentLine_color_term = 256
 let g:indentLine_conceallevel = 1
 let g:indentLine_concealcursor = 'inc'
 
 nnoremap <F3> :noh<CR>
-set omnifunc=syntaxcomplete#Complete
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
+"set omnifunc=syntaxcomplete#Complete
 
 "let g:LanguageClient_serverCommands = {
 "    \ 'rust': ['cargo', 'run', '--release', '--manifest-path=/home/maik/src/rls/Cargo.toml'],
@@ -708,25 +693,71 @@ nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 nnoremap <leader>fed :e ~/.vimrc<CR>
-nmap <Leader>ss :call Swoop()<CR>
-nmap <Leader>sb :call SwoopMulti()<CR>
-nmap <Leader>pf :CtrlP .<CR>
+nmap <Leader>pf :FZF .<CR>
 nmap <Leader>bb :CtrlPBuffer <CR>
 hi VertSplit ctermbg=NONE guibg=NONE
 hi SpellBad ctermfg=NONE ctermbg=NONE guifg=#ffffff guibg=#ffffff
 hi SpellCap ctermfg=NONE ctermbg=NONE guifg=#ffffff guibg=#ffffff
 hi NonText guifg=bg
 set nonumber
-let g:solarized_visibility = "high"
-let g:syntastic_enable_signs = 0
-let g:syntastic_cursor_column = 0
-let g:syntastic_echo_current_error = 0
-let g:syntastic_rust_checkers = ['cargo']
-let g:ale_linters = {'rust': ['cargoworkspace']}
-let g:ale_history_log_output = 1
-let g:ale_rust_cargo_use_check = 1
+"let g:solarized_visibility = "high"
 let g:LanguageClient_autoStart = 1
 let g:spirv_current_id_highlight = ''
 set signcolumn=yes
 
-let g:ale_linters = {'rust': ['cargo']}
+"set termguicolors
+set foldcolumn=0
+
+let g:deoplete#enable_at_startup = 1
+
+
+"inoremap <silent> <C-Space> <ESC>:call deoplete#manual_complete()<CR>a
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+command! -bang -nargs=* FindSymbols
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always "(type|enum|struct|trait)[ \t]+([a-zA-Z0-9_]+)" -g "*.rs" | rg '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+command! -bang -nargs=* FindFunctions
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always "fn +([a-zA-Z0-9_]+)" -g "*.rs" | rg '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+command! -bang -nargs=* FindImpls
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always "impl([ \t\n]*<[^>]*>)?[ \t]+(([a-zA-Z0-9_:]+)[ \t]*(<[^>]*>)?[ \t]+(for)[ \t]+)?([a-zA-Z0-9_]+)" | rg '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+
+let g:LanguageClient_diagnosticsEnable=0
+let g:ale_linters = {
+\   'rust': ['cargo'],
+\}
+
+let g:ale_sign_warning = '┃'
+let g:ale_sign_error = '┃'
+let g:ale_set_highlights=0
+highlight ALEWarningSign ctermfg=DarkBlue
+highlight ALEErrorSign ctermfg=DarkRed
+call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
+nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
+vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
+
+let g:magit_default_show_all_files=0
+let g:airline_inactive_collapse=0
+set lazyredraw
+set shortmess+=c

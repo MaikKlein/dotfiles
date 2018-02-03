@@ -15,11 +15,13 @@ URxvt.depth: 32
 URxvt.saveLines:32767
 URxvt.scrollBar: false
 
-!URxvt.font: xft:inconsolata:size=13
+!URxvt.font: xft:inconsolata:size=12
 URxvt.internalBorder: 0
-URxvt.font: xft:Source Code Pro for Powerline:medium:size=12
+!URxvt.font: xft:Source Code Pro for Powerline:size=12.5
+!URxvt.font: xft:Inconsolata-g for Powerline:size=12
+URxvt.font: xft:Hack:size=12
 URxvt.letterSpace: -1
-URxvt.lineSpace: -1
+URxvt.lineSpace: -2
 URxvt.perl-ext-common: selection-to-clipboard
 URxvt.urlLauncher: uzbl-browser
 URxvt.matcher.button: 2
@@ -141,9 +143,9 @@ URxvt.color14:               S_base1
 URxvt.color7:                S_base2
 URxvt.color15:               S_base3
 
-URxvt.color11:  S_blue
-URxvt.color12:  S_blue
-URxvt.color13:  S_blue
+!URxvt.color11:  S_blue
+!URxvt.color12:  S_blue
+!URxvt.color13:  S_blue
 
 rofi.color-enabled: true
 rofi.color-window: #273238, #273238, #1e2529
