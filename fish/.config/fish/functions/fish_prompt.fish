@@ -1,0 +1,1 @@
+/home/maik/.config/fisherman/robbyrussell/fish_prompt.fish

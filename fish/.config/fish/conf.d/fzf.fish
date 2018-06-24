@@ -1,0 +1,1 @@
+/home/maik/.config/fisherman/fzf/conf.d/fzf.fish

@@ -4,8 +4,7 @@ Xft.antialias: true
 Xft.hinting: true
 Xft.rgba: rgb
 Xft.autohint: false
-Xft.hintstyle: hintslight
-Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
 URxvt.keysym.C-BackSpace:       \033[33~]
 URxvt.iso14755: False
 URxvt.iso14755_52: False
@@ -17,9 +16,9 @@ URxvt.scrollBar: false
 
 !URxvt.font: xft:inconsolata:size=12
 URxvt.internalBorder: 0
-!URxvt.font: xft:Source Code Pro for Powerline:size=12.5
+URxvt.font: xft:Source Code Pro for Powerline:size=12:style:Medium
 !URxvt.font: xft:Inconsolata-g for Powerline:size=12
-URxvt.font: xft:Hack:size=12
+!URxvt.font: xft:Hack:size=12
 URxvt.letterSpace: -1
 URxvt.lineSpace: -2
 URxvt.perl-ext-common: selection-to-clipboard

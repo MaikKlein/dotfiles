@@ -22,3 +22,11 @@ ln -s -f "$(pwd)/polybar/.config/polybar/config" ~/.config/polybar/config
 cp -rsf "$(pwd)/.IntelliJIdea2017.2" ~/.IntelliJIdea2017.2
 ln -s -f "$(pwd)/ideavimrc/.ideavimrc" ~/.ideavimrc
 
+mkdir -p ~/.config/fish
+ln -s -f "$(pwd)/fish/.config/fish/config.fish" ~/.config/fish/config.fish
+ln -s -f "$(pwd)/fish/.config/fish/fishfile" ~/.config/fish/fishfile
+ln -s -f "$(pwd)/fish/.config/fish/functions" ~/.config/fish/functions
+
+mkdir -p ~/.config/kitty
+ln -s -f "$(pwd)/kitty/.config/kitty/kitty.conf" ~/.config/kitty/kitty.conf
+

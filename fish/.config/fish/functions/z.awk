@@ -1,0 +1,1 @@
+/home/maik/.config/fisherman/z/functions/z.awk

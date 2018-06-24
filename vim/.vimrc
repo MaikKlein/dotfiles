@@ -6,8 +6,16 @@ let g:racer_cmd = "/home/maik/.cargo/bin/racer"
 let $RUST_SRC_PATH="/home/maik/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/"
 "set completeopt-=preview
 
+function! LocationNext()                                                                  
+  try                                                                                     
+    lnext                                                                                 
+  catch                                                                                   
+    try | lfirst | catch | endtry                                                         
+  endtry                                                                                  
+endfunction                                                                               
 
 
+"tnoremap <Esc> <C-\><C-n>
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
 let g:lmap =  {}
@@ -15,6 +23,12 @@ let g:lmap.o = { 'name' : 'Tabs' }
 let g:lmap.l = { 'name' : 'Navigation' }
 let g:lmap.s = { 'name' : 'Search' }
 let g:lmap.g = { 'name' : 'Git' }
+let g:lmap.e = { 'name' : 'Error' }
+nmap <Leader>dh :call histdel('/')<CR>
+nmap <Leader>sf <Plug>(easymotion-bd-f)
+nmap <Leader>w <Plug>(easymotion-w)
+nmap <Leader>pf :Files<CR>
+nmap <Leader>bb :Buffers <CR>
 nmap <leader>o1 1gt
 nmap <leader>o2 2gt
 nmap <leader>o2 2gt
@@ -25,27 +39,60 @@ nmap <leader>o6 6gt
 nmap <leader>o7 7gt
 nmap <leader>o8 8gt
 nmap <leader>o9 9gt
+nmap <leader>om1 :tabm 0<CR>
+nmap <leader>om2 :tabm 1<CR>
+nmap <leader>om2 :tabm 2<CR>
+nmap <leader>om3 :tabm 2<CR>
+nmap <leader>om4 :tabm 3<CR>
+nmap <leader>om5 :tabm 4<CR>
+nmap <leader>om6 :tabm 5<CR>
+nmap <leader>om7 :tabm 6<CR>
+nmap <leader>om8 :tabm 7<CR>
+nmap <leader>om9 :tabm 8<CR>
 nmap <leader>oc :tabnew<CR>:tabmove<CR>
-map <leader>mf :%! rustup run nightly rustfmt<CR>
+map <leader>mf :mark '<CR>:! rustup run nightly rustfmt %<CR>''
+"map <leader>mf :RustFmt<CR>
 let g:lmap.s.s = ['BLines', 'Lines']
 map <leader>; :Commentary<CR>
 nmap <leader>sc :noh<CR>
 nmap <leader>sd <Plug>(easymotion-overwin-f2)
-let g:lmap.l.s = ['FindSymbols', 'Find symbols']
-let g:lmap.l.f = ['FindFunctions', 'Find functions']
-let g:lmap.l.i = ['FindImpls', 'Find implementations']
+
+inoremap <silent><expr> <C-SPACE>
+\ pumvisible() ? "\<C-n>" :
+\ <SID>check_back_space() ? "\<C-SPACE>" :
+\ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
+let col = col('.') - 1
+return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
+
+nmap <leader>en :call LocationNext()<CR>
+nmap <leader>eN :ALEPreviousWrap<CR>
+nmap <leader>el :lopen<CR>
+nmap <leader>ft :Explore<CR>
+
+"let g:lmap.e.n = ['lnext', 'Next error']
+nmap <leader>ls :mark '<CR>:FindSymbols<CR>
+nmap <leader>li :mark '<CR>:FindImpls<CR>
+nmap <leader>lf :mark '<CR>:FindFunctions<CR>
 nmap <leader>od :tabclose<CR>
+"nnoremap gd :mark ' <bar> :call LanguageClient_textDocument_definition()<CR>
+"nnoremap ga :call LanguageClient_textDocument_definition()<CR>
+nmap <leader>gd :Gvdiff<CR>
+nmap <leader>gn <Plug>GitGutterNextHunk
+nmap <leader>gN <Plug>GitGutterPrevHunk
+nmap <leader>gS <Plug>GitGutterStageHunk
+nmap <leader>gu <Plug>GitGutterUndoHunk
+nmap <C-k> :echo "test"<CR>
+nnoremap <C-k> :w<cr>
 let g:lmap.g.s = ['Gstatus', 'Git status']
 
 " Show all open buffers and their status
-nmap <leader>bl :ls<CR>
 " Enable the list of buffers
 " let g:airline#extensions#tabline#enabled = 1
 " " Show just the filename
 " let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
-
-set cmdheight=2
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
@@ -97,8 +144,8 @@ set tm=2000
 " Allow the normal use of "," by pressing it twice
 noremap ,, ,
 
-" Use par for prettier line formatting
-"set formatprg=par\ -w72
+"Use par for prettier line formatting
+set formatprg=par\ -w72
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -106,72 +153,108 @@ function! DoRemote(arg)
 UpdateRemotePllugins
 endfunction
 
-set nocompatible
+if &compatible
+ set nocompatible
+endif
 filetype off                  " required
-set rtp+=~/.vim/bundle/Vundle.vim
-"call vundle#begin()
-call plug#begin('~/.vim/plugged')
+"set rtp+=~/.vim/bundle/Vundle.vim
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+""call vundle#begin()
+"call plug#begin('~/.vim/plugged')
 " let Vundle manage Vundle
 " required!
-Plug 'gmarik/vundle'
 
-" My Bundles here:
-"Plug 'phildawes/racer'
-Plug 'tpope/vim-commentary'
-Plug 'cespare/vim-toml'
-Plug 'altercation/vim-colors-solarized'
-Plug 'kien/ctrlp.vim'
-"Plug 'jansenm/vim-cmake'
-"Plug 'rust-lang/rust.vim'
-Plug 'tpope/vim-surround'
-Plug 'easymotion/vim-easymotion'
-"Plug 'tikhomirov/vim-glsl'
-Plug 'tpope/vim-fugitive'
-"Plug 'itchyny/lightline.vim'
-Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-"""" Haskell stuff
-Plug 'Raimondi/delimitMate'
-Plug 'hecal3/vim-leader-guide'
-"Plug 'scrooloose/syntastic'
-"Plug 'mattn/gist-vim'
-"Plug 'gkz/vim-ls'
-"Plug 'tpope/vim-dispatch'
-"Plug '29decibel/codeschool-vim-theme'
-"Plug 'croaker/mustang-vim'
-Plug 'scrooloose/nerdtree'
-"Plug 'Valloric/YouCompleteMe'
-"Plug 'Shougo/deoplete.nvim'
-"Plug 'sebastianmarkow/deoplete-rust'
-"Plug 'SirVer/ultisnips'
-"Plug 'honza/vim-snippets'
-"Plug 'rhysd/vim-clang-format'
-Plug 'morhetz/gruvbox'
-"Plug 'edkolev/tmuxline.vim'
-"Plug 'rust-lang/rust.vim'
-"Plug 'MaikKlein/ale'
-"Plug 'neomake/neomake'
-Plug 'mckinnsb/rust.vim'
-Plug 'kbenzie/vim-spirv'
-"Plug 'Yggdroot/indentLine'
-Plug 'luochen1990/rainbow'
-"Plug 'SirVer/ultisnips'
-"Plug 'honza/vim-snippets'
-Plug 'lifepillar/vim-solarized8'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'w0rp/ale'
-Plug 'roxma/nvim-completion-manager'
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'boxofrox/neovim-scorched-earth'
-Plug 'MaikKlein/nvim-example-python-plugin'
-Plug 'thaerkh/vim-workspace'
-Plug '~/.fzf'
-Plug 'junegunn/fzf.vim'
+if dein#load_state('~/.cache/dein')
+    call dein#begin('~/.cache/dein')
+    call dein#add('~/.cache/dein')
+    call dein#add( 'djoshea/vim-autoread')
+    call dein#add( 'junegunn/vim-peekaboo')
+    call dein#add( 'tikhomirov/vim-glsl')
+    call dein#add( 'lambdalisue/gina.vim')
+    call dein#add( 'tpope/vim-rhubarb')
+    call dein#add( 'machakann/vim-highlightedyank')
+    call dein#add( 'chriskempson/vim-tomorrow-theme')
+    call dein#add( 'morhetz/gruvbox')
+    call dein#add( 'gmarik/vundle')
+    call dein#add( 'chriskempson/base16-vim')
+    call dein#add( 'racer-rust/vim-racer')
+    " call dein#add( 'autozimu/LanguageClient-neovim', {)
+    "     \ 'branch': 'next',
+    "     \ 'do': 'bash install.sh',
+    "     \ }
+    " call dein#add( 'prabirshrestha/vim-lsp')
+    " call dein#add( 'prabirshrestha/async.vim')
+    call dein#add( 'pangloss/vim-javascript')
+    "" My Bundles here:
+    "call dein#add( 'airblade/vim-gitgutter')
+    "call dein#add( 'phildawes/racer')
+    call dein#add( 'tpope/vim-commentary')
+    call dein#add( 'cespare/vim-toml')
+    "call dein#add( 'jansenm/vim-cmake')
+    "call dein#add( 'rust-lang/rust.vim')
+    call dein#add( 'tpope/vim-surround')
+    call dein#add( 'easymotion/vim-easymotion')
+    "call dein#add( 'tikhomirov/vim-glsl')
+    call dein#add( 'tpope/vim-fugitive')
+    call dein#add( 'itchyny/lightline.vim')
+    "call dein#add( 'bling/vim-airline')
+    "call dein#add( 'vim-airline/vim-airline-themes')
+    """"" Haskell stuff
+    call dein#add( 'jiangmiao/auto-pairs')
+    "call dein#add( 'Raimondi/delimitMate')
+    call dein#add( 'hecal3/vim-leader-guide')
+    "call dein#add( 'scrooloose/syntastic')
+    "call dein#add( 'mattn/gist-vim')
+    "call dein#add( 'gkz/vim-ls')
+    "call dein#add( 'tpope/vim-dispatch')
+    "call dein#add( '29decibel/codeschool-vim-theme')
+    "call dein#add( 'croaker/mustang-vim')
+    call dein#add( 'scrooloose/nerdtree')
+    "call dein#add( 'Valloric/YouCompleteMe')
+    "call dein#add( 'Shougo/deoplete.nvim')
+    "call dein#add( 'sebastianmarkow/deoplete-rust')
+    "call dein#add( 'SirVer/ultisnips')
+    "call dein#add( 'honza/vim-snippets')
+    "call dein#add( 'rhysd/vim-clang-format')
+    call dein#add( 'morhetz/gruvbox')
+    "call dein#add( 'edkolev/tmuxline.vim')
+    "call dein#add( 'rust-lang/rust.vim')
+    "call dein#add( 'MaikKlein/ale')
+    "call dein#add( 'neomake/neomake')
+    call dein#add( 'kbenzie/vim-spirv')
+    call dein#add( 'airblade/vim-gitgutter')
+    "call dein#add( 'Yggdroot/indentLine')
+    "call dein#add( 'luochen1990/rainbow')
+    "call dein#add( 'SirVer/ultisnips')
+    "call dein#add( 'honza/vim-snippets')
+    call dein#add( 'lifepillar/vim-solarized8')
+    call dein#add( 'tpope/vim-repeat')
+    " call dein#add( 'autozimu/LanguageClient-neovim', {)
+    "     \ 'branch': 'next',
+    "     \ 'do': 'bash install.sh',
+    "     \ }
+    call dein#add( 'w0rp/ale')
+    " call dein#add( 'roxma/nvim-completion-manager')
+    " call dein#add( 'roxma/nvim-cm-racer')
+    call dein#add( 'prabirshrestha/async.vim')
+    call dein#add( 'prabirshrestha/vim-lsp')
+    "call dein#add( 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' })
+    call dein#add( 'prabirshrestha/asyncomplete.vim')
+    call dein#add( 'prabirshrestha/asyncomplete-lsp.vim')
+    "call dein#add( 'roxma/nvim-cm-racer')
+    call dein#add( 'thaerkh/vim-workspace')
+    call dein#add( 'rust-lang/rust.vim')
+    call dein#add( 'neomake/neomake')
+    call dein#add( '~/.fzf')
+    call dein#add( 'junegunn/fzf.vim')
+    call dein#add( 'Shougo/neosnippet.vim')
+    call dein#add( 'Shougo/neosnippet-snippets')
+    call dein#add( 'prabirshrestha/asyncomplete-neosnippet.vim')
+    call dein#add( 'trevordmiller/nova-vim')
+    call dein#end()
+    call dein#save_state()
+endif
 
-call plug#end()
 "call vundle#end()            " required
 
 filetype plugin indent on    " required
@@ -179,7 +262,7 @@ filetype plugin indent on    " required
 set so=7
 
 " Turn on the WiLd menu
-set wildmenu
+"set wildmenu
 " Tab-complete files up to longest unambiguous prefix
 set wildmode=longest,list,full
 
@@ -223,7 +306,7 @@ set hlsearch
 set incsearch
 
 " Don't redraw while executing macros (good performance config)
-set lazyredraw
+"set lazyredraw
 
 " For regular expressions turn magic on
 set magic
@@ -237,21 +320,18 @@ set mat=2
 set noerrorbells
 set vb t_vb=
 
-" Add a bit extra margin to the left
-set foldcolumn=1
-
 " Macvim fullscreen toggle
 map <silent> <leader>ff :set invfu<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'flazz/vim-colorschemes'
-Plug 'verbitan/Wombat'
+"let $TERM="xterm-256color"
 set background=light
-"colorscheme gruvbox
-let g:solarized_use16 = 1
+set termguicolors
+"let g:solarized_use16 = 1
 colorscheme solarized8
+"colorscheme gruvbox
 "let g:solarized_termcolors=256
 "let g:LanguageClient_signColumnAlwaysOn=1
 let g:LanguageClient_diagnosticsDisplay={
@@ -291,7 +371,6 @@ filetype indent on
 hi Directory guifg=#8ac6f2
 
 " Searing red very visible cursor
-hi Cursor guibg=red
 
 " Don't blink normal mode cursor
 set guicursor=n-v-c:block-Cursor
@@ -303,7 +382,6 @@ if has("gui_running")
   set guioptions-=e
   set guitablabel=%M\ %t
 endif
-"set t_Co=256
 
 " Set utf8 as standard encoding and en_US as the standard language
 "set encoding=utf8
@@ -329,12 +407,6 @@ set noswapfile
 "  autocmd bufwritepost .vimrc source $MYVIMRC
 "augroup END
 
-" Open file prompt with current path
-nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
-
-" Show undo tree
-nmap <silent> <leader>u :GundoToggle<CR>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -350,12 +422,12 @@ set shiftwidth=4
 set tabstop=4
 
 " Linebreak on 500 characters
-set lbr
-set tw=500
+"set lbr
+"set tw=500
 
 set ai "Auto indent
 set si "Smart indent
-set wrap "Wrap lines
+"set wrap "Wrap lines
 
 
 """"""""""""""""""""""""""""""
@@ -376,7 +448,6 @@ nnoremap k gk
 
 " Disable highlight when <leader><cr> is pressed
 " but preserve cursor coloring
-map <silent> <leader><cr> :noh<cr>:hi Cursor guibg=red<cr>
 
 " Return to last edit position when opening files (You want this!)
 augroup last_edit
@@ -395,9 +466,14 @@ augroup END
 """"""""""""""""""""""""""""""
 " Always show the status line
 set laststatus=2
+function! WindowNumber()
+    let str=tabpagewinnr(tabpagenr())
+    return str
+endfunction
+set statusline=win:%{WindowNumber()}
 
 " Format the status line
-set statusline=%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+"set statusline=%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
 "let g:Powerline_symbols = 'unicode'
 
@@ -467,26 +543,26 @@ nmap <leader>rT <Plug>SendTestToTmux
 nmap <leader>rt <Plug>SendFocusedTestToTmux
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => NERDTree
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Close nerdtree after a file is selected
-let NERDTreeQuitOnOpen = 1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" => NERDTree
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Close nerdtree after a file is selected
+"let NERDTreeQuitOnOpen = 1
 
-function! IsNERDTreeOpen()
-  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
+"function! IsNERDTreeOpen()
+"  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+"endfunction
 
-function! ToggleFindNerd()
-  if IsNERDTreeOpen()
-    exec ':NERDTreeToggle'
-  else
-    exec ':NERDTreeFind'
-  endif
-endfunction
+"function! ToggleFindNerd()
+"  if IsNERDTreeOpen()
+"    exec ':NERDTreeToggle'
+"  else
+"    exec ':NERDTreeFind'
+"  endif
+"endfunction
 
-" If nerd tree is closed, find current file, if open, close it
-map <silent> <C-s> <ESC>:call ToggleFindNerd()<CR>
+"" If nerd tree is closed, find current file, if open, close it
+"map <silent> <C-s> <ESC>:call ToggleFindNerd()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Alignment
@@ -538,49 +614,15 @@ function! NonintrusiveGitGrep(term)
 endfunction
 
 command! -nargs=1 GGrep call NonintrusiveGitGrep(<q-args>)
-nmap <leader>gs :Gstatus<CR>
+nmap <leader>gs :Gstats<CR>
 nmap <leader>gg :copen<CR>:GGrep
 nmap <leader>gl :Extradite!<CR>
 nmap <leader>gb :Gblame<CR>
 nnoremap <silent> <C-\> :call NonintrusiveGitGrep(expand("<cword>"))<CR>
 vnoremap <silent> <C-\> "*y:call NonintrusiveGitGrep(@*)<CR>
 
-function! CommittedFiles()
-  " Clear quickfix list
-  let qf_list = []
-  " Find files committed in HEAD
-  let git_output = system("git diff-tree --no-commit-id --name-only -r HEAD\n")
-  for committed_file in split(git_output, "\n")
-    let qf_item = {'filename': committed_file}
-    call add(qf_list, qf_item)
-  endfor
-  " Fill quickfix list with them
-  call setqflist(qf_list, '')
-endfunction
-
 " Show list of last-committed files
 nnoremap <silent> <leader>g? :call CommittedFiles()<CR>:copen<CR>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Conversion
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Convert symbol to string
-nnoremap <silent> <leader>2s F:r"Ea"<ESC>
-" Convert string to symbol
-nnoremap <silent> <leader>2y F"r:,x
-
-" Convert name to snake_case
-nmap <leader>2_ cr_
-" Convert name to camelCase
-nmap <leader>2c crc
-" Convert name to MixedCase
-nmap <leader>2m crm
-" Convert name to SNAKE_UPPERCASE
-nmap <leader>2u cru
-" Convert name to dash-case
-nmap <leader>2- cr-
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Abbreviation
@@ -596,8 +638,8 @@ if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 
-hi SpellBad ctermfg=088 ctermbg=234
-hi SpellCap ctermfg=088 ctermbg=234
+" hi SpellBad ctermfg=088 ctermbg=234
+" hi SpellCap ctermfg=088 ctermbg=234
 
 if has('gui_running')
   set guioptions -=T  " no toolbar
@@ -618,6 +660,8 @@ let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#exclude_preview = 0
 let g:airline#extensions#tabline#show_tab_type = 0
+"let g:ale_set_quickfix = 1
+"let g:ale_set_loclist = 1
 
 " sign define transparent_sign
 " augroup SignColFixAu
@@ -631,10 +675,6 @@ let g:clang_format#style_options = {
             \ "Standard" : "C++11",
             \ "BreakBeforeBraces" : "Stroustrup"}
 
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
-let g:ycm_min_num_of_chars_for_completion = 99
-let g:ycm_rust_src_path = '/home/maik/src/rust/src/'
 let g:ConqueTerm_FastMode = 1
 let g:ConqueTerm_Color = 0
 
@@ -677,32 +717,29 @@ nnoremap <F3> :noh<CR>
 "
 "nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 "nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-"nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 "
 "let g:deoplete#enable_at_startup = 1
 "inoremap <expr> <Tab>  pumvisible() ? "" : deoplete#mappings#manual_complete()
 set timeoutlen=500
-let g:airline_theme = 'solarized'
+let g:airline#extensions#tabline#formatter = 'default'
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ 'javascript': ['/opt/javascript-typescript-langserver/lib/language-server-stdio.js'],
     \ }
 
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+" nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+" nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 nnoremap <leader>fed :e ~/.vimrc<CR>
-nmap <Leader>pf :FZF .<CR>
-nmap <Leader>bb :CtrlPBuffer <CR>
 hi VertSplit ctermbg=NONE guibg=NONE
-hi SpellBad ctermfg=NONE ctermbg=NONE guifg=#ffffff guibg=#ffffff
-hi SpellCap ctermfg=NONE ctermbg=NONE guifg=#ffffff guibg=#ffffff
+"hi SpellBad ctermfg=NONE ctermbg=NONE guifg=#ffffff guibg=#ffffff
+"hi SpellCap ctermfg=NONE ctermbg=NONE guifg=#ffffff guibg=#ffffff
 hi NonText guifg=bg
 set nonumber
 "let g:solarized_visibility = "high"
 let g:LanguageClient_autoStart = 1
-let g:spirv_current_id_highlight = ''
+"let g:spirv_current_id_highlight = ''
 set signcolumn=yes
 
 "set termguicolors
@@ -723,21 +760,21 @@ command! -bang -nargs=* Rg
 
 command! -bang -nargs=* FindSymbols
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always "(type|enum|struct|trait)[ \t]+([a-zA-Z0-9_]+)" -g "*.rs" | rg '.shellescape(<q-args>), 1,
+  \   'rg --column --line-number --no-heading --color=always "(type|enum|struct|trait)[ \t]+([a-zA-Z0-9_]+)" -g "*.rs" -S | rg -S '.shellescape(<q-args>), 1,
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 
 command! -bang -nargs=* FindFunctions
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always "fn +([a-zA-Z0-9_]+)" -g "*.rs" | rg '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   'rg --column --line-number --no-heading --color=always "fn +([a-zA-Z0-9_]+)" -g "*.rs" | rg -g "*.rs" -S '.substitute(shellescape(<q-args>), " ", "|rg -g '*.rs' -S", ""), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:40%')
+  \           : fzf#vim#with_preview('right:20%:hidden', '?'),
   \   <bang>0)
 
 command! -bang -nargs=* FindImpls
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always "impl([ \t\n]*<[^>]*>)?[ \t]+(([a-zA-Z0-9_:]+)[ \t]*(<[^>]*>)?[ \t]+(for)[ \t]+)?([a-zA-Z0-9_]+)" | rg '.shellescape(<q-args>), 1,
+  \   'rg --column --line-number --no-heading --color=always "impl([ \t\n]*<[^>]*>)?[ \t]+(([a-zA-Z0-9_:]+)[ \t]*(<[^>]*>)?[ \t]+(for)[ \t]+)?([a-zA-Z0-9_]+)" | rg -S '.substitute(shellescape(<q-args>), " ", "|rg ", ""), 1,
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
@@ -745,19 +782,198 @@ command! -bang -nargs=* FindImpls
 
 let g:LanguageClient_diagnosticsEnable=0
 let g:ale_linters = {
-\   'rust': ['cargo'],
+\   'rust': ['rls'],
 \}
 
-let g:ale_sign_warning = '┃'
-let g:ale_sign_error = '┃'
+"╎
+"▶
+"│
+let g:ale_sign_warning = '▶'
+let g:ale_sign_error = '▶'
+
+highlight SignColumn guibg=NONE
+let g:gitgutter_sign_added = '┃'
+let g:gitgutter_sign_modified = '┃'
+let g:gitgutter_sign_removed = '┃'
+let g:gitgutter_sign_removed_first_line = '┃'
+let g:gitgutter_sign_modified_removed = '┃'
+highlight NeomakeErrorMsg guifg=DarkRed guibg=NONE
+highlight NeomakeWarningMsg guifg=DarkBlue guibg=NONE
+let g:neomake_error_sign = {'text': '▶', 'texthl': 'NeomakeErrorMsg'}
+let g:neomake_warning_sign={'text': 'W', 'texthl': 'NeomakeWarningMsg'}
+let g:neomake_info_sign={'text': 'W', 'texthl': 'NeomakeWarningMsg'}
+let g:neomake_message_sign={'text': 'W', 'texthl': 'NeomakeWarningMsg'}
+let g:neomake_highlight_columns = 0
+
+" let g:ale_sign_warning = '┃'
+" let g:ale_sign_error = '┃'
 let g:ale_set_highlights=0
-highlight ALEWarningSign ctermfg=DarkBlue
-highlight ALEErrorSign ctermfg=DarkRed
+
 call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
 nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
 vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
 
 let g:magit_default_show_all_files=0
-let g:airline_inactive_collapse=0
-set lazyredraw
 set shortmess+=c
+let g:EasyMotion_smartcase = 1
+
+"map <C-Space> <Plug>(cm_complete)
+"imap <C-Space> <C-x><C-o>
+"imap <C-Space> <Plug>(cm_force_refresh)
+let g:cm_auto_popup=1
+
+
+"let g:airline_theme = 'solarized'
+"function MyOverride(...)
+"    call a:1.add_section('StatusLine', 'All')
+"    call a:1.add_section('Tag', 'your')
+"    call a:1.add_section('Search', 'base')
+"    call a:1.add_section('StatusLineNC', '%f')
+"    call a:1.split()
+"    call a:1.add_section('StatusLine', '%p%%')
+"    call a:1.add_section('Error', '%p%%')
+"    return 1
+"endfunction
+"call airline#add_statusline_func('MyOverride')
+set grepprg=rg\ --vimgrep
+hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
+au FileType rust nmap gd <Plug>(rust-def)
+let g:rustfmt_fail_silently = 1
+let g:rustfmt_command = "rustfmt +nightly"
+let g:fzf_layout = { 'down': '~25%' }
+let g:delimitMate_quotes = 0
+au FileType rust let b:AutoPairs = {'(':')', '[':']', '{':'}','"':'"', '`':'`', '|':'|', '<':'>'}
+let g:AutoPairsMapBS = 1
+let g:vimfiler_as_default_explorer = 1
+let g:lightline = {
+  \   'colorscheme': 'solarized',
+  \   'active': {
+  \     'left':[ [ 'mode', 'paste' ],
+  \              [ 'gitbranch', 'readonly', 'filename', 'modified' ]
+  \     ],
+  \     'right': [ [ 'lineinfo' ],
+  \                ['percent']],
+  \   },
+  \   'inactive': {
+  \     'left':[ [ 'mode', 'paste' ],
+  \              [ 'gitbranch', 'readonly', 'filename', 'modified' ]
+  \     ],
+  \     'right': [ [ 'lineinfo' ],
+  \                ['percent']],
+  \   },
+  \   'component': {
+  \     'lineinfo': ' %3l:%-2v',
+  \   },
+  \   'component_function': {
+  \     'gitbranch': 'fugitive#head',
+  \   }
+  \ }
+let g:lightline.tabline = {
+            \ 'left': [ [ 'tabs' ] ],
+            \ 'right': [ [  ] ] }
+" let g:lightline.separator = {
+"     \   'left': '', 'right': ''
+"     \}
+" let g:lightline.subseparator = {
+"     \   'left': '', 'right': ''
+"     \}
+set noshowmode
+
+let g:rust_fold = 0
+autocmd FileType rust setlocal nosmartindent
+let g:AutoPairsCenterLine=0
+let g:AutoPairsMapCR=0
+let g:AutoPairsMultilineClose=0
+
+
+let i = 1
+while i <= 9
+    execute 'nnoremap <Leader>' . i . ' :' . i . 'wincmd w<CR>'
+    let i = i + 1
+endwhile
+
+let g:highlightedyank_highlight_duration = 300
+highlight LineNr term=NONE cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+highlight CursorLineNr term=NONE cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
+
+highlight ALEWarningSign guifg=#268bd2
+highlight ALEErrorSign guifg=#dc322f
+
+hi Cursor guibg=#657b83
+
+"hi Search guibg=white guifg=white
+
+set number
+set relativenumber
+let g:spirv_enable_current_id = 0
+let g:solarized_extra_hi_groups=0
+let g:solarized_old_cursor_style=0
+let g:LargeFile=10
+" Protect large files from sourcing and other overhead.
+" Files become read only
+"if !exists("my_auto_commands_loaded")
+"  let my_auto_commands_loaded = 1
+"  " Large files are > 10M
+"  " Set options:
+"  " eventignore+=FileType (no syntax highlighting etc
+"  " assumes FileType always on)
+"  " noswapfile (save copy of file)
+"  " bufhidden=unload (save memory when other file is viewed)
+"  " buftype=nowrite (file is read-only)
+"  " undolevels=-1 (no undo possible)
+"  let g:LargeFile = 1024 * 1024 * 10
+"  augroup LargeFile
+"    autocmd BufEnter 
+"    autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > g:LargeFile | set eventignore+=FileType | setlocal noswapfile bufhidden=unload buftype=nowrite undolevels=-1 | else | set eventignore-=FileType | endif
+"    augroup END
+"  endif
+"  set synmaxcol=200
+noremap <C-Q> <ESC>:ALEPreviousWrap<CR>
+noremap <C-E> <ESC>:ALENextWrap<CR>
+" let b:deoplete_disable_auto_complete=1 
+" let g:deoplete_disable_auto_complete=1
+" call deoplete#custom#buffer_option('auto_complete', v:false)
+" if !exists('g:deoplete#omni#input_patterns')
+"     let g:deoplete#omni#input_patterns = {}
+" endif
+" call deoplete#custom#option('ignore_sources', {'_': ['buffer']})
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+        \ 'whitelist': ['rust'],
+        \ })
+endif
+" call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
+"     \ 'name': 'neosnippet',
+"     \ 'whitelist': ['*'],
+"     \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
+"     \ }))
+autocmd FileType rust setlocal omnifunc=lsp#complete
+imap <c-space> <Plug>(asyncomplete_force_refresh)
+call neomake#configure#automake('w')
+imap <C-f>     <Plug>(neosnippet_expand_or_jump)
+smap <C-f>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-f>     <Plug>(neosnippet_expand_target)
+" autocmd User asyncomplete_setup call asyncomplete#register_source(
+"     \ asyncomplete#sources#racer#get_source_options())
+
+nnoremap <C-W>O :call MaximizeToggle()<CR>
+nnoremap <C-W>o :call MaximizeToggle()<CR>
+nnoremap <C-W><C-O> :call MaximizeToggle()<CR>
+
+function! MaximizeToggle()
+    if exists("s:maximize_session")
+        exec "source " . s:maximize_session
+        call delete(s:maximize_session)
+        unlet s:maximize_session
+        let &hidden=s:maximize_hidden_save
+        unlet s:maximize_hidden_save
+    else
+        let s:maximize_hidden_save = &hidden
+        let s:maximize_session = tempname()
+        set hidden
+        exec "mksession! " . s:maximize_session
+        only
+    endif
+endfunction
