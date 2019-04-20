@@ -1,6 +1,7 @@
 " This allows buffers to be hidden if you've modified a buffer.
 " This is almost a must if you wish to use buffers in this way.
 set hidden
+set shell=/bin/sh
 let mapleader = " "
 let g:racer_cmd = "/home/maik/.cargo/bin/racer"
 let $RUST_SRC_PATH="/home/maik/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/"
@@ -50,11 +51,13 @@ nmap <leader>om7 :tabm 6<CR>
 nmap <leader>om8 :tabm 7<CR>
 nmap <leader>om9 :tabm 8<CR>
 nmap <leader>oc :tabnew<CR>:tabmove<CR>
-map <leader>mf :mark '<CR>:! rustup run nightly rustfmt %<CR>''
+map <leader>mf :mark '<CR>:! rustup run stable rustfmt %<CR>''
 "map <leader>mf :RustFmt<CR>
 let g:lmap.s.s = ['BLines', 'Lines']
 map <leader>; :Commentary<CR>
 nmap <leader>sc :noh<CR>
+nmap <leader>ft :NERDTree<CR>
+nmap <leader>fT :NERDTreeFind<CR>
 nmap <leader>sd <Plug>(easymotion-overwin-f2)
 
 inoremap <silent><expr> <C-SPACE>
@@ -69,7 +72,6 @@ endfunction"}}}
 nmap <leader>en :call LocationNext()<CR>
 nmap <leader>eN :ALEPreviousWrap<CR>
 nmap <leader>el :lopen<CR>
-nmap <leader>ft :Explore<CR>
 
 "let g:lmap.e.n = ['lnext', 'Next error']
 nmap <leader>ls :mark '<CR>:FindSymbols<CR>
@@ -158,103 +160,99 @@ if &compatible
 endif
 filetype off                  " required
 "set rtp+=~/.vim/bundle/Vundle.vim
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 ""call vundle#begin()
 "call plug#begin('~/.vim/plugged')
 " let Vundle manage Vundle
 " required!
 
-if dein#load_state('~/.cache/dein')
-    call dein#begin('~/.cache/dein')
-    call dein#add('~/.cache/dein')
-    call dein#add( 'djoshea/vim-autoread')
-    call dein#add( 'junegunn/vim-peekaboo')
-    call dein#add( 'tikhomirov/vim-glsl')
-    call dein#add( 'lambdalisue/gina.vim')
-    call dein#add( 'tpope/vim-rhubarb')
-    call dein#add( 'machakann/vim-highlightedyank')
-    call dein#add( 'chriskempson/vim-tomorrow-theme')
-    call dein#add( 'morhetz/gruvbox')
-    call dein#add( 'gmarik/vundle')
-    call dein#add( 'chriskempson/base16-vim')
-    call dein#add( 'racer-rust/vim-racer')
+call plug#begin('~/.vim/plugged')
+Plug 'djoshea/vim-autoread'
+Plug 'junegunn/vim-peekaboo'
+Plug 'tikhomirov/vim-glsl'
+Plug 'lambdalisue/gina.vim'
+Plug 'tpope/vim-rhubarb'
+Plug 'machakann/vim-highlightedyank'
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'morhetz/gruvbox'
+Plug 'gmarik/vundle'
+Plug 'chriskempson/base16-vim'
+Plug 'racer-rust/vim-racer'
     " call dein#add( 'autozimu/LanguageClient-neovim', {)
     "     \ 'branch': 'next',
     "     \ 'do': 'bash install.sh',
     "     \ }
     " call dein#add( 'prabirshrestha/vim-lsp')
     " call dein#add( 'prabirshrestha/async.vim')
-    call dein#add( 'pangloss/vim-javascript')
+Plug 'pangloss/vim-javascript'
     "" My Bundles here:
     "call dein#add( 'airblade/vim-gitgutter')
     "call dein#add( 'phildawes/racer')
-    call dein#add( 'tpope/vim-commentary')
-    call dein#add( 'cespare/vim-toml')
+Plug 'tpope/vim-commentary'
+Plug 'cespare/vim-toml'
     "call dein#add( 'jansenm/vim-cmake')
     "call dein#add( 'rust-lang/rust.vim')
-    call dein#add( 'tpope/vim-surround')
-    call dein#add( 'easymotion/vim-easymotion')
+Plug 'tpope/vim-surround'
+Plug 'easymotion/vim-easymotion'
     "call dein#add( 'tikhomirov/vim-glsl')
-    call dein#add( 'tpope/vim-fugitive')
-    call dein#add( 'itchyny/lightline.vim')
+Plug 'tpope/vim-fugitive'
+Plug 'itchyny/lightline.vim'
     "call dein#add( 'bling/vim-airline')
     "call dein#add( 'vim-airline/vim-airline-themes')
     """"" Haskell stuff
-    call dein#add( 'jiangmiao/auto-pairs')
+Plug 'jiangmiao/auto-pairs'
     "call dein#add( 'Raimondi/delimitMate')
-    call dein#add( 'hecal3/vim-leader-guide')
+Plug 'hecal3/vim-leader-guide'
     "call dein#add( 'scrooloose/syntastic')
     "call dein#add( 'mattn/gist-vim')
     "call dein#add( 'gkz/vim-ls')
     "call dein#add( 'tpope/vim-dispatch')
     "call dein#add( '29decibel/codeschool-vim-theme')
     "call dein#add( 'croaker/mustang-vim')
-    call dein#add( 'scrooloose/nerdtree')
+Plug 'scrooloose/nerdtree'
     "call dein#add( 'Valloric/YouCompleteMe')
     "call dein#add( 'Shougo/deoplete.nvim')
     "call dein#add( 'sebastianmarkow/deoplete-rust')
     "call dein#add( 'SirVer/ultisnips')
     "call dein#add( 'honza/vim-snippets')
     "call dein#add( 'rhysd/vim-clang-format')
-    call dein#add( 'morhetz/gruvbox')
+Plug 'morhetz/gruvbox'
     "call dein#add( 'edkolev/tmuxline.vim')
     "call dein#add( 'rust-lang/rust.vim')
     "call dein#add( 'MaikKlein/ale')
     "call dein#add( 'neomake/neomake')
-    call dein#add( 'kbenzie/vim-spirv')
-    call dein#add( 'airblade/vim-gitgutter')
+Plug 'kbenzie/vim-spirv'
+Plug 'airblade/vim-gitgutter'
     "call dein#add( 'Yggdroot/indentLine')
     "call dein#add( 'luochen1990/rainbow')
     "call dein#add( 'SirVer/ultisnips')
     "call dein#add( 'honza/vim-snippets')
-    call dein#add( 'lifepillar/vim-solarized8')
-    call dein#add( 'tpope/vim-repeat')
+Plug 'lifepillar/vim-solarized8'
+Plug 'tpope/vim-repeat'
     " call dein#add( 'autozimu/LanguageClient-neovim', {)
     "     \ 'branch': 'next',
     "     \ 'do': 'bash install.sh',
     "     \ }
-    call dein#add( 'w0rp/ale')
+Plug 'w0rp/ale'
     " call dein#add( 'roxma/nvim-completion-manager')
     " call dein#add( 'roxma/nvim-cm-racer')
-    call dein#add( 'prabirshrestha/async.vim')
-    call dein#add( 'prabirshrestha/vim-lsp')
-    "call dein#add( 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' })
-    call dein#add( 'prabirshrestha/asyncomplete.vim')
-    call dein#add( 'prabirshrestha/asyncomplete-lsp.vim')
+Plug 'prabirshrestha/async.vim'
+"Plug 'prabirshrestha/vim-lsp'
+"    "call dein#add( 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' })
+"Plug 'prabirshrestha/asyncomplete.vim'
+"Plug 'prabirshrestha/asyncomplete-lsp.vim'
     "call dein#add( 'roxma/nvim-cm-racer')
-    call dein#add( 'thaerkh/vim-workspace')
-    call dein#add( 'rust-lang/rust.vim')
-    call dein#add( 'neomake/neomake')
-    call dein#add( '~/.fzf')
-    call dein#add( 'junegunn/fzf.vim')
-    call dein#add( 'Shougo/neosnippet.vim')
-    call dein#add( 'Shougo/neosnippet-snippets')
-    call dein#add( 'prabirshrestha/asyncomplete-neosnippet.vim')
-    call dein#add( 'trevordmiller/nova-vim')
-    call dein#end()
-    call dein#save_state()
-endif
-
+Plug 'thaerkh/vim-workspace'
+Plug 'rust-lang/rust.vim'
+Plug 'neomake/neomake'
+Plug '~/.fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+"Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
+Plug 'trevordmiller/nova-vim'
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
+call plug#end()
 "call vundle#end()            " required
 
 filetype plugin indent on    " required
@@ -837,7 +835,6 @@ let g:cm_auto_popup=1
 "call airline#add_statusline_func('MyOverride')
 set grepprg=rg\ --vimgrep
 hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
-au FileType rust nmap gd <Plug>(rust-def)
 let g:rustfmt_fail_silently = 1
 let g:rustfmt_command = "rustfmt +nightly"
 let g:fzf_layout = { 'down': '~25%' }
@@ -977,3 +974,34 @@ function! MaximizeToggle()
         only
     endif
 endfunction
+nmap gd <Plug>(rust-def)
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> for trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[c` and `]c` for navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)

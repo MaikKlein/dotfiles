@@ -24,15 +24,15 @@ bspc rule -a Steam desktop='^9' state=tiled follow=off
 bspc rule -a Emacs state=tiled
 bspc rule -a Terminator state=tiled
 
-xrdb ~/.Xresources &
-compton --config ~/compton.conf &
-feh --bg-scale dotfiles/wallpapers/firewatch-blue.jpg &
-polybar example &
-xinput --set-prop 10 'Device Accel Profile' -1 &
-xset s 0 s blank &
-xset -dpms &
-xrandr -r 120 &
-xsetroot -cursor_name left_ptr &
-gsettings set org.gnome.desktop.background show-desktop-icons false &
-emacs --daemon
-
+xrdb ~/.Xresources
+#compton --config ~/compton.conf &
+#feh --bg-scale dotfiles/wallpapers/firewatch-blue.jpg &
+#polybar example &
+#xinput --set-prop 10 'Device Accel Profile' -1 &
+#xset s 0 s blank &
+#xset -dpms &
+#xrandr -r 120 &
+#xsetroot -cursor_name left_ptr &
+#gsettings set org.gnome.desktop.background show-desktop-icons false &
+#emacs --daemon
+#

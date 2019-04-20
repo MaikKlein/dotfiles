@@ -1,2 +1,2 @@
-exec bspwm
+exec i3-gnome
 

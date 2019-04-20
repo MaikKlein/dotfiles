@@ -219,32 +219,32 @@ for_window [class="^Steam$"]  move container to workspace "9"
 #for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 #for_window [title="^Steam Keyboard$"] floating enable
 
-hide_edge_borders both
-new_window pixel 2
-gaps inner 8
-gaps outer 3
-
-
-# class                 border  backgr. text    indicator child_border
-client.focused          #000000 #000000 #000000 #000000   #000000
-client.focused_inactive #000000 #000000 #000000 #000000   #000000
-client.unfocused        #000000 #000000 #000000 #000000   #355c82
-client.urgent           #000000 #000000 #000000 #000000   #000000
-client.placeholder      #000000 #000000 #000000 #000000   #000000
-client.background       #000000
-
+#hide_edge_borders both
+#new_window pixel 2
+#gaps inner 8
+#gaps outer 3
+#
+#
+## class                 border  backgr. text    indicator child_border
+#client.focused          #000000 #000000 #000000 #000000   #000000
+#client.focused_inactive #000000 #000000 #000000 #000000   #000000
+#client.unfocused        #000000 #000000 #000000 #000000   #355c82
+#client.urgent           #000000 #000000 #000000 #000000   #000000
+#client.placeholder      #000000 #000000 #000000 #000000   #000000
+#client.background       #000000
+#
 #
 #smart_gaps on
 #exec --no-startup-id compton --config ~/compton.conf
 #exec --no-startup-id nitrogen --restore
 #exec --no-startup-id feh --bg-scale dotfiles/wallpapers/firewatch-blue.jpg
 #exec xinput --set-prop 10 'Device Accel Profile' -1
-exec compton --config ~/compton.conf 
-exec feh --bg-scale dotfiles/wallpapers/firewatch-blue.jpg 
-exec polybar example 
-exec xinput --set-prop 10 'Device Accel Profile' -1 
-exec xset s 0 s blank 
-exec xset -dpms 
-exec xrandr -r 120 
-exec xsetroot -cursor_name left_ptr 
-exec gsettings set org.gnome.desktop.background show-desktop-icons false 
+#exec compton --config ~/compton.conf 
+#exec feh --bg-scale dotfiles/wallpapers/firewatch-blue.jpg 
+#exec polybar example 
+#exec xinput --set-prop 10 'Device Accel Profile' -1 
+#exec xset s 0 s blank 
+#exec xset -dpms 
+#exec xrandr -r 120 
+#exec xsetroot -cursor_name left_ptr 
+#exec gsettings set org.gnome.desktop.background show-desktop-icons false 

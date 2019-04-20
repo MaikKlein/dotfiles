@@ -4,11 +4,11 @@
 
 #urxvt -e tmux
 # terminal emulator
-#alt + Return
-#  alacritty -e tmux
 alt + Return
-  kitty -e tmux
-
+  alacritty
+#alt + Return
+#  kitty -e tmux
+#
 # program launcher
 alt + @space
 	rofi -bg '#282828' -fg '#fbf1c7' -hlbg '#3c3836' -show run
@@ -128,6 +128,8 @@ ctrl + alt + {Left,Down,Up,Right}
 alt + alt + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
+alt + c
+  pkill -u maik
 #alt + Print
 #  scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
 alt + Print
