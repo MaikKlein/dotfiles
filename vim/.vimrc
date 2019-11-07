@@ -51,8 +51,8 @@ nmap <leader>om7 :tabm 6<CR>
 nmap <leader>om8 :tabm 7<CR>
 nmap <leader>om9 :tabm 8<CR>
 nmap <leader>oc :tabnew<CR>:tabmove<CR>
-map <leader>mf :mark '<CR>:! rustup run stable rustfmt %<CR>''
-"map <leader>mf :RustFmt<CR>
+map <leader>mf :mark ' <CR>:! rustup run stable rustfmt %<CR><CR>'':e<CR>
+"map <leader>mf :mark '<CR>:RustFmt<CR>
 let g:lmap.s.s = ['BLines', 'Lines']
 map <leader>; :Commentary<CR>
 nmap <leader>sc :noh<CR>
@@ -232,7 +232,7 @@ Plug 'tpope/vim-repeat'
     "     \ 'branch': 'next',
     "     \ 'do': 'bash install.sh',
     "     \ }
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
     " call dein#add( 'roxma/nvim-completion-manager')
     " call dein#add( 'roxma/nvim-cm-racer')
 Plug 'prabirshrestha/async.vim'
@@ -243,7 +243,7 @@ Plug 'prabirshrestha/async.vim'
     "call dein#add( 'roxma/nvim-cm-racer')
 Plug 'thaerkh/vim-workspace'
 Plug 'rust-lang/rust.vim'
-Plug 'neomake/neomake'
+"Plug 'neomake/neomake'
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'Shougo/neosnippet.vim'
@@ -251,7 +251,7 @@ Plug 'Shougo/neosnippet-snippets'
 "Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
 Plug 'trevordmiller/nova-vim'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
+"Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
 call plug#end()
 "call vundle#end()            " required
 
@@ -469,7 +469,8 @@ function! WindowNumber()
     return str
 endfunction
 set statusline=win:%{WindowNumber()}
-
+set statusline+=win:%{WindowNumber()}
+set statusline+=%{coc#status()}
 " Format the status line
 "set statusline=%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
@@ -722,7 +723,7 @@ nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 set timeoutlen=500
 let g:airline#extensions#tabline#formatter = 'default'
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'rust': ['rustup', 'run', 'nightly', 'ra_lps_server'],
     \ 'javascript': ['/opt/javascript-typescript-langserver/lib/language-server-stdio.js'],
     \ }
 
@@ -780,7 +781,7 @@ command! -bang -nargs=* FindImpls
 
 let g:LanguageClient_diagnosticsEnable=0
 let g:ale_linters = {
-\   'rust': ['rls'],
+\   'rust': ['ra_lsp_server'],
 \}
 
 "╎
@@ -795,13 +796,13 @@ let g:gitgutter_sign_modified = '┃'
 let g:gitgutter_sign_removed = '┃'
 let g:gitgutter_sign_removed_first_line = '┃'
 let g:gitgutter_sign_modified_removed = '┃'
-highlight NeomakeErrorMsg guifg=DarkRed guibg=NONE
-highlight NeomakeWarningMsg guifg=DarkBlue guibg=NONE
-let g:neomake_error_sign = {'text': '▶', 'texthl': 'NeomakeErrorMsg'}
-let g:neomake_warning_sign={'text': 'W', 'texthl': 'NeomakeWarningMsg'}
-let g:neomake_info_sign={'text': 'W', 'texthl': 'NeomakeWarningMsg'}
-let g:neomake_message_sign={'text': 'W', 'texthl': 'NeomakeWarningMsg'}
-let g:neomake_highlight_columns = 0
+" highlight NeomakeErrorMsg guifg=DarkRed guibg=NONE
+" highlight NeomakeWarningMsg guifg=DarkBlue guibg=NONE
+" let g:neomake_error_sign = {'text': '▶', 'texthl': 'NeomakeErrorMsg'}
+" let g:neomake_warning_sign={'text': 'W', 'texthl': 'NeomakeWarningMsg'}
+" let g:neomake_info_sign={'text': 'W', 'texthl': 'NeomakeWarningMsg'}
+" let g:neomake_message_sign={'text': 'W', 'texthl': 'NeomakeWarningMsg'}
+" let g:neomake_highlight_columns = 0
 
 " let g:ale_sign_warning = '┃'
 " let g:ale_sign_error = '┃'
@@ -834,7 +835,7 @@ let g:cm_auto_popup=1
 "endfunction
 "call airline#add_statusline_func('MyOverride')
 set grepprg=rg\ --vimgrep
-hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
+"hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 let g:rustfmt_fail_silently = 1
 let g:rustfmt_command = "rustfmt +nightly"
 let g:fzf_layout = { 'down': '~25%' }
@@ -846,9 +847,9 @@ let g:lightline = {
   \   'colorscheme': 'solarized',
   \   'active': {
   \     'left':[ [ 'mode', 'paste' ],
-  \              [ 'gitbranch', 'readonly', 'filename', 'modified' ]
+  \              [ 'gitbranch', 'readonly', 'filename', 'modified', ]
   \     ],
-  \     'right': [ [ 'lineinfo' ],
+  \     'right': [ [ 'lineinfo'],
   \                ['percent']],
   \   },
   \   'inactive': {
@@ -863,6 +864,7 @@ let g:lightline = {
   \   },
   \   'component_function': {
   \     'gitbranch': 'fugitive#head',
+  \     'coc': 'coc#status',
   \   }
   \ }
 let g:lightline.tabline = {
@@ -934,13 +936,13 @@ noremap <C-E> <ESC>:ALENextWrap<CR>
 "     let g:deoplete#omni#input_patterns = {}
 " endif
 " call deoplete#custom#option('ignore_sources', {'_': ['buffer']})
-if executable('rls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
-        \ 'whitelist': ['rust'],
-        \ })
-endif
+" if executable('rls')
+"     au User lsp_setup call lsp#register_server({
+"         \ 'name': 'rls',
+"         \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+"         \ 'whitelist': ['rust'],
+"         \ })
+" endif
 " call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
 "     \ 'name': 'neosnippet',
 "     \ 'whitelist': ['*'],
@@ -948,7 +950,7 @@ endif
 "     \ }))
 autocmd FileType rust setlocal omnifunc=lsp#complete
 imap <c-space> <Plug>(asyncomplete_force_refresh)
-call neomake#configure#automake('w')
+" call neomake#configure#automake('w')
 imap <C-f>     <Plug>(neosnippet_expand_or_jump)
 smap <C-f>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-f>     <Plug>(neosnippet_expand_target)

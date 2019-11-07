@@ -56,7 +56,6 @@ plugins=(git)
 # User configuration
 
 #source $ZSH/oh-my-zsh.sh
-source $HOME/.nix-profile/etc/profile.d/nix.sh
 source $HOME/.zshenv
 
 # You may need to manually set your language environment
@@ -92,4 +91,7 @@ setopt noflowcontrol
 #fpath=($HOME/src/nix-zsh-completions $fpath)
 autoload -U compinit && compinit
 export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --glob '!.git/*'"
-source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+export ZSH=$HOME/.oh-my-zsh
+source $ZSH/oh-my-zsh.sh
+source $HOME/.nix-profile/etc/profile.d/nix.sh
+

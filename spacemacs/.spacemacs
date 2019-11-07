@@ -90,12 +90,12 @@ values."
      lua
      html
      vimscript (
-                csharp
-                html
-                php
-                phpshell :variables shell-default-term-shell
+                ;;csharp
+                ;;html
+                ;;php
+                ;;phpshell :variables shell-default-term-shell
                       "/bin/zsh" shell-default-shell 'eshell)
-               ;; (rustrls :location (recipe
+               ;; (Rustrls :location (recipe
                ;;                          :fetcher github
                ;;                          :repo "MaikKlein/rustrls"))
                rust
@@ -105,7 +105,7 @@ values."
                yaml
                markdown
                latex
-               spell-checking
+               ;; spell-checking
                shaders
                semantic
                asm
