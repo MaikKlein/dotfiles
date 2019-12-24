@@ -30,3 +30,6 @@ ln -s -f "$(pwd)/fish/.config/fish/functions" ~/.config/fish/functions
 mkdir -p ~/.config/kitty
 ln -s -f "$(pwd)/kitty/.config/kitty/kitty.conf" ~/.config/kitty/kitty.conf
 
+mkdir -p ~/.config/awesome
+ln -s -f "$(pwd)/awesome" ~/.config/awesome
+

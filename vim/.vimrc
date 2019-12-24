@@ -252,6 +252,7 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'trevordmiller/nova-vim'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 "Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
+Plug 'joshdick/onedark.vim'
 call plug#end()
 "call vundle#end()            " required
 
@@ -325,11 +326,12 @@ map <silent> <leader>ff :set invfu<CR>
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "let $TERM="xterm-256color"
-set background=light
+set background=dark
 set termguicolors
 "let g:solarized_use16 = 1
-colorscheme solarized8
-"colorscheme gruvbox
+" colorscheme solarized8
+colorscheme onedark
+let g:gruvbox_termcolors=256
 "let g:solarized_termcolors=256
 "let g:LanguageClient_signColumnAlwaysOn=1
 let g:LanguageClient_diagnosticsDisplay={
@@ -470,7 +472,7 @@ function! WindowNumber()
 endfunction
 set statusline=win:%{WindowNumber()}
 set statusline+=win:%{WindowNumber()}
-set statusline+=%{coc#status()}
+" set statusline+=%{coc#status()}
 " Format the status line
 "set statusline=%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
@@ -844,7 +846,7 @@ au FileType rust let b:AutoPairs = {'(':')', '[':']', '{':'}','"':'"', '`':'`', 
 let g:AutoPairsMapBS = 1
 let g:vimfiler_as_default_explorer = 1
 let g:lightline = {
-  \   'colorscheme': 'solarized',
+  \   'colorscheme': 'onedark',
   \   'active': {
   \     'left':[ [ 'mode', 'paste' ],
   \              [ 'gitbranch', 'readonly', 'filename', 'modified', ]
@@ -864,7 +866,6 @@ let g:lightline = {
   \   },
   \   'component_function': {
   \     'gitbranch': 'fugitive#head',
-  \     'coc': 'coc#status',
   \   }
   \ }
 let g:lightline.tabline = {
