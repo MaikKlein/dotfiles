@@ -1,0 +1,4 @@
+{
+    "rust-analyzer.enableCargoWatchOnStartup": "Yes",
+    "rust-analyzer.cargo-watch.arguments": ["--target-dir ra-target"],
+}
