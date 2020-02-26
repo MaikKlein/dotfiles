@@ -3,6 +3,7 @@ ln -s -f "$(pwd)/zsh/.zshenv" ~/.zshenv
 ln -s -f "$(pwd)/spacemacs/.spacemacs" ~/.spacemacs
 mkdir -p ~/.config/nvim
 ln -s -f "$(pwd)/nvim/.config/nvim/init.vim" ~/.config/nvim/init.vim
+ln -s -f "$(pwd)/nvim/.config/nvim/coc-settings.json" ~/.config/nvim/coc-settings.json
 ln -s -f "$(pwd)/tmux/.tmux.conf" ~/.tmux.conf
 mkdir -p ~/.config/tmux
 ln -s -f "$(pwd)/tmux/solarized.theme" ~/.config/tmux/solarized.theme
@@ -30,6 +31,6 @@ ln -s -f "$(pwd)/fish/.config/fish/functions" ~/.config/fish/functions
 mkdir -p ~/.config/kitty
 ln -s -f "$(pwd)/kitty/.config/kitty/kitty.conf" ~/.config/kitty/kitty.conf
 
-mkdir -p ~/.config/awesome
-ln -s -f "$(pwd)/awesome" ~/.config/awesome
+ln -s -f -d "$(pwd)/awesome" ~/.config
 
+ln -s -f "$(pwd)/mouse/gpro.conf" /etc/X11/xorg.conf.d/gpro.conf

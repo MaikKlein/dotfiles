@@ -93,5 +93,12 @@ autoload -U compinit && compinit
 export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --glob '!.git/*'"
 export ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
-source $HOME/.nix-profile/etc/profile.d/nix.sh
+# source $HOME/.nix-profile/etc/profile.d/nix.sh
 
+
+export WASMTIME_HOME="$HOME/.wasmtime"
+
+export PATH="$WASMTIME_HOME/bin:$PATH"
+# Wasmer
+export WASMER_DIR="/home/maik/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"

@@ -4,7 +4,7 @@ set hidden
 set shell=/bin/sh
 let mapleader = " "
 let g:racer_cmd = "/home/maik/.cargo/bin/racer"
-let $RUST_SRC_PATH="/home/maik/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/"
+let $RUST_SRC_PATH="/home/maik/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/"
 "set completeopt-=preview
 
 function! LocationNext()                                                                  
@@ -232,7 +232,7 @@ Plug 'tpope/vim-repeat'
     "     \ 'branch': 'next',
     "     \ 'do': 'bash install.sh',
     "     \ }
-"Plug 'w0rp/ale'
+Plug 'w0rp/ale'
     " call dein#add( 'roxma/nvim-completion-manager')
     " call dein#add( 'roxma/nvim-cm-racer')
 Plug 'prabirshrestha/async.vim'
@@ -250,7 +250,7 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 "Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
 Plug 'trevordmiller/nova-vim'
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
 Plug 'joshdick/onedark.vim'
 call plug#end()
@@ -372,9 +372,10 @@ hi Directory guifg=#8ac6f2
 
 " Searing red very visible cursor
 
-" Don't blink normal mode cursor
-set guicursor=n-v-c:block-Cursor
-set guicursor+=n-v-c:blinkon0
+" " Don't blink normal mode cursor
+" set guicursor=n-v-c:block-Cursor
+" set guicursor+=n-v-c:blinkon0
+set guicursor=n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -725,7 +726,7 @@ nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 set timeoutlen=500
 let g:airline#extensions#tabline#formatter = 'default'
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'ra_lps_server'],
+    \ 'rust': ['rustup', 'run', 'stable', 'ra_lps_server'],
     \ 'javascript': ['/opt/javascript-typescript-langserver/lib/language-server-stdio.js'],
     \ }
 
@@ -783,7 +784,7 @@ command! -bang -nargs=* FindImpls
 
 let g:LanguageClient_diagnosticsEnable=0
 let g:ale_linters = {
-\   'rust': ['ra_lsp_server'],
+\   'rust': ['rustc'],
 \}
 
 "╎
@@ -809,6 +810,7 @@ let g:gitgutter_sign_modified_removed = '┃'
 " let g:ale_sign_warning = '┃'
 " let g:ale_sign_error = '┃'
 let g:ale_set_highlights=0
+let g:ale_rust_cargo_use_clippy=1
 
 call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
 nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
@@ -839,7 +841,7 @@ let g:cm_auto_popup=1
 set grepprg=rg\ --vimgrep
 "hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 let g:rustfmt_fail_silently = 1
-let g:rustfmt_command = "rustfmt +nightly"
+let g:rustfmt_command = "rustfmt"
 let g:fzf_layout = { 'down': '~25%' }
 let g:delimitMate_quotes = 0
 au FileType rust let b:AutoPairs = {'(':')', '[':']', '{':'}','"':'"', '`':'`', '|':'|', '<':'>'}
@@ -1008,3 +1010,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+let $CARGO_TARGET_DIR="ra-target"
+
+

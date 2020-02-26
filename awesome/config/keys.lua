@@ -1,6 +1,8 @@
 local apps = require("config.apps")
+local layouts = require("config.layouts")
 
 local awful = require("awful")
+local naughty = require("naughty")
 local gears = require("gears")
 
 local modkey = "Mod1"
@@ -48,11 +50,24 @@ local general = gears.table.join(
             end
         end,
         {description = "go back", group = "client"}),
+    awful.key(
+        {"Ctrl", },
+        "m",
+        function ()
+            awful.client.focus.byidx(-1)
+        end,
+        {description = "drun", group = "launcher"}
+    ),
 
     -- Standard program
     awful.key({modkey, },
               "space",
               function () awful.spawn("rofi -show drun") end,
+              {description = "drun", group = "launcher"}),
+    awful.key({},
+              "Print",
+              nil,
+              function () awful.util.spawn_with_shell("i3-scrot") end,
               {description = "drun", group = "launcher"}),
     awful.key({"Ctrl", },
               "Print",
@@ -116,7 +131,14 @@ local general = gears.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+    awful.key(
+        { modkey },
+        "t",
+        function()
+            awful.layout.set("tile", awful.screen.focused())
+        end,
+        {description = "show the menubar", group = "launcher"})
 )
 
 for _, dir in ipairs({"Left", "Right", "Up", "Down"}) do
@@ -125,7 +147,22 @@ for _, dir in ipairs({"Left", "Right", "Up", "Down"}) do
         awful.key(
             {modkey, },
             dir,
-            function () awful.client.focus.bydirection(lower_dir) end,
+            function ()
+                local screen = awful.screen.focused()
+                local layout = awful.layout.get(screen)
+                local layout_name = awful.layout.getname(layout)
+                if(layout_name == "tile" ) then
+                    awful.client.focus.bydirection(lower_dir, nil, true)
+                else
+                    if dir == "Up" then
+                        awful.client.focus.byidx(-1)
+                    end
+                    if dir == "Down" then
+                        awful.client.focus.byidx(1)
+                    end
+                end
+
+            end,
             {description = "focus " .. dir .. "client", group = "client"}
         )
 

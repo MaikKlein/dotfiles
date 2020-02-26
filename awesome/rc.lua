@@ -2,7 +2,6 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
-local lain = require("lain")
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -21,13 +20,15 @@ require("awful.hotkeys_popup.keys")
 
 local keys = require("config.keys")
 local apps = require("config.apps")
+local layouts = require("config.layouts")
+local dpi = require('beautiful').xresources.apply_dpi
 
 
 local primary_monitor = "DP-2"
 local secondary_monitor = "DP-0"
 
 -- Montor setup
-awful.spawn("xrandr --output " .. primary_monitor .. " --right-of " .. secondary_monitor)
+awful.spawn("xrandr --output " .. primary_monitor .. " --mode 2560x1440 --rate 144 --primary --preferred --right-of " .. secondary_monitor)
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -67,33 +68,7 @@ editor_cmd = apps.terminal .. " -e " .. apps.editor
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
 modkey = "Mod1"
-
--- Table of layouts to cover with awful.layout.inc, order matters.
-awful.layout.layouts = {
-    -- lain.layout.cascade.tile,
-    awful.layout.suit.tile,
-    -- awful.layout.suit.tile.left,
-    -- awful.layout.suit.tile.top,
-    -- awful.layout.suit.tile.bottom,
-    -- awful.layout.suit.floating,
-    -- awful.layout.suit.fair,
-    -- awful.layout.suit.fair.horizontal,
-    -- awful.layout.suit.spiral,
-    -- awful.layout.suit.spiral.dwindle,
-    -- awful.layout.suit.max,
-    -- awful.layout.suit.magnifier
-    -- awful.layout.suit.magnifier,
-    -- awful.layout.suit.corner.nw,
-    -- awful.layout.suit.corner.ne,
-    -- awful.layout.suit.corner.sw,
-    -- awful.layout.suit.corner.se,
-}
--- }}}
-lain.layout.cascade.tile.offset_x      = 5
-lain.layout.cascade.tile.offset_y      = 32
-lain.layout.cascade.tile.extra_padding = 5
-lain.layout.cascade.tile.nmaster       = 5
--- lain.layout.cascade.tile.ncol          = 2
+awful.layout.layouts = layouts.layouts
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
@@ -134,13 +109,13 @@ local taglist_buttons = gears.table.join(
                                               end
                                           end),
                     awful.button({ }, 3, awful.tag.viewtoggle),
-                    awful.button({ modkey }, 3, function(t)
-                                              if client.focus then
-                                                  client.focus:toggle_tag(t)
-                                              end
-                                          end),
-                    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
-                    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
+                    awful.button({ modkey }, 3,
+                        function(t)
+                            if client.focus then
+                                client.focus:toggle_tag(t)
+                            end
+                        end
+                    )
                 )
 
 local tasklist_buttons = gears.table.join(
@@ -179,12 +154,11 @@ end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
--- client.connect_signal("focus", function() 
---     local c = client.focus
---     if c then
---         c:raise()
---     end
--- end)
+client.connect_signal("focus", function() 
+    if client.focus then
+        client.focus:raise()
+    end
+end)
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
@@ -258,9 +232,9 @@ end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
+    awful.button({ }, 3, function () mymainmenu:toggle() end)
+    -- awful.button({ }, 4, awful.tag.viewnext),
+    -- awful.button({ }, 5, awful.tag.viewprev)
 ))
 -- }}}
 
@@ -319,15 +293,15 @@ root.keys(key_bindings)
 clientbuttons = gears.table.join(
     awful.button({ }, 1, function (c)
         c:emit_signal("request::activate", "mouse_click", {raise = true})
+    end),
+    awful.button({ modkey }, 1, function (c)
+        c:emit_signal("request::activate", "mouse_click", {raise = true})
+        awful.mouse.client.move(c)
+    end),
+    awful.button({ modkey }, 3, function (c)
+        c:emit_signal("request::activate", "mouse_click", {raise = true})
+        awful.mouse.client.resize(c)
     end)
-    -- awful.button({ modkey }, 1, function (c)
-    --     c:emit_signal("request::activate", "mouse_click", {raise = true})
-    --     awful.mouse.client.move(c)
-    -- end),
-    -- awful.button({ modkey }, 3, function (c)
-    --     c:emit_signal("request::activate", "mouse_click", {raise = true})
-    --     awful.mouse.client.resize(c)
-    -- end)
 )
 
 -- Set keys
@@ -423,7 +397,8 @@ client.connect_signal("request::titlebars", function(c)
         end)
     )
 
-    awful.titlebar(c, {enable_tooltip = false, size = 20, bg = beautiful.bg_normal .. "90", position = "left" }) : setup {
+    awful.titlebar.enable_tooltip = false
+    awful.titlebar(c, {size = 20, bg = beautiful.bg_normal .. "90", position = "left" }) : setup {
         -- { -- Middle
         --     { -- Title
         --         align  = "center",
@@ -439,23 +414,75 @@ client.connect_signal("request::titlebars", function(c)
             layout = wibox.layout.fixed.vertical()
         },
         {
-            layout  = wibox.layout.fixed.vertical
+            layout  = wibox.layout.align.vertical,
+            buttons = buttons
         },
         { -- Left
             awful.titlebar.widget.stickybutton(c),
-            buttons = buttons,
-            layout  = wibox.layout.fixed.vertical
+            layout  = wibox.layout.fixed.vertical,
+            buttons = buttons
         },
         layout = wibox.layout.align.vertical,
         expand = "none"
     }
 end)
 
--- Enable sloppy focus, so that focus follows mouse.
-client.connect_signal("mouse::enter", function(c)
-    c:emit_signal("request::activate", "mouse_enter", {raise = false})
-end)
+-- -- Enable sloppy focus, so that focus follows mouse.
+-- client.connect_signal("mouse::enter", function(c)
+--     c:emit_signal("request::activate", "mouse_enter", {raise = false})
+-- end)
 
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+-- client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
+-- client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+-- Defaults
+naughty.config.defaults.ontop = true
+naughty.config.defaults.icon_size = dpi(32)
+naughty.config.defaults.screen = awful.screen.focused()
+naughty.config.defaults.timeout = 5
+naughty.config.defaults.shape = function(cr, w, h) gears.shape.rounded_rect(cr, w, h, dpi(6)) end
+naughty.config.defaults.title = 'System Notification'
+
+-- -- Apply theme variables
+naughty.config.padding = 8
+naughty.config.spacing = 8
+naughty.config.defaults.margin = dpi(16)
+naughty.config.defaults.border_width = 0
+naughty.config.defaults.position = 'top_right'
+
+-- Timeouts
+naughty.config.presets.low.timeout = 3
+naughty.config.presets.critical.timeout = 0
+
+naughty.config.presets.normal = {
+  font         = 'SFNS Display 10',
+  fg           = beautiful.fg_normal,
+  bg = beautiful.tasklist_bg_normal,
+  border_width = 0,
+  margin       = dpi(16),
+  position     = 'top_right'
+}
+
+naughty.config.presets.low = {
+  font         = 'SFNS Display 10',
+  fg           = beautiful.fg_normal,
+  bg = beautiful.tasklist_bg_normal,
+  border_width = 0,
+  margin       = dpi(16),
+  position     = 'top_right'
+}
+
+naughty.config.presets.critical = {
+  font         = 'SFNS Display Bold 10',
+  fg           = '#ffffff',
+  bg           = '#ff0000',
+  border_width = 0,
+  margin       = dpi(16),
+  position     = 'top_right',
+  timeout      = 0
+}
+
+
+naughty.config.presets.ok = naughty.config.presets.normal
+naughty.config.presets.info = naughty.config.presets.normal
+naughty.config.presets.warn = naughty.config.presets.critical
