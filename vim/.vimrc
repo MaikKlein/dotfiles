@@ -50,9 +50,9 @@ nmap <leader>om6 :tabm 5<CR>
 nmap <leader>om7 :tabm 6<CR>
 nmap <leader>om8 :tabm 7<CR>
 nmap <leader>om9 :tabm 8<CR>
-nmap <leader>oc :tabnew<CR>:tabmove<CR>
 map <leader>mf :mark ' <CR>:! rustup run stable rustfmt %<CR><CR>'':e<CR>
 "map <leader>mf :mark '<CR>:RustFmt<CR>
+nmap <leader>oc :tabnew<CR>:tabmove<CR>
 let g:lmap.s.s = ['BLines', 'Lines']
 map <leader>; :Commentary<CR>
 nmap <leader>sc :noh<CR>
@@ -71,7 +71,7 @@ endfunction"}}}
 
 nmap <leader>en :call LocationNext()<CR>
 nmap <leader>eN :ALEPreviousWrap<CR>
-nmap <leader>el :lopen<CR>
+nmap <leader>el :CocList diagnostics<CR>
 
 "let g:lmap.e.n = ['lnext', 'Next error']
 nmap <leader>ls :mark '<CR>:FindSymbols<CR>
@@ -85,6 +85,7 @@ nmap <leader>gn <Plug>GitGutterNextHunk
 nmap <leader>gN <Plug>GitGutterPrevHunk
 nmap <leader>gS <Plug>GitGutterStageHunk
 nmap <leader>gu <Plug>GitGutterUndoHunk
+nnoremap <silent> <Leader>gk :call openterm#horizontal('lazygit', 0.8)<CR>
 nmap <C-k> :echo "test"<CR>
 nnoremap <C-k> :w<cr>
 let g:lmap.g.s = ['Gstatus', 'Git status']
@@ -166,7 +167,8 @@ filetype off                  " required
 " required!
 
 call plug#begin('~/.vim/plugged')
-Plug 'djoshea/vim-autoread'
+Plug 'lambdalisue/fern.vim'
+" Plug 'djoshea/vim-autoread'
 Plug 'junegunn/vim-peekaboo'
 Plug 'tikhomirov/vim-glsl'
 Plug 'lambdalisue/gina.vim'
@@ -176,14 +178,12 @@ Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'morhetz/gruvbox'
 Plug 'gmarik/vundle'
 Plug 'chriskempson/base16-vim'
-Plug 'racer-rust/vim-racer'
     " call dein#add( 'autozimu/LanguageClient-neovim', {)
     "     \ 'branch': 'next',
     "     \ 'do': 'bash install.sh',
     "     \ }
     " call dein#add( 'prabirshrestha/vim-lsp')
     " call dein#add( 'prabirshrestha/async.vim')
-Plug 'pangloss/vim-javascript'
     "" My Bundles here:
     "call dein#add( 'airblade/vim-gitgutter')
     "call dein#add( 'phildawes/racer')
@@ -221,7 +221,7 @@ Plug 'morhetz/gruvbox'
     "call dein#add( 'MaikKlein/ale')
     "call dein#add( 'neomake/neomake')
 Plug 'kbenzie/vim-spirv'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
     "call dein#add( 'Yggdroot/indentLine')
     "call dein#add( 'luochen1990/rainbow')
     "call dein#add( 'SirVer/ultisnips')
@@ -232,7 +232,7 @@ Plug 'tpope/vim-repeat'
     "     \ 'branch': 'next',
     "     \ 'do': 'bash install.sh',
     "     \ }
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
     " call dein#add( 'roxma/nvim-completion-manager')
     " call dein#add( 'roxma/nvim-cm-racer')
 Plug 'prabirshrestha/async.vim'
@@ -246,13 +246,25 @@ Plug 'rust-lang/rust.vim'
 "Plug 'neomake/neomake'
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
+" Plug 'Shougo/neosnippet.vim'
+" Plug 'Shougo/neosnippet-snippets'
 "Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
 Plug 'trevordmiller/nova-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
 Plug 'joshdick/onedark.vim'
+Plug 'antoinemadec/coc-fzf'
+Plug 'beyondmarc/hlsl.vim'
+Plug 'kburdett/vim-nuuid'
+" Plug 'xolox/vim-session'
+ Plug 'xolox/vim-misc'
+" Plug 'tpope/vim-obsession'
+" Plug 'ForkedRepos/vim-workspace'
+ " Plug 'romgrk/vim-session'
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
+Plug 'ryanoasis/vim-devicons'
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+Plug 'liuchengxu/vista.vim'
 call plug#end()
 "call vundle#end()            " required
 
@@ -325,14 +337,20 @@ map <silent> <leader>ff :set invfu<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let $TERM="xterm-256color"
-set background=dark
-set termguicolors
-"let g:solarized_use16 = 1
-" colorscheme solarized8
-colorscheme onedark
-let g:gruvbox_termcolors=256
-"let g:solarized_termcolors=256
+set background=light
+" set termguicolors
+" Enable true color 启用终端24位色
+" set termguicolors
+if exists('+termguicolors')
+  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+let g:solarized_termcolors=256
+let g:solarized_use16 = 1
+colorscheme solarized8
+" colorscheme onedark
+" let g:gruvbox_termcolors=256
 "let g:LanguageClient_signColumnAlwaysOn=1
 let g:LanguageClient_diagnosticsDisplay={
             \1: {
@@ -582,28 +600,6 @@ map <leader>ap :Align
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Tags
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Prevent automatic ctag updates
-let g:easytags_auto_update = 0
-let g:easytags_auto_highlight = 0
-let g:easytags_on_cursorhold = 0
-
-" Generate tags manually
-nmap <leader>tu :UpdateTags<CR>
-
-" Scan recursively, not just current file
-let g:easytags_autorecurse = 1
-" Follow symbolic links
-let g:easytags_resolve_links = 1
-
-" Toggle tagbar
-nmap <leader>tt :TagbarToggle<CR>
-" Close tagbar after jumping to a tag
-let g:tagbar_autoclose = 1
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Git
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:extradite_width = 60
@@ -627,13 +623,6 @@ vnoremap <silent> <C-\> "*y:call NonintrusiveGitGrep(@*)<CR>
 nnoremap <silent> <leader>g? :call CommittedFiles()<CR>:copen<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Abbreviation
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Ruby debugger
-iabbrev rdebug require 'ruby-debug'; Debugger.start; Debugger.settings[:autoeval] = 1; Debugger.settings[:autolist] = 1; debugger
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Customization
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if filereadable(expand("~/.vimrc.local"))
@@ -653,8 +642,6 @@ endif
 inoremap <C-s> <esc>:w<cr>
 nnoremap <C-s> :w<cr>
 
-set ttimeoutlen=0
-
 inoremap <C-s> <esc>:w<cr>
 nnoremap <C-s> :w<cr>
 let g:airline#extensions#tabline#enabled = 1
@@ -662,8 +649,6 @@ let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#exclude_preview = 0
 let g:airline#extensions#tabline#show_tab_type = 0
-"let g:ale_set_quickfix = 1
-"let g:ale_set_loclist = 1
 
 " sign define transparent_sign
 " augroup SignColFixAu
@@ -676,9 +661,6 @@ let g:clang_format#style_options = {
             \ "AlwaysBreakTemplateDeclarations" : "true",
             \ "Standard" : "C++11",
             \ "BreakBeforeBraces" : "Stroustrup"}
-
-let g:ConqueTerm_FastMode = 1
-let g:ConqueTerm_Color = 0
 
 let g:vim_markdown_folding_disabled = 1
 
@@ -723,7 +705,6 @@ nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 "
 "let g:deoplete#enable_at_startup = 1
 "inoremap <expr> <Tab>  pumvisible() ? "" : deoplete#mappings#manual_complete()
-set timeoutlen=500
 let g:airline#extensions#tabline#formatter = 'default'
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'stable', 'ra_lps_server'],
@@ -782,10 +763,13 @@ command! -bang -nargs=* FindImpls
   \   <bang>0)
 
 
-let g:LanguageClient_diagnosticsEnable=0
-let g:ale_linters = {
-\   'rust': ['rustc'],
-\}
+" let g:LanguageClient_diagnosticsEnable=0
+" let g:ale_linters = {
+" \   'rust': ['rustc'],
+" \}
+let b:ale_linters = ['rustc']
+" let g:ale_rust_rls_executable = 'rust-analyzer'
+let b:ale_fixers = ['rustfmt']
 
 "╎
 "▶
@@ -848,7 +832,7 @@ au FileType rust let b:AutoPairs = {'(':')', '[':']', '{':'}','"':'"', '`':'`', 
 let g:AutoPairsMapBS = 1
 let g:vimfiler_as_default_explorer = 1
 let g:lightline = {
-  \   'colorscheme': 'onedark',
+  \   'colorscheme': 'solarized',
   \   'active': {
   \     'left':[ [ 'mode', 'paste' ],
   \              [ 'gitbranch', 'readonly', 'filename', 'modified', ]
@@ -925,7 +909,7 @@ let g:LargeFile=10
 "  " undolevels=-1 (no undo possible)
 "  let g:LargeFile = 1024 * 1024 * 10
 "  augroup LargeFile
-"    autocmd BufEnter 
+"    autocmd BufEnter
 "    autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > g:LargeFile | set eventignore+=FileType | setlocal noswapfile bufhidden=unload buftype=nowrite undolevels=-1 | else | set eventignore-=FileType | endif
 "    augroup END
 "  endif
@@ -951,7 +935,6 @@ noremap <C-E> <ESC>:ALENextWrap<CR>
 "     \ 'whitelist': ['*'],
 "     \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
 "     \ }))
-autocmd FileType rust setlocal omnifunc=lsp#complete
 imap <c-space> <Plug>(asyncomplete_force_refresh)
 " call neomake#configure#automake('w')
 imap <C-f>     <Plug>(neosnippet_expand_or_jump)
@@ -1001,16 +984,59 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" Use `[c` and `]c` for navigate diagnostics
+" " Use `[c` and `]c` for navigate diagnostics
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
 nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent>gd <Plug>(coc-definition)
+nmap <silent>gy <Plug>(coc-type-definition)
+nmap <silent>gi <Plug>(coc-implementation)
+nmap <silent>gh :call <SID>show_documentation()<CR>
+nmap <leader>gr <Plug>(coc-references)
+nmap <leader>rn <Plug>(coc-rename)
+" Remap keys for applying codeAction to the current line.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>mo :CocList outline<CR>
+nmap <leader>ms :CocList symbols<CR>
+nmap <leader>ma :CocAction<CR>
+" nmap <leader>mo :CocFzfList outline<CR>
+" nmap <leader>ms :CocFzfList symbols<CR>
 
-let $CARGO_TARGET_DIR="ra-target"
+" let $CARGO_TARGET_DIR="target/ra-target"
 
 
+" noremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+set noundofile
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
+let g:coc_fzf_preview_available = 1
+
+" Use K to show documentation in preview window.
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+set nobackup
+set nowritebackup
+set updatetime=300
+set timeoutlen=500
+let g:clap_theme = 'solarized_light'
+" Ensure you have installed some decent font to show these pretty symbols, then you can enable icon for the kind.
+let g:vista#renderer#enable_icon = 1
+
+" The default icons can't be suitable for all the filetypes, you can extend it as you wish.
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+
+" Executive used when opening vista sidebar without specifying it.
+" See all the avaliable executives via `:echo g:vista#executives`.
+let g:vista_default_executive = 'coc'

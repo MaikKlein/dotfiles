@@ -25,7 +25,8 @@ local dpi = require('beautiful').xresources.apply_dpi
 
 
 local primary_monitor = "DP-2"
-local secondary_monitor = "DP-0"
+local secondary_monitor = "HDMI-0"
+--local secondary_monitor = "DP-0"
 
 -- Montor setup
 awful.spawn("xrandr --output " .. primary_monitor .. " --mode 2560x1440 --rate 144 --primary --preferred --right-of " .. secondary_monitor)

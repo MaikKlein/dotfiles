@@ -27,13 +27,13 @@ font xft:URWGothic-Book 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty -e tmux
+bindsym $mod+Return exec alacritty -e tmux
 
 # kill focused window
 bindsym ctrl+Shift+c kill
 
 # start program launcher
-bindsym $mod+space exec --no-startup-id dmenu_recency
+bindsym $mod+space exec --no-startup-id rofi -show drun
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
@@ -139,7 +139,7 @@ bindsym $mod+Ctrl+Left workspace prev
 #                 set $ws2 2:
 
 set $monitor DP-2
-set $monitor2 DP-0
+set $monitor2 HDMI-0
 
 set $ws1 1:1
 set $ws2 2:2
@@ -162,15 +162,15 @@ workspace $ws8 output $monitor
 workspace $ws9 output $monitor2
 
 # switch to workspace
-bindsym ctrl+1 workspace $ws1
-bindsym ctrl+2 workspace $ws2
-bindsym ctrl+3 workspace $ws3
-bindsym ctrl+4 workspace $ws4
-bindsym ctrl+5 workspace $ws5
-bindsym ctrl+6 workspace $ws6
-bindsym ctrl+7 workspace $ws7
-bindsym ctrl+8 workspace $ws8
-bindsym ctrl+9 workspace $ws9
+bindsym Mod4+1 workspace $ws1
+bindsym Mod4+2 workspace $ws2
+bindsym Mod4+3 workspace $ws3
+bindsym Mod4+4 workspace $ws4
+bindsym Mod4+5 workspace $ws5
+bindsym Mod4+6 workspace $ws6
+bindsym Mod4+7 workspace $ws7
+bindsym Mod4+8 workspace $ws8
+bindsym Mod4+9 workspace $ws9
 
 # Move focused container to workspace
 bindsym $mod+Ctrl+1 move container to workspace $ws1
@@ -291,6 +291,7 @@ exec --no-startup-id nm-applet
 #exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
+exec --no-startup-id xbindkeys
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
 #exec --no-startup-id start_conky_maia
@@ -302,7 +303,7 @@ exec feh --bg-scale dotfiles/wallpapers/firewatch-blue.jpg
 # exec xinput --set-prop 10 'Device Accel Profile' -1 
 # exec xset s 0 s blank 
 exec xset -dpms 
-exec xrandr --output DP-2 --mode 2560x1440 -r 144.00 --primary --right-of DP-0
+exec xrandr --output DP-2 --mode 2560x1440 -r 144.00 --primary --right-of HDMI-0
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:

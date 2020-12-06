@@ -85,14 +85,11 @@ source $HOME/.zshenv
 stty start undef
 stty stop undef
 setopt noflowcontrol
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #source $HOME/src/nix-zsh-completions/nix.plugin.zsh
 #fpath=($HOME/src/nix-zsh-completions $fpath)
 autoload -U compinit && compinit
 export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --glob '!.git/*'"
-export ZSH=$HOME/.oh-my-zsh
-source $ZSH/oh-my-zsh.sh
 # source $HOME/.nix-profile/etc/profile.d/nix.sh
 
 
@@ -102,3 +99,34 @@ export PATH="$WASMTIME_HOME/bin:$PATH"
 # Wasmer
 export WASMER_DIR="/home/maik/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+(cat ~/.cache/wal/sequences &)
+source ~/.cache/wal/colors-tty.sh
+
+
+# eval "$(starship init zsh)"
+
+export ZSH=$HOME/.oh-my-zsh
+source $ZSH/oh-my-zsh.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export GDEFAULT="git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"
+alias gcm='git checkout $(eval $GDEFAULT)'
+alias grl='gfo && git reset --soft origin/$(eval $GDEFAULT)' # reset to latest master
+alias l='exa -l'
+
+### >>> conda initialize >>>
+## !! Contents within this block are managed by 'conda init' !!
+#__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+#    eval "$__conda_setup"
+#else
+#    if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+#        . "/opt/miniconda3/etc/profile.d/conda.sh"
+#    else
+#        export PATH="/opt/miniconda3/bin:$PATH"
+#    fi
+#fi
+#unset __conda_setup
+## <<< conda initialize <<<
+
