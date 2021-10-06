@@ -1,0 +1,7 @@
+[Bookmarks]
+[Recent]
+/home/maik/Documents/
+/home/maik/Downloads/
+/home/maik/projects/kajiya/assets/meshes/junk/
+/home/maik/Documents/test/
+/home/maik/projects/kajiya/assets/meshes/

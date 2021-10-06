@@ -1,0 +1,3 @@
+/home/maik/Documents/blender/models/learn.blend
+/home/maik/Documents/blender/models/katara.blend
+/home/maik/Documents/blender/models/sword.blend

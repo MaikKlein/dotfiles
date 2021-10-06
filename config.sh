@@ -18,6 +18,7 @@ ln -s -f "$(pwd)/bspwm/.config/bspwm/bspwmrc" ~/.config/bspwm/bspwmrc
 mkdir -p ~/.config/sxhkd
 ln -s -f "$(pwd)/bspwm/.config/sxhkd/sxhkdrc" ~/.config/sxhkd/sxhkdrc
 ln -s -f "$(pwd)/compton/compton.conf" ~/compton.conf
+
 mkdir -p ~/.config/polybar
 ln -s -f "$(pwd)/polybar/.config/polybar/config" ~/.config/polybar/config
 cp -rsf "$(pwd)/.IntelliJIdea2017.2" ~/.IntelliJIdea2017.2
@@ -33,4 +34,9 @@ ln -s -f "$(pwd)/kitty/.config/kitty/kitty.conf" ~/.config/kitty/kitty.conf
 
 ln -s -f -d "$(pwd)/awesome" ~/.config
 
+ln -s -f -d "$(pwd)/blender" ~/.config
+
+ln -s -f -d "$(pwd)/nvim" ~/.config/nvim
+
 ln -s -f "$(pwd)/mouse/gpro.conf" /etc/X11/xorg.conf.d/gpro.conf
+

@@ -1,0 +1,5 @@
+/home/maik/Documents/cubic-worlds/02_fundamentals_project_files/02_04_asset_library/untitled.blend
+/home/maik/Documents/cubic-worlds/02_fundamentals_project_files/02_04_asset_library/cw_assets.blend
+/home/maik/Documents/cubic-worlds/03_scene_creation_project_files/03_30_using_pre-made_characters.blend
+/home/maik/Documents/cubic-worlds/05_scene_finalization_project_files/05_05_lens_distortion_and_vignette.blend
+/home/maik/Documents/cubic-worlds/02_fundamentals_project_files/02_05_coloring_workflow.blend

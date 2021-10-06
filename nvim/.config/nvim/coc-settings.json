@@ -1,8 +1,0 @@
-{
-    "rust-analyzer.files.watcher": "notify",
-    "rust-analyzer.checkOnSave.enable": false,
-    "rust-analyzer.checkOnSave.command": "clippy",
-    "coc.preferences.hoverTarget": "echo",
-    "rust-analyzer.inlayHints.chainingHints": false,
-    "rust-analyzer.cargo.allFeatures": true
-}

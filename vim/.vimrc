@@ -50,20 +50,22 @@ nmap <leader>om6 :tabm 5<CR>
 nmap <leader>om7 :tabm 6<CR>
 nmap <leader>om8 :tabm 7<CR>
 nmap <leader>om9 :tabm 8<CR>
-map <leader>mf :mark ' <CR>:! rustup run stable rustfmt %<CR><CR>'':e<CR>
+" map <leader>mf :mark ' <CR>:! rustup run stable rustfmt %<CR><CR>'':e<CR>
+map <leader>mf :mark ' <CR>:RustFmt<CR>'':e<CR>
+map <leader>mi :mark ' <CR>:! rustup run stable rustfmt --config imports_granularity="Crate" %<CR><CR>'':e<CR>
 "map <leader>mf :mark '<CR>:RustFmt<CR>
 nmap <leader>oc :tabnew<CR>:tabmove<CR>
 let g:lmap.s.s = ['BLines', 'Lines']
 map <leader>; :Commentary<CR>
 nmap <leader>sc :noh<CR>
-nmap <leader>ft :NERDTree<CR>
-nmap <leader>fT :NERDTreeFind<CR>
+nmap <leader>ft :NvimTreeFindFile<CR>
+nmap <leader>fT :NvimTreeToggle<CR>
 nmap <leader>sd <Plug>(easymotion-overwin-f2)
 
-inoremap <silent><expr> <C-SPACE>
-\ pumvisible() ? "\<C-n>" :
-\ <SID>check_back_space() ? "\<C-SPACE>" :
-\ deoplete#mappings#manual_complete()
+" inoremap <silent><expr> <C-SPACE>
+" \ pumvisible() ? "\<C-n>" :
+" \ <SID>check_back_space() ? "\<C-SPACE>" :
+" \ deoplete#mappings#manual_complete()
 function! s:check_back_space() abort "{{{
 let col = col('.') - 1
 return !col || getline('.')[col - 1]  =~ '\s'
@@ -78,6 +80,7 @@ nmap <leader>ls :mark '<CR>:FindSymbols<CR>
 nmap <leader>li :mark '<CR>:FindImpls<CR>
 nmap <leader>lf :mark '<CR>:FindFunctions<CR>
 nmap <leader>od :tabclose<CR>
+
 "nnoremap gd :mark ' <bar> :call LanguageClient_textDocument_definition()<CR>
 "nnoremap ga :call LanguageClient_textDocument_definition()<CR>
 nmap <leader>gd :Gvdiff<CR>
@@ -195,13 +198,13 @@ Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
     "call dein#add( 'tikhomirov/vim-glsl')
 Plug 'tpope/vim-fugitive'
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
     "call dein#add( 'bling/vim-airline')
     "call dein#add( 'vim-airline/vim-airline-themes')
     """"" Haskell stuff
 Plug 'jiangmiao/auto-pairs'
     "call dein#add( 'Raimondi/delimitMate')
-Plug 'hecal3/vim-leader-guide'
+"Plug 'hecal3/vim-leader-guide'
     "call dein#add( 'scrooloose/syntastic')
     "call dein#add( 'mattn/gist-vim')
     "call dein#add( 'gkz/vim-ls')
@@ -226,7 +229,7 @@ Plug 'kbenzie/vim-spirv'
     "call dein#add( 'luochen1990/rainbow')
     "call dein#add( 'SirVer/ultisnips')
     "call dein#add( 'honza/vim-snippets')
-Plug 'lifepillar/vim-solarized8'
+" Plug 'lifepillar/vim-solarized8'
 Plug 'tpope/vim-repeat'
     " call dein#add( 'autozimu/LanguageClient-neovim', {)
     "     \ 'branch': 'next',
@@ -250,10 +253,10 @@ Plug 'junegunn/fzf.vim'
 " Plug 'Shougo/neosnippet-snippets'
 "Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
 Plug 'trevordmiller/nova-vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
 Plug 'joshdick/onedark.vim'
-Plug 'antoinemadec/coc-fzf'
+" Plug 'antoinemadec/coc-fzf'
 Plug 'beyondmarc/hlsl.vim'
 Plug 'kburdett/vim-nuuid'
 " Plug 'xolox/vim-session'
@@ -261,10 +264,28 @@ Plug 'kburdett/vim-nuuid'
 " Plug 'tpope/vim-obsession'
 " Plug 'ForkedRepos/vim-workspace'
  " Plug 'romgrk/vim-session'
-Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
-Plug 'ryanoasis/vim-devicons'
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
-Plug 'liuchengxu/vista.vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
+" Plug 'ishan9299/nvim-solarized-lua'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
+Plug 'kabouzeid/nvim-lspinstall'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'kosayoda/nvim-lightbulb'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'onsails/lspkind-nvim'
+Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'folke/tokyonight.nvim'
+Plug 'navarasu/onedark.nvim'
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'gfanto/fzf-lsp.nvim'
+Plug 'nvim-lua/lsp_extensions.nvim'
+Plug 'shaunsingh/solarized.nvim'
+
+
 call plug#end()
 "call vundle#end()            " required
 
@@ -335,9 +356,9 @@ set vb t_vb=
 map <silent> <leader>ff :set invfu<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts
+" => colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set background=light
+set background=dark
 " set termguicolors
 " Enable true color 启用终端24位色
 " set termguicolors
@@ -348,7 +369,10 @@ if exists('+termguicolors')
 endif
 let g:solarized_termcolors=256
 let g:solarized_use16 = 1
-colorscheme solarized8
+let g:tokyonight_style = "night"
+" colorscheme solarized
+ colorscheme onedark
+" colorscheme solarized8
 " colorscheme onedark
 " let g:gruvbox_termcolors=256
 "let g:LanguageClient_signColumnAlwaysOn=1
@@ -469,13 +493,13 @@ nnoremap k gk
 " but preserve cursor coloring
 
 " Return to last edit position when opening files (You want this!)
-augroup last_edit
-  autocmd!
-  autocmd BufReadPost *
-        \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \   exe "normal! g`\"" |
-        \ endif
-augroup END
+" augroup last_edit
+"   autocmd!
+"   autocmd BufReadPost *
+"         \ if line("'\"") > 0 && line("'\"") <= line("$") |
+"         \   exe "normal! g`\"" |
+"         \ endif
+" augroup END
 " Remember info about open buffers on close
 "set viminfo^=%
 
@@ -507,13 +531,6 @@ func! DeleteTrailingWS()
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
-
-augroup whitespace
-  autocmd!
-  autocmd BufWrite *.py :call DeleteTrailingWS()
-  autocmd BufWrite *.coffee :call DeleteTrailingWS()
-  autocmd BufWrite *.rb :call DeleteTrailingWS()
-augroup END
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -643,7 +660,7 @@ inoremap <C-s> <esc>:w<cr>
 nnoremap <C-s> :w<cr>
 
 inoremap <C-s> <esc>:w<cr>
-nnoremap <C-s> :w<cr>
+nnoremap <Ccs> :w<cr>
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_splits = 0
@@ -671,8 +688,8 @@ command! -nargs=+ Silent
 " fugitive git bindings
 nnoremap <Leader>ga :Silent Git add .<CR>
 nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gc :Gcommit -v -q<CR>
-nnoremap <Leader>gt :Gcommit -v -q %:p<CR>
+nnoremap <Leader>gc :Git commit -v -q<CR>
+nnoremap <Leader>gt :Git commit -v -q %:p<CR>
 nnoremap <Leader>ge :Gedit<CR>
 nnoremap <Leader>gr :Gread<CR>
 nnoremap <Leader>gw :Gwrite<CR><CR>
@@ -796,7 +813,7 @@ let g:gitgutter_sign_modified_removed = '┃'
 let g:ale_set_highlights=0
 let g:ale_rust_cargo_use_clippy=1
 
-call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
+" call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
 nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
 vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
 
@@ -866,7 +883,6 @@ let g:lightline.tabline = {
 set noshowmode
 
 let g:rust_fold = 0
-autocmd FileType rust setlocal nosmartindent
 let g:AutoPairsCenterLine=0
 let g:AutoPairsMapCR=0
 let g:AutoPairsMultilineClose=0
@@ -935,7 +951,7 @@ noremap <C-E> <ESC>:ALENextWrap<CR>
 "     \ 'whitelist': ['*'],
 "     \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
 "     \ }))
-imap <c-space> <Plug>(asyncomplete_force_refresh)
+" imap <c-space> <Plug>(asyncomplete_force_refresh)
 " call neomake#configure#automake('w')
 imap <C-f>     <Plug>(neosnippet_expand_or_jump)
 smap <C-f>     <Plug>(neosnippet_expand_or_jump)
@@ -962,7 +978,7 @@ function! MaximizeToggle()
         only
     endif
 endfunction
-nmap gd <Plug>(rust-def)
+" nmap gd <Plug>(rust-def)
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -978,7 +994,7 @@ function! s:check_back_space() abort
 endfunction
 
 " Use <c-space> for trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+" inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
@@ -989,7 +1005,7 @@ nmap <silent> [c <Plug>(coc-diagnostic-prev)
 nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
-nmap <silent>gd <Plug>(coc-definition)
+" nmap <silent>gd <Plug>(coc-definition)
 nmap <silent>gy <Plug>(coc-type-definition)
 nmap <silent>gi <Plug>(coc-implementation)
 nmap <silent>gh :call <SID>show_documentation()<CR>
@@ -1009,7 +1025,7 @@ nmap <leader>ma :CocAction<CR>
 
 
 " noremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
-set noundofile
+set undofile
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
 let g:coc_fzf_preview_available = 1
 
@@ -1040,3 +1056,339 @@ let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 " Executive used when opening vista sidebar without specifying it.
 " See all the avaliable executives via `:echo g:vista#executives`.
 let g:vista_default_executive = 'coc'
+
+
+lua << EOF
+require'lspinstall'.setup() -- important
+
+local servers = require'lspinstall'.installed_servers()
+
+local nvim_lsp = require('lspconfig')
+
+-- Use an on_attach function to only map the following keys 
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  --Enable completion triggered by <c-x><c-o>
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+
+end
+
+for _, server in pairs(servers) do
+  if server == "rust" then
+    require'lspconfig'[server].setup {
+        on_attach = on_attach,
+        settings = {
+            ["rust-analyzer"] = {
+                diagnostics = {
+                    enable = false
+                },
+                checkOnSave = {
+                    enable = false
+                }
+            },
+        }
+    }
+  else
+    require'lspconfig'[server].setup{ on_attach = on_attach  }
+  end
+end
+local opt = {silent = true}
+local map = vim.api.nvim_set_keymap
+vim.g.mapleader = " "
+
+-- MAPPINGS
+map("n", "<S-t>", [[<Cmd>tabnew<CR>]], opt) -- new tab
+map("n", "<S-x>", [[<Cmd>bdelete<CR>]], opt) -- close tab
+
+-- status
+
+local gl = require("galaxyline")
+local gls = gl.section
+local condition = require("galaxyline.condition")
+
+gl.short_line_list = {" "}
+
+local colors = {
+    bg = "#22262e",
+    fg = "#abb2bf",
+    green = "#97C378",
+    red = "#d47d85",
+    lightbg = "#2d3139",
+    lightbg2 = "#262a32",
+    blue = "#81A1C1",
+    yellow = "#e0c080",
+    grey = "#6f737b"
+}
+
+gls.left[2] = {
+    statusIcon = {
+        provider = function()
+            return "   "
+        end,
+        highlight = {colors.bg, colors.blue},
+        separator = "  ",
+        separator_highlight = {colors.blue, colors.lightbg}
+    }
+}
+
+gls.left[3] = {
+    FileIcon = {
+        provider = "FileIcon",
+        condition = condition.buffer_not_empty,
+        highlight = {colors.fg, colors.lightbg}
+    }
+}
+
+gls.left[4] = {
+    FileName = {
+        provider = {"FileName"},
+        condition = condition.buffer_not_empty,
+        highlight = {colors.fg, colors.lightbg},
+        separator = " ",
+        separator_highlight = {colors.lightbg, colors.lightbg2}
+    }
+}
+
+gls.left[5] = {
+    current_dir = {
+        provider = function()
+            local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+            return "  " .. dir_name .. " "
+        end,
+        highlight = {colors.grey, colors.lightbg2},
+        separator = " ",
+        separator_highlight = {colors.lightbg2, colors.bg}
+    }
+}
+
+local checkwidth = function()
+    local squeeze_width = vim.fn.winwidth(0) / 2
+    if squeeze_width > 30 then
+        return true
+    end
+    return false
+end
+
+gls.left[6] = {
+    DiffAdd = {
+        provider = "DiffAdd",
+        condition = checkwidth,
+        icon = "  ",
+        highlight = {colors.fg, colors.bg}
+    }
+}
+
+gls.left[7] = {
+    DiffModified = {
+        provider = "DiffModified",
+        condition = checkwidth,
+        icon = "   ",
+        highlight = {colors.grey, colors.bg}
+    }
+}
+
+gls.left[8] = {
+    DiffRemove = {
+        provider = "DiffRemove",
+        condition = checkwidth,
+        icon = "  ",
+        highlight = {colors.grey, colors.bg}
+    }
+}
+
+gls.left[9] = {
+    DiagnosticError = {
+        provider = "DiagnosticError",
+        icon = "  ",
+        highlight = {colors.red, colors.bg}
+    }
+}
+
+gls.left[10] = {
+    DiagnosticWarn = {
+        provider = "DiagnosticWarn",
+        icon = "  ",
+        highlight = {colors.yellow, colors.bg}
+    }
+}
+
+gls.right[1] = {
+    lsp_status = {
+        provider = function(msg)
+            msg = msg or "No Active Lsp"
+            local clients = vim.lsp.get_active_clients()
+            if next(clients) ~= nil then
+                return " " .. "  " .. " active "
+            else
+                return ""
+            end
+        end,
+        highlight = {colors.grey, colors.bg}
+    }
+}
+
+gls.right[2] = {
+    GitIcon = {
+        provider = function()
+            return " "
+        end,
+        condition = require("galaxyline.provider_vcs").check_git_workspace,
+        highlight = {colors.grey, colors.lightbg},
+        separator = "",
+        separator_highlight = {colors.lightbg, colors.bg}
+    }
+}
+
+gls.right[3] = {
+    GitBranch = {
+        provider = "GitBranch",
+        condition = require("galaxyline.provider_vcs").check_git_workspace,
+        highlight = {colors.grey, colors.lightbg}
+    }
+}
+
+gls.right[4] = {
+    viMode_icon = {
+        provider = function()
+            return " "
+        end,
+        highlight = {colors.bg, colors.red},
+        separator = " ",
+        separator_highlight = {colors.red, colors.lightbg}
+    }
+}
+
+gls.right[5] = {
+    ViMode = {
+        provider = function()
+            local alias = {
+                n = "Normal",
+                i = "Insert",
+                c = "Command",
+                V = "Visual",
+                [""] = "Visual",
+                v = "Visual",
+                R = "Replace"
+            }
+            local current_Mode = alias[vim.fn.mode()]
+
+            if current_Mode == nil then
+                return "  Terminal "
+            else
+                return "  " .. current_Mode .. " "
+            end
+        end,
+        highlight = {colors.red, colors.lightbg}
+    }
+}
+
+gls.right[6] = {
+    some_icon = {
+        provider = function()
+            return " "
+        end,
+        separator = "",
+        separator_highlight = {colors.green, colors.lightbg},
+        highlight = {colors.lightbg, colors.green}
+    }
+}
+
+gls.right[7] = {
+    line_percentage = {
+        provider = function()
+            local current_line = vim.fn.line(".")
+            local total_line = vim.fn.line("$")
+
+            if current_line == 1 then
+                return "  Top "
+            elseif current_line == vim.fn.line("$") then
+                return "  Bot "
+            end
+            local result, _ = math.modf((current_line / total_line) * 100)
+            return "  " .. result .. "% "
+        end,
+        highlight = {colors.green, colors.lightbg}
+    }
+}
+
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = { "javascript" }, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+  },
+}
+
+require'lsp_extensions'.inlay_hints{
+	highlight = "Comment",
+	prefix = " > ",
+	aligned = false,
+	only_current_line = false,
+        enabled = {"TypeHint", "ChainingHint", "ParameterHint"}
+}
+
+EOF
+
+" autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"}}
+
+" autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
+"
+" autocmd FileType rust setlocal nosmartindent
+
+set completeopt=menuone,noselect
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.autocomplete = v:true
+let g:compe.debug = v:false
+let g:compe.min_length = 1
+let g:compe.preselect = 'enable'
+let g:compe.throttle_time = 80
+let g:compe.source_timeout = 200
+let g:compe.incomplete_delay = 400
+let g:compe.max_abbr_width = 100
+let g:compe.max_kind_width = 100
+let g:compe.max_menu_width = 100
+let g:compe.documentation = v:true
+
+let g:compe.source = {}
+let g:compe.source.path = v:true
+let g:compe.source.buffer = v:true
+let g:compe.source.calc = v:true
+let g:compe.source.nvim_lsp = v:true
+let g:compe.source.nvim_lua = v:true
+let g:compe.source.vsnip = v:false
+let g:compe.source.ultisnips = v:true
+
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+
+nmap <leader>gr :Telescope lsp_references<CR>
+" let g:nvim_tree_follow = 1

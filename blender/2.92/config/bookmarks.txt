@@ -1,0 +1,7 @@
+[Bookmarks]
+[Recent]
+/home/maik/Documents/blender/models/
+/home/maik/Downloads/POLYGON_-_Sci-Fi_Space_Pack_v1.07/Assets/PolygonSciFiSpace/Models/
+/home/maik/Downloads/POLYGON_-_Sci-Fi_Space_Pack_v1.07/Assets/PolygonSciFiSpace/Textures/
+/home/maik/Downloads/
+/home/maik/Documents/

@@ -1,4 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/home/maik/.nix-profile'
-let g:netrw_dirhist_2='/nix/store/99v7f1ak5p78n3h69svqd5fzhsmx5wqq-etc/etc/X11/xorg.conf.d'

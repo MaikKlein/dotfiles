@@ -1,0 +1,9 @@
+[Bookmarks]
+[Recent]
+/home/maik/Documents/
+/home/maik/Documents/cubic-worlds/02_fundamentals_project_files/02_04_asset_library/
+/home/maik/Documents/cubic-worlds/03_scene_creation_project_files/
+/home/maik/projects/kajiya/assets/meshes/robot/
+/home/maik/Documents/cubic-worlds/export/
+/home/maik/Documents/cubic-worlds/05_scene_finalization_project_files/
+/home/maik/Documents/cubic-worlds/02_fundamentals_project_files/

@@ -1,0 +1,6 @@
+/home/maik/Documents/Junk.blend
+/home/maik/Documents/splash-pokedstudio.blend
+/home/maik/Documents/sci.blend
+/home/maik/Documents/autumn.blend
+/home/maik/Documents/Blender 2.blend
+/home/maik/Documents/cubic-worlds/02_fundamentals_project_files/02_03_workspaces_preset_file/cw_workspaces_basic_scene.blend
