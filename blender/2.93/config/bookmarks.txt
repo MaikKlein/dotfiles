@@ -1,6 +1,10 @@
 [Bookmarks]
 [Recent]
 /home/maik/Documents/
+/home/maik/projects/ark-modules/assets/Embark/meshes/
+/home/maik/projects/ark-modules/assets/Embark/sandpiper/hub/
+/home/maik/godot/
+/home/maik/Documents/cubic-worlds/03_scene_creation_project_files/
 /home/maik/Downloads/
 /home/maik/projects/kajiya/assets/meshes/junk/
 /home/maik/Documents/test/

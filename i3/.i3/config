@@ -33,7 +33,7 @@ bindsym $mod+Return exec kitty --single-instance -e tmux
 bindsym ctrl+Shift+c kill
 
 # start program launcher
-bindsym $mod+space exec --no-startup-id rofi -show drun
+bindsym $mod+space exec --no-startup-id rofi -show drun -sort -sorting-method fzf
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
@@ -135,7 +135,7 @@ bindsym $mod+Ctrl+Left workspace prev
 #                 set $ws2 2:
 
 set $monitor DP-2
-set $monitor2 HDMI-0
+set $monitor2 DP-0
 
 set $ws1 1:1
 set $ws2 2:2
@@ -222,6 +222,7 @@ for_window [class="Skype"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
+#for_window [class="UnrealEditor"] floating enable
 
 # switch to workspace with urgent window automatically
 #for_window [urgent=latest] focus
@@ -279,11 +280,13 @@ mode "resize" {
 # Lock screen
 #bindsym $mod+9 exec --no-startup-id blurlock
 
+bindsym $mod+slash exec "splatmoji type"
+
 # Autostart applications
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+#exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 #exec --no-startup-id manjaro-hello
-exec --no-startup-id nm-applet
+#exec --no-startup-id nm-applet
 #exec --no-startup-id xfce4-power-manager
 # exec --no-startup-id pamac-tray
 # exec --no-startup-id clipit
@@ -297,14 +300,16 @@ exec --no-startup-id nm-applet
 # exec_always --no-startup-id fix_xcursor
 # exec xinput --set-prop 10 'Device Accel Profile' -1
 exec xset s 0 s blank
-exec --no-startup-id xmodmap /home/maik/.Xmodmap
-exec picom
+#exec --no-startup-id xmodmap /home/maik/.Xmodmap
+#exec picom
+exec xrandr --output DP-2 --mode 2560x1440 -r 240.00 --primary
+#exec xrandr --output DP-2 --mode 2560x1440 -r 240.00 --primary --right-of DP-0 --output DP-0 --mode 2560x1440 -r 120.00
 exec xset -dpms
-exec xrandr --output DP-2 --mode 2560x1440 -r 144.00 --primary --right-of HDMI-0
 exec feh --bg-scale dotfiles/wallpapers/nms.png
+exec amixer set Master 100%
 # exec feh --bg-scale /home/maik/Pictures/Zuko_Iroh_Computer_Wallpaper.jpg
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec --no-startup-id polybar example
+#exec --no-startup-id polybar example
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
@@ -352,6 +357,20 @@ set_from_resource $term_color15    color15
 #        inactive_workspace #333333 #333333 #888888
 #        urgent_workspace #2f343a #900000 #ffffff
 #    }
+bar {
+    font pango:DejaVu Sans Mono, FontAwesome 12
+    position top
+    status_command i3status-rs $HOME/.i3/theme.toml
+    colors {
+        separator #666666
+        background #222222
+        statusline #dddddd
+        focused_workspace #0088CC #0088CC #ffffff
+        active_workspace #333333 #333333 #ffffff
+        inactive_workspace #333333 #333333 #888888
+        urgent_workspace #2f343a #900000 #ffffff
+    }
+}
 
 ### please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 ##	tray_output primary

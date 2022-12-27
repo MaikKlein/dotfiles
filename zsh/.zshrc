@@ -110,5 +110,3 @@ export GDEFAULT="git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remote
 alias gcm='git checkout $(eval $GDEFAULT)'
 alias grl='gfo && git reset --soft origin/$(eval $GDEFAULT)' # reset to latest master
 alias l='exa -la'
-
-

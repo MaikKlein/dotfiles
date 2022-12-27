@@ -1,8 +1,13 @@
 #! /bin/sh
 
-sxhkd &
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+pgrep -x sxhkd > /dev/null || sxhkd &
+xrandr --output DP-2 --mode 2560x1440 -r 240.00 --primary --right-of DP-0 --output DP-0 --mode 2560x1440 -r 120.00
+
+bspc monitor DP-2 -d 1 2 3 4 5 6 7 8
+bspc monitor DP-0 -d 9
+bspc wm --reorder-monitors DP-2 DP-0
+bspc monitor -f DP-2
 
 bspc config border_width         1
 bspc config window_gap          12
@@ -24,7 +29,8 @@ bspc rule -a Steam desktop='^9' state=tiled follow=off
 bspc rule -a Emacs state=tiled
 bspc rule -a Terminator state=tiled
 
-xrdb ~/.Xresources
+
+#xrdb ~/.Xresources
 #compton --config ~/compton.conf &
 #feh --bg-scale dotfiles/wallpapers/firewatch-blue.jpg &
 #polybar example &
@@ -35,4 +41,6 @@ xrdb ~/.Xresources
 #xsetroot -cursor_name left_ptr &
 #gsettings set org.gnome.desktop.background show-desktop-icons false &
 #emacs --daemon
-#
+feh --bg-scale dotfiles/wallpapers/nms.png &
+xset s 0 s blank &
+xset -dpms &

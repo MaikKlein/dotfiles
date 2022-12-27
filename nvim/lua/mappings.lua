@@ -7,14 +7,6 @@ local function map(mode, lhs, rhs, opts)
 end
 
 local opt = {}
--- dont copy any deleted text , this is disabled by default so uncomment the below mappings if you want them!
---[[ remove this line
-
-map("n", "dd", [=[ "_dd ]=], opt)
-map("v", "dd", [=[ "_dd ]=], opt)
-map("v", "x", [=[ "_x ]=], opt)
-
- this line too ]]
 map("n", "<C-t>t", [[<Cmd> tabnew | term <CR>]], opt) -- term newtab
 map("n", "<leader>fer", [[<Cmd> lua require('plenary').reload_modules()<CR>]], opt) -- term newtab
 
@@ -50,10 +42,16 @@ map("n", "<leader>li", ":FindImpls<CR>", opt)
 map("n", "<leader>y", '"+y', opt)
 map("v", "<leader>y", '"+y', opt)
 
-map("n", "<leader>ca", ":Lspsaga code_action<CR>", opt)
-map("v", "<leader>ca", ":Lspsaga range code_action<CR>", opt)
-map("n", "gp", ":Lspsaga preview_definition<CR>", opt)
+--map("n", "<Leader>ca", [[<Cmd>lua require('telescope.builtin').lsp_code_actions()<CR>]], opt)
+map("n", "<Leader>ca", ":CodeActionMenu<CR>", opt)
+--map("n", "<leader>ca", ":Lspsaga code_action<CR>", opt)
+--map("v", "<leader>ca", ":Lspsaga range code_action<CR>", opt)
+--map("n", "gp", ":Lspsaga preview_definition<CR>", opt)
 
 map("n", "<leader>el", ":TroubleToggle<CR>", opt)
 map("n", "<leader>ee", ":Lspsaga show_line_diagnostics<CR>", opt)
 map("n", "<leader>gc", ":Git commit -v -q<CR>", opt)
+
+map("n", "r", "<Plug>(leap-forward-to)", opt)
+map("n", "R", "<Plug>(leap-backward-to)", opt)
+--vim.keymap.set("n", "r", require("leap").leap-forward-to, {silent = true})

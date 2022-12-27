@@ -1,7 +1,7 @@
-local function optional_require(module)
-	local ok, _ = pcall(require, module)
-	return ok
-end
+require("mason").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = { "sumneko_lua", "rust_analyzer" }
+})
 local function on_attach(client, bufnr)
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -30,16 +30,17 @@ local function on_attach(client, bufnr)
 	buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
 	buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 	buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-	buf_set_keymap("n", "<Leader>ms", [[<Cmd>lua require('telescope.builtin').lsp_workspace_symbols()<CR>]], opts)
+
 	buf_set_keymap("n", "<Leader>mo", [[<Cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
 	buf_set_keymap("n", "<Leader>gr", [[<Cmd>lua require('telescope.builtin').lsp_references()<CR>]], opts)
 	buf_set_keymap("n", "<Leader>gi", [[<Cmd>lua require('telescope.builtin').lsp_implementations()<CR>]], opts)
     buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+	buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
 	-- Set some keybinds conditional on server capabilities
-	if client.resolved_capabilities.document_formatting then
+	if client.server_capabilities.document_formatting then
 		buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-	elseif client.resolved_capabilities.document_range_formatting then
+	elseif client.server_capabilities.document_range_formatting then
 		buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 	end
 end
@@ -47,79 +48,45 @@ end
 -- lspInstall + lspconfig stuff
 
 local function setup_servers()
-	require("lspinstall").setup()
-
-	local lspconf = require("lspconfig")
-	local servers = require("lspinstall").installed_servers()
-
-	for _, lang in pairs(servers) do
-		if lang == "rust" then
-			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			-- For autoimport in rust analyzer
-			capabilities.textDocument.completion.completionItem.resolveSupport = {
-				properties = {
-					"additionalTextEdits",
+	local capabilities = vim.lsp.protocol.make_client_capabilities()
+	-- For autoimport in rust analyzer
+	capabilities.textDocument.completion.completionItem.resolveSupport = {
+		properties = {
+			"additionalTextEdits",
+		},
+	}
+    require('lspconfig')['rust_analyzer'].setup{
+        capabilities = capabilities,
+        on_attach = on_attach,
+		settings = {
+			["rust-analyzer"] = {
+				diagnostics = {
+					enable = false,
 				},
-			}
-			lspconf[lang].setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-				settings = {
-					["rust-analyzer"] = {
-						diagnostics = {
-							enable = false,
-						},
-						checkOnSave = {
-							command = "clippy",
-						},
-					},
+				checkOnSave = {
+					command = "clippy",
 				},
-				handlers = {
-					["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-						virtual_text = true,
-						signs = false,
-						update_in_insert = false,
-					}),
-				},
-			})
-		elseif lang == "lua" then
-			lspconf[lang].setup({
-				root_dir = function()
-					return vim.loop.cwd()
-				end,
-				settings = {
-					Lua = {
-						diagnostics = {
-							globals = { "vim" },
-						},
-						workspace = {
-							library = {
-								[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-								[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-							},
-						},
-						telemetry = {
-							enable = false,
-						},
-					},
-				},
-			})
-		else
-			lspconf[lang].setup({
-				on_attach = on_attach,
-				root_dir = vim.loop.cwd,
-			})
-		end
-	end
+                workspace = {
+                    symbol = {
+                        search = {
+                            kind = "all_symbols"
+                        }
+                    }
+                }
+			},
+		},
+		handlers = {
+			["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+				virtual_text = true,
+				signs = false,
+				update_in_insert = false,
+			}),
+		},
+    }
+    require('lspconfig')['clangd'].setup{}
 end
 
 setup_servers()
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require("lspinstall").post_install_hook = function()
-	setup_servers() -- reload installed servers
-	vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
 
 require("lsp_extensions").inlay_hints({
 	highlight = "Comment",
@@ -128,9 +95,9 @@ require("lsp_extensions").inlay_hints({
 	only_current_line = false,
 	enabled = { "TypeHint", "ChainingHint", "ParameterHint" },
 })
-vim.api.nvim_command([[
-  autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"}}
-]])
+--vim.api.nvim_command([[
+--  autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"}}
+--]])
 
 vim.fn.sign_define("LspDiagnosticsSignError", { text = "", numhl = "LspDiagnosticsDefaultError" })
 vim.fn.sign_define("LspDiagnosticsSignWarning", { text = "", numhl = "LspDiagnosticsDefaultWarning" })
