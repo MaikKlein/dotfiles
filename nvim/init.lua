@@ -53,6 +53,8 @@ g.auto_save = 0
 g.backspace = "eol,start,indent"
 g.whichwrap = "<,>,h,l"
 
+local mycolorscheme = 'tokyonight'
+
 cmd("set noswapfile")
 
 for i = 1, 9 do
@@ -77,8 +79,6 @@ vim.keymap.set("n", "}", "]}", {})
 vim.keymap.set("n", "(", "[(", {})
 vim.keymap.set("n", ")", "])", {})
 
-vim.keymap.set("n", "<leader>gs", ":Git<CR>", {})
-
 vim.keymap.set("n", "<leader>y", '"+y', {})
 vim.keymap.set("v", "<leader>y", '"+y', {})
 
@@ -94,6 +94,8 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+
+vim.keymap.set({ "i", "c" }, "<C-v>", '<c-r>+')
 
 vim.keymap.set("n", "<C-o>", "<C-o>zz")
 
@@ -150,7 +152,7 @@ require("lazy").setup({
                     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
                 end
                 require("lsp-inlayhints").setup()
-                require("lsp-inlayhints").on_attach(client, bufnr)
+                require("lsp-inlayhints").on_attach(client, bufnr, false)
 
                 local navic = require('nvim-navic')
                 navic.setup({})
@@ -160,13 +162,23 @@ require("lazy").setup({
 
                 nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
                 nmap('<leader>lc', vim.lsp.buf.code_action, 'Lsp code action')
-                nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+                nmap('gd',
+                    function()
+                        vim.lsp.buf.definition()
+                        vim.api.nvim_input('zz')
+                    end, '[G]oto [D]efinition')
                 nmap('gr', ts.lsp_references, '[G]oto [R]eferences')
                 nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
                 nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
                 nmap('<leader>ld', ts.lsp_document_symbols, '[D]ocument [S]ymbols')
                 nmap('<leader>li', ts.lsp_implementations, '[G]oto [I]mplementation')
-                nmap('<leader>ls', ts.lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+                nmap('<leader>lk', function()
+                    vim.diagnostic.open_float({
+                        source = true,
+                    })
+                end, '[G]oto [I]mplementation')
+                nmap('gi', ts.lsp_implementations, '[G]oto [I]mplementation')
+                -- nmap('<leader>ls', ts.lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
                 nmap('<leader>ls',
                     function()
                         local sorters = require "telescope.sorters"
@@ -193,6 +205,8 @@ require("lazy").setup({
                                 'typeparameter',
                                 'interace',
                                 'enum',
+                                'struct',
+                                'class',
                             }
                         })
                     end,
@@ -234,6 +248,9 @@ require("lazy").setup({
                                     kind = "all_symbols"
                                 }
                             }
+                        },
+                        procMacro = {
+                            enable = true
                         }
                     }
                 },
@@ -293,6 +310,9 @@ require("lazy").setup({
             -- nvim-cmp setup
             local cmp = require 'cmp'
             local luasnip = require 'luasnip'
+            luasnip.setup({
+                history = true
+            })
             cmp.setup {
                 formatting = {
                     fields = { "kind", "abbr", "menu" },
@@ -331,8 +351,6 @@ require("lazy").setup({
                     ['<Tab>'] = cmp.mapping(function(fallback)
                         if cmp.visible() then
                             cmp.select_next_item()
-                        elseif luasnip.expand_or_jumpable() then
-                            luasnip.expand_or_jump()
                         else
                             fallback()
                         end
@@ -340,8 +358,6 @@ require("lazy").setup({
                     ['<S-Tab>'] = cmp.mapping(function(fallback)
                         if cmp.visible() then
                             cmp.select_prev_item()
-                        elseif luasnip.jumpable(-1) then
-                            luasnip.jump(-1)
                         else
                             fallback()
                         end
@@ -354,6 +370,19 @@ require("lazy").setup({
                     { name = 'path' }
                 },
             }
+            vim.keymap.set({ 'i', 's' }, '<C-k>',
+                function()
+                    if luasnip.expand_or_jumpable() then
+                        luasnip.expand_or_jump()
+                    end
+                end,
+                { desc = 'Snippet next' })
+
+            vim.keymap.set({ 'i', 's' }, '<C-j>',
+                function()
+                    luasnip.jump(-1)
+                end,
+                { desc = 'Snippet prev' })
         end
     },
 
@@ -376,6 +405,13 @@ require("lazy").setup({
                 case_mode = "smart_case", -- or "ignore_case" or "respect_case"
             }
             require("telescope").setup {
+                pickers = {
+                    find_files = {
+                        find_command = {
+                            'rg', '--ignore', '-L', '--hidden', '--files'
+                        }
+                    }
+                },
                 extensions = {
                     ["ui-select"] = {
                         require("telescope.themes").get_dropdown {
@@ -444,7 +480,7 @@ require("lazy").setup({
         config = function()
             require 'nvim-treesitter.configs'.setup {
                 -- A list of parser names, or "all"
-                ensure_installed = { "c", "lua", "rust", "toml" },
+                ensure_installed = { "c", "lua", "rust", "toml", "help" },
                 sync_install = false,
                 highlight = {
                     enable = true,
@@ -467,9 +503,8 @@ require("lazy").setup({
                     '~/.config/nvim'
                 },
             })
-            vim.keymap.set('n', '<leader>ps', ':SessionLoad<CR>', { desc = 'Load Session' })
+            vim.keymap.set('n', '<leader>ps', ':SessionLoad<CR>:SessionStart<CR>', { desc = 'Load Session' })
             vim.keymap.set('n', '<leader>pc', ':SessionStart<CR>', { desc = 'Create Session' })
-
         end,
     },
     {
@@ -542,13 +577,68 @@ require("lazy").setup({
         config = function()
             require('Comment').setup()
         end
-    }
+    },
+    {
+        'numToStr/FTerm.nvim',
+        config = function()
+            require 'FTerm'.setup({
+                border     = 'double',
+                dimensions = {
+                    height = 0.9,
+                    width = 0.9,
+                },
+                cmd        = 'zsh'
+            })
+            vim.keymap.set('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>')
+            vim.keymap.set('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
+            local fterm = require("FTerm")
 
+
+            local lazygit = fterm:new({
+                ft = 'fterm_lazygit',
+                cmd = 'lazygit',
+            })
+
+            vim.keymap.set('n', '<leader>gt', function() lazygit:toggle() end, { desc = 'Lazygit' })
+
+            local gitui = fterm:new({
+                ft = 'fterm_gitui',
+                cmd = 'gitui',
+            })
+
+            vim.keymap.set('n', '<leader>gf', function() gitui:toggle() end, { desc = 'Gitui' })
+        end
+    },
+    {
+        'glacambre/firenvim',
+        build = function() vim.fn['firenvim#install'](0) end
+    },
+    {
+        'tpope/vim-fugitive',
+        config = function()
+            vim.keymap.set('n', '<leader>gg', ':Git<CR>', { desc = 'Fugitive' })
+        end
+    },
+    {
+        'kburdett/vim-nuuid'
+    }
+    -- {
+    --     'rmagatti/auto-session',
+    --     config = function()
+    --         require("auto-session").setup {
+    --         }
+    --     end
+    -- }
 }, {
     install = {
-        colorscheme = { 'tokyonight' }
+        colorscheme = { mycolorscheme }
     }
 })
 
---vim.cmd [[colorscheme tokyonight]]
-vim.cmd [[colorscheme tokyonight]]
+vim.cmd.colorscheme(mycolorscheme)
+
+if vim.fn.exists("g:neovide") then
+    vim.g.neovide_cursor_animation_length = 0.0
+    vim.g.neovide_confirm_quit = false
+    vim.g.neovide_refresh_rate = 120
+end
