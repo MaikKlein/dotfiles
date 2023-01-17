@@ -302,8 +302,8 @@ bindsym $mod+slash exec "splatmoji type"
 exec xset s 0 s blank
 #exec --no-startup-id xmodmap /home/maik/.Xmodmap
 #exec picom
-exec xrandr --output DP-2 --mode 2560x1440 -r 240.00 --primary
-#exec xrandr --output DP-2 --mode 2560x1440 -r 240.00 --primary --right-of DP-0 --output DP-0 --mode 2560x1440 -r 120.00
+#exec xrandr --output DP-2 --mode 2560x1440 -r 240.00 --primary
+exec xrandr --output DP-2 --mode 2560x1440 -r 240.00 --primary --right-of DP-0 --output DP-0 --mode 2560x1440 -r 120.00
 exec xset -dpms
 exec feh --bg-scale dotfiles/wallpapers/nms.png
 exec amixer set Master 100%
