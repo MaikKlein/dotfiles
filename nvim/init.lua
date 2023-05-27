@@ -134,7 +134,6 @@ require("lazy").setup({
             'SmiteshP/nvim-navic',
             'lvimuser/lsp-inlayhints.nvim'
         },
-
         config = function()
             -- LSP settings.
             --  This function gets run when an LSP connects to a particular buffer.
@@ -149,7 +148,7 @@ require("lazy").setup({
                     if desc then
                         desc = 'LSP: ' .. desc
                     end
-                    vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+                    vim.keymap.set({ 'n', 'v' }, keys, func, { buffer = bufnr, desc = desc })
                 end
                 require("lsp-inlayhints").setup()
                 require("lsp-inlayhints").on_attach(client, bufnr, false)
@@ -178,7 +177,7 @@ require("lazy").setup({
                     })
                 end, '[G]oto [I]mplementation')
                 nmap('gi', ts.lsp_implementations, '[G]oto [I]mplementation')
-                -- nmap('<leader>ls', ts.lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+                nmap('<leader>ls', ts.lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
                 nmap('<leader>ls',
                     function()
                         local sorters = require "telescope.sorters"
@@ -298,7 +297,13 @@ require("lazy").setup({
         config = function()
             require('lspkind').init()
         end
+    },
 
+    {
+        'L3MON4D3/LuaSnip',
+        version = "v1.*",
+        -- install jsregexp (optional!).
+        -- build = "make install_jsregexp"
     },
 
     {
@@ -310,22 +315,39 @@ require("lazy").setup({
             -- nvim-cmp setup
             local cmp = require 'cmp'
             local luasnip = require 'luasnip'
-            luasnip.setup({
-                history = true
-            })
-            cmp.setup {
-                formatting = {
-                    fields = { "kind", "abbr", "menu" },
-                    format = function(entry, vim_item)
-                        local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry,
-                            vim_item)
-                        local strings = vim.split(kind.kind, "%s", { trimempty = true })
-                        kind.kind = " " .. strings[1] .. " "
-                        kind.menu = "    (" .. strings[2] .. ")"
+            -- luasnip.setup({
+            --     history = true
+            -- })
+            -- luasnip.config.setup {}
 
-                        return kind
-                    end,
-                },
+            local function maybe_load_vscode_snippets()
+                local Path = require("luasnip.util.path")
+                local cur_dir = vim.fn.getcwd()
+                local vscode_dir = Path.join(cur_dir, ".vscode")
+                local package_json_file = Path.join(vscode_dir, "package.json")
+                if Path.exists(package_json_file)
+                then
+                    require("luasnip.loaders.from_vscode").lazy_load({
+                        paths = vscode_dir
+                    })
+                end
+            end
+
+            --maybe_load_vscode_snippets()
+            require("luasnip.loaders.from_vscode").lazy_load({ paths = { "/home/maik/projects/ark-modules/.vscode" } })
+            cmp.setup {
+                -- formatting = {
+                --     fields = { "kind", "abbr", "menu" },
+                --     format = function(entry, vim_item)
+                --         local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry,
+                --             vim_item)
+                --         local strings = vim.split(kind.kind, "%s", { trimempty = true })
+                --         kind.kind = " " .. strings[1] .. " "
+                --         kind.menu = "    (" .. strings[2] .. ")"
+                --
+                --         return kind
+                --     end,
+                -- },
                 window = {
                     completion = {
                         border = 'shadow',
@@ -364,8 +386,8 @@ require("lazy").setup({
                     end, { 'i', 's' }),
                 },
                 sources = {
-                    { name = 'nvim_lsp' },
-                    { name = 'luasnip' },
+                    { name = 'nvim_lsp',               priority = 9 },
+                    { name = 'luasnip',                priority = 1 },
                     { name = 'nvim_lsp_signature_help' },
                     { name = 'path' }
                 },
@@ -391,18 +413,24 @@ require("lazy").setup({
         dependencies = {
             { 'nvim-lua/plenary.nvim' },
             { 'nvim-telescope/telescope-ui-select.nvim' },
-            { 'nvim-telescope/telescope-fzf-native.nvim',
-                build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
+            {
+                'nvim-telescope/telescope-fzf-native.nvim',
+                build =
+                'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+            },
             { 'nvim-telescope/telescope-fzy-native.nvim' },
-            { 'olimorris/persisted.nvim' }
+            { 'olimorris/persisted.nvim' },
+            { 'benfowler/telescope-luasnip.nvim' },
+            { 'L3MON4D3/LuaSnip' }
+
 
         },
         config = function()
             local fzf_opts = {
-                fuzzy = true, -- false will only do exact matching
+                fuzzy = true,                   -- false will only do exact matching
                 override_generic_sorter = true, -- override the generic sorter
-                override_file_sorter = true, -- override the file sorter
-                case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+                override_file_sorter = true,    -- override the file sorter
+                case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
             }
             require("telescope").setup {
                 pickers = {
@@ -424,6 +452,7 @@ require("lazy").setup({
             require("telescope").load_extension("ui-select")
             require('telescope').load_extension('fzf')
             require('telescope').load_extension('persisted')
+            require('telescope').load_extension('luasnip')
 
             local ts = require('telescope.builtin')
             vim.keymap.set('n', '<leader>sf', ts.find_files, { desc = '[S]earch [F]iles' })
@@ -440,7 +469,6 @@ require("lazy").setup({
             vim.keymap.set('n', '<leader>pp', ':Telescope persisted<CR>', { desc = 'Find session' })
             vim.keymap.set('n', '<leader>vul', ':Mason<CR>', { desc = 'Mason LSP' })
         end
-
     },
 
     {
@@ -522,7 +550,9 @@ require("lazy").setup({
             require("nvim-surround").setup({})
         end
     }),
-    { 'TimUntersberger/neogit', dependencies = { 'nvim-lua/plenary.nvim', 'sindrets/diffview.nvim' },
+    {
+        'TimUntersberger/neogit',
+        dependencies = { 'nvim-lua/plenary.nvim', 'sindrets/diffview.nvim' },
         config = function()
             local neogit = require('neogit')
             neogit.setup {
@@ -534,11 +564,11 @@ require("lazy").setup({
 
 
             vim.keymap.set('n', '<leader>gs', neogit.open, { desc = 'Git status' })
-
         end
     },
     { 'sindrets/diffview.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
-    { 'ibhagwan/fzf-lua',
+    {
+        'ibhagwan/fzf-lua',
         -- optional for icon support
         dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
@@ -620,8 +650,24 @@ require("lazy").setup({
         end
     },
     {
+        'tpope/vim-rhubarb'
+    },
+    {
         'kburdett/vim-nuuid'
-    }
+    },
+    -- {
+    --     'simrat39/rust-tools.nvim',
+    --     config = function()
+    --         local rt = require("rust-tools")
+    --
+    --         rt.setup({
+    --             server = {
+    --                 on_attach = function(_, bufnr)
+    --                 end,
+    --             },
+    --         })
+    --     end
+    -- }
     -- {
     --     'rmagatti/auto-session',
     --     config = function()

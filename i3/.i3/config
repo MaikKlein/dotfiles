@@ -33,7 +33,7 @@ bindsym $mod+Return exec kitty --single-instance -e tmux
 bindsym ctrl+Shift+c kill
 
 # start program launcher
-bindsym $mod+space exec --no-startup-id rofi -show drun -sort -sorting-method fzf
+bindsym $mod+space exec --no-startup-id $HOME/.config/rofi/scripts/launcher_t7 -show drun -sort -sorting-method fzf
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
@@ -134,8 +134,8 @@ bindsym $mod+Ctrl+Left workspace prev
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
 
-set $monitor DP-2
-set $monitor2 DP-0
+set $monitor DP-0
+set $monitor2 DP-2
 
 set $ws1 1:1
 set $ws2 2:2
@@ -303,7 +303,8 @@ exec xset s 0 s blank
 #exec --no-startup-id xmodmap /home/maik/.Xmodmap
 #exec picom
 #exec xrandr --output DP-2 --mode 2560x1440 -r 240.00 --primary
-exec xrandr --output DP-2 --mode 2560x1440 -r 240.00 --primary --right-of DP-0 --output DP-0 --mode 2560x1440 -r 120.00
+# exec xrandr --output DP-2 --mode 2560x1440 -r 240.00 --primary --right-of DP-0 --output DP-0 --mode 2560x1440 -r 120.00
+exec xrandr --output DP-0 --mode 2560x1440 -r 240.00 --primary --right-of DP-2 --output DP-2 --mode 2560x1440 -r 120.00
 exec xset -dpms
 exec feh --bg-scale dotfiles/wallpapers/nms.png
 exec amixer set Master 100%
